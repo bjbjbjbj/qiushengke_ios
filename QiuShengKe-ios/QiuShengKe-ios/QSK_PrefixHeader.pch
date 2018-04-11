@@ -1,0 +1,96 @@
+//
+//  QSK_PrefixHeader.h
+//  QiuShengKe-ios
+//
+//  Created by xieweijie on 2018/4/9.
+//  Copyright © 2018年 xieweijie. All rights reserved.
+//
+
+#ifndef QSK_PrefixHeader_h
+#define QSK_PrefixHeader_h
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "QiuMiCommon.h"
+#import "QiuMiCount.h"
+#import "QiuMiCommonRequest.h"
+#import "QSK_api.h"
+#import "QSKCommon.h"
+
+//Common folder
+#import "CommonKit.h"
+#import "QiuMiCommonTableView.h"
+#import "QiuMiCommonViewController.h"
+#import "QiuMiRefreshControl.h"
+#import "QiuMiPromptView.h"
+#import "QiuMiCommonWebViewController.h"
+#import "QiuMiCommonWKWebViewController.h"
+#import "QiuMiTabView.h"
+#import "UIButton+Qiumi.h"
+#import "UIImage+Qiumi.h"
+#import "UILabel+Qiumi.h"
+#import "UIImageView+Qiumi.h"
+#import "QiuMiHttpClient.h"
+#import "QiuMiImageView.h"
+#import "QiuMiLabel.h"
+#import "QiuMiCount.h"
+#import "QiuMiView.h"
+#import "QiuMiCommonPromptView.h"
+#import "QiuMiNoDataView.h"
+
+//cocoapods
+#include "OpenUDID.h"
+#import "AFNetworking.h"
+#import "JSONKit.h"
+#import "MBProgressHUD.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
+#import "QiuMiCommonTableViewController.h"
+
+#import <UMCommon/UMCommon.h>
+#import <UMAnalytics/MobClick.h>
+
+#define QIUMIDEBUG 0
+#define LGREVIEW 0
+
+
+#if QIUMIDEBUG
+#    define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#    define NSLog(...) {}
+#endif
+
+#define QIUMI_ABOUT_US @""
+
+#define QIUMI_DEFAULT_IMAGE @"icon_default_image_bg"
+
+#define LG_FONT @"PingFangSC-Regular"
+
+//宏颜色
+#define QIUMI_COLOR_C1 COLOR(52, 180, 93,1)
+#define QIUMI_COLOR_C1_L COLOR(192, 211, 198,1)
+#define QIUMI_COLOR_C1_D COLOR(30,170,255,.55)
+//绿
+#define QIUMI_COLOR_C2 COLOR(28,192,117,1)
+//橙
+#define QIUMI_COLOR_C3 COLOR(255,150,0,1)
+#define QIUMI_COLOR_C4 COLOR(255,104,104,1)
+//蓝色
+#define QIUMI_COLOR_C5 COLOR(88,161,246,1)
+#define QIUMI_COLOR_C5_D COLOR(172, 194, 218,1)
+
+#define QIUMI_COLOR_D1 COLOR(0,92,149,1)//全局顶栏颜色
+#define QIUMI_COLOR_G1 COLOR(102,102,102,1)//主文字颜色
+#define QIUMI_COLOR_G2 COLOR(153,153,153,1)//副文字颜色
+#define QIUMI_COLOR_G4 COLOR(230,230,230,1)//"卡片边框、输入框边框、分割线色
+#define QIUMI_COLOR_G5 COLOR(242,242,242,1)//全局底色（特殊页面除外）
+#define QIUMI_COLOR_G6 COLOR(250,250,250,1)//分隔栏、输入框底色
+#define QIUMI_COLOR_G7 COLOR(255,255,255,1)//特殊底色，文字颜色
+#define QIUMI_COLOR_G8 COLOR(203,203,203,1)//特殊底栏文字颜色
+#define QIUMI_COLOR_G9 COLOR(191, 209, 224,1)//部分按钮disable状态颜色
+#define QIUMI_COLOR_G85 COLOR(85, 85, 85,1)//部分字体颜色
+#define QIUMI_COLOR_G10 COLOR(245,246,247,1)
+//推荐终端用
+#define QIUMI_COLOR_G11 COLOR(204,204,204,1)
+
+#endif /* QSK_PrefixHeader_h */

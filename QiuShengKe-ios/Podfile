@@ -1,0 +1,13 @@
+platform :ios, '7.0'
+target ‘QiuShengKe-ios’ do
+	pod 'JSONKit-NoWarning', '~> 1.2'
+	pod 'Reachability',  '~> 3.0.0'
+	pod 'AFNetworking', '~> 2.4.1'
+	pod 'SDWebImage', '~> 3.7.3'
+	pod 'SDWebImage/WebP', '~> 3.7.3'
+	pod 'OpenUDID', '~> 1.0.0'
+	pod 'MBProgressHUD', '~> 0.9'
+	pod 'RegexKitLite'
+    pod 'UMCCommon'
+    pod 'UMCAnalytics'
+end

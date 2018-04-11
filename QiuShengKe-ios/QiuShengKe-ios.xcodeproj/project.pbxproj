@@ -1,0 +1,1263 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		209ADE10207B52F900FC8AD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE0F207B52F900FC8AD8 /* AppDelegate.m */; };
+		209ADE13207B52F900FC8AD8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE12207B52F900FC8AD8 /* ViewController.m */; };
+		209ADE16207B52F900FC8AD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209ADE14207B52F900FC8AD8 /* Main.storyboard */; };
+		209ADE18207B52F900FC8AD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209ADE17207B52F900FC8AD8 /* Assets.xcassets */; };
+		209ADE1E207B52F900FC8AD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE1D207B52F900FC8AD8 /* main.m */; };
+		20D30702207B70FA001BD67E /* Football.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D30701207B70FA001BD67E /* Football.storyboard */; };
+		20D30704207B7A48001BD67E /* Basketball.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D30703207B7A48001BD67E /* Basketball.storyboard */; };
+		20D307AD207B7E4B001BD67E /* UIButton+Qiumi.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3070A207B7E4B001BD67E /* UIButton+Qiumi.m */; };
+		20D307AE207B7E4B001BD67E /* UIImage+Qiumi.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3070D207B7E4B001BD67E /* UIImage+Qiumi.m */; };
+		20D307AF207B7E4B001BD67E /* UIImageView+Qiumi.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30710207B7E4B001BD67E /* UIImageView+Qiumi.m */; };
+		20D307B0207B7E4B001BD67E /* UILabel+Qiumi.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30713207B7E4B001BD67E /* UILabel+Qiumi.m */; };
+		20D307B1207B7E4B001BD67E /* ALAssetsLibrary+defaultAssetsLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30717207B7E4B001BD67E /* ALAssetsLibrary+defaultAssetsLibrary.m */; };
+		20D307B2207B7E4B001BD67E /* NSArray+QiuMiArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3071A207B7E4B001BD67E /* NSArray+QiuMiArray.m */; };
+		20D307B3207B7E4B001BD67E /* NSDate+PCDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3071D207B7E4B001BD67E /* NSDate+PCDate.m */; };
+		20D307B4207B7E4B001BD67E /* NSDictionary+CommonKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3071F207B7E4B001BD67E /* NSDictionary+CommonKit.m */; };
+		20D307B5207B7E4B001BD67E /* NSMutableArray+PCMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30722207B7E4B001BD67E /* NSMutableArray+PCMutableArray.m */; };
+		20D307B6207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30725207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary.m */; };
+		20D307B7207B7E4B001BD67E /* NSObject+QiuMiCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30727207B7E4B001BD67E /* NSObject+QiuMiCheck.m */; };
+		20D307B8207B7E4B001BD67E /* NSString+Qiumi.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3072A207B7E4B001BD67E /* NSString+Qiumi.m */; };
+		20D307B9207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3072D207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults.m */; };
+		20D307BA207B7E4B001BD67E /* UIColor+RGBA.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3072F207B7E4B001BD67E /* UIColor+RGBA.m */; };
+		20D307BB207B7E4B001BD67E /* UIControl+UIControl_Click.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30731207B7E4B001BD67E /* UIControl+UIControl_Click.m */; };
+		20D307BC207B7E4B001BD67E /* QiuMiCreateKeyBoardDelegater.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30735207B7E4B001BD67E /* QiuMiCreateKeyBoardDelegater.m */; };
+		20D307BD207B7E4B001BD67E /* QiuMiLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30738207B7E4B001BD67E /* QiuMiLine.m */; };
+		20D307BE207B7E4B001BD67E /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3073B207B7E4B001BD67E /* CustomIOS7AlertView.m */; };
+		20D307C3207B7E4B001BD67E /* UIImage+effect.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30746207B7E4B001BD67E /* UIImage+effect.m */; };
+		20D307C4207B7E4B001BD67E /* PCPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30748207B7E4B001BD67E /* PCPhotoView.m */; };
+		20D307C5207B7E4B001BD67E /* QiuMiAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3074B207B7E4B001BD67E /* QiuMiAlertView.m */; };
+		20D307C6207B7E4B001BD67E /* QiuMiPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3074D207B7E4B001BD67E /* QiuMiPickerView.m */; };
+		20D307C7207B7E4B001BD67E /* QiuMiActivityWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3074F207B7E4B001BD67E /* QiuMiActivityWebViewController.m */; };
+		20D307C8207B7E4B001BD67E /* QiuMiButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30751207B7E4B001BD67E /* QiuMiButton.m */; };
+		20D307C9207B7E4B001BD67E /* QiuMiCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30753207B7E4B001BD67E /* QiuMiCommon.m */; };
+		20D307CA207B7E4B001BD67E /* QiuMiNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30756207B7E4B001BD67E /* QiuMiNoDataView.m */; };
+		20D307CB207B7E4B001BD67E /* QiuMiNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D30757207B7E4B001BD67E /* QiuMiNoDataView.xib */; };
+		20D307CC207B7E4B001BD67E /* QiuMiCommonTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3075A207B7E4B001BD67E /* QiuMiCommonTableView.m */; };
+		20D307CD207B7E4B001BD67E /* QiuMiCommonTableHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3075D207B7E4B001BD67E /* QiuMiCommonTableHeadView.m */; };
+		20D307CE207B7E4B001BD67E /* QiuMiCommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3075F207B7E4B001BD67E /* QiuMiCommonTableViewController.m */; };
+		20D307CF207B7E4B001BD67E /* QiuMiCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30762207B7E4B001BD67E /* QiuMiCommonViewController.m */; };
+		20D307D0207B7E4B001BD67E /* QiuMiNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30764207B7E4B001BD67E /* QiuMiNavigationController.m */; };
+		20D307D1207B7E4B001BD67E /* QiuMiCommonWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30767207B7E4B001BD67E /* QiuMiCommonWebViewController.m */; };
+		20D307D2207B7E4B001BD67E /* QiuMiCommonWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30769207B7E4B001BD67E /* QiuMiCommonWKWebViewController.m */; };
+		20D307D3207B7E4B001BD67E /* WKCookieSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3076B207B7E4B001BD67E /* WKCookieSyncManager.m */; };
+		20D307D4207B7E4B001BD67E /* QiuMiCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3076E207B7E4B001BD67E /* QiuMiCount.m */; };
+		20D307D5207B7E4B001BD67E /* OLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30771207B7E4B001BD67E /* OLImage.m */; };
+		20D307D6207B7E4B001BD67E /* OLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30773207B7E4B001BD67E /* OLImageView.m */; };
+		20D307D7207B7E4B001BD67E /* QiuMiImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30775207B7E4B001BD67E /* QiuMiImageView.m */; };
+		20D307D8207B7E4B001BD67E /* QiuMiImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D30776207B7E4B001BD67E /* QiuMiImageView.xib */; };
+		20D307D9207B7E4B001BD67E /* QiuMiLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30778207B7E4B001BD67E /* QiuMiLabel.m */; };
+		20D307DA207B7E4B001BD67E /* QiuMiDatePickerAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3077B207B7E4B001BD67E /* QiuMiDatePickerAlertView.m */; };
+		20D307DB207B7E4B001BD67E /* QiuMiDatePickerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D3077C207B7E4B001BD67E /* QiuMiDatePickerAlertView.xib */; };
+		20D307DC207B7E4B001BD67E /* QiuMiPickAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3077E207B7E4B001BD67E /* QiuMiPickAlertView.m */; };
+		20D307DD207B7E4B001BD67E /* QiuMiPickAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D3077F207B7E4B001BD67E /* QiuMiPickAlertView.xib */; };
+		20D307DE207B7E4B001BD67E /* QiuMiPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30782207B7E4B001BD67E /* QiuMiPlaceHolderTextView.m */; };
+		20D307DF207B7E4B001BD67E /* QiuMiCommonPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30785207B7E4B001BD67E /* QiuMiCommonPromptView.m */; };
+		20D307E0207B7E4B001BD67E /* QiuMiPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30787207B7E4B001BD67E /* QiuMiPromptView.m */; };
+		20D307E1207B7E4B001BD67E /* QiuMiTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30789207B7E4B001BD67E /* QiuMiTabBarViewController.m */; };
+		20D307E2207B7E4B001BD67E /* QiuMiTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3078C207B7E4B001BD67E /* QiuMiTabView.m */; };
+		20D307E3207B7E4B001BD67E /* QiuMiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3078E207B7E4B001BD67E /* QiuMiView.m */; };
+		20D307E4207B7E4B001BD67E /* QiuMiFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30791207B7E4B001BD67E /* QiuMiFooterView.m */; };
+		20D307E5207B7E4B001BD67E /* QiuMiRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30793207B7E4B001BD67E /* QiuMiRefreshControl.m */; };
+		20D307E6207B7E4B001BD67E /* CAKeyframeAnimationGIFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30797207B7E4B001BD67E /* CAKeyframeAnimationGIFView.m */; };
+		20D307E7207B7E4B001BD67E /* AFJSONResponseSerializer+FixAFN.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3079A207B7E4B001BD67E /* AFJSONResponseSerializer+FixAFN.m */; };
+		20D307E8207B7E4B001BD67E /* DownLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3079C207B7E4B001BD67E /* DownLoadOperation.m */; };
+		20D307E9207B7E4B001BD67E /* QiuMiCommonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3079F207B7E4B001BD67E /* QiuMiCommonRequest.m */; };
+		20D307EA207B7E4B001BD67E /* QiuMiHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D307A2207B7E4B001BD67E /* QiuMiHttpClient.m */; };
+		20D307EE207B7E4B001BD67E /* SDWebImageDownloaderOperation+FixSDImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D307AA207B7E4B001BD67E /* SDWebImageDownloaderOperation+FixSDImage.m */; };
+		20D307EF207B7E4B001BD67E /* UIImage+FixSDImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D307AC207B7E4B001BD67E /* UIImage+FixSDImage.m */; };
+		20D307F4207C634B001BD67E /* FootballIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D307F3207C634B001BD67E /* FootballIndexViewController.m */; };
+		20D30816207C6D78001BD67E /* commond_icon_basket_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30810207C6A6D001BD67E /* commond_icon_basket_n@2x.png */; };
+		20D30817207C6D78001BD67E /* commond_icon_basket_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30801207C6A6A001BD67E /* commond_icon_basket_n@3x.png */; };
+		20D30818207C6D78001BD67E /* commond_icon_basket_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D307FD207C6A6A001BD67E /* commond_icon_basket_s@2x.png */; };
+		20D30819207C6D78001BD67E /* commond_icon_basket_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30806207C6A6B001BD67E /* commond_icon_basket_s@3x.png */; };
+		20D3081A207C6D78001BD67E /* commond_icon_live_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D3080E207C6A6C001BD67E /* commond_icon_live_n@2x.png */; };
+		20D3081B207C6D78001BD67E /* commond_icon_live_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D307F7207C6A6A001BD67E /* commond_icon_live_n@3x.png */; };
+		20D3081C207C6D78001BD67E /* commond_icon_live_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D307FC207C6A6A001BD67E /* commond_icon_live_s@2x.png */; };
+		20D3081D207C6D78001BD67E /* commond_icon_live_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30808207C6A6B001BD67E /* commond_icon_live_s@3x.png */; };
+		20D3081E207C6D78001BD67E /* commond_icon_soccer_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30814207C6A6D001BD67E /* commond_icon_soccer_n@2x.png */; };
+		20D3081F207C6D78001BD67E /* commond_icon_soccer_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D307FB207C6A6A001BD67E /* commond_icon_soccer_n@3x.png */; };
+		20D30820207C6D78001BD67E /* commond_icon_soccer_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D3080C207C6A6C001BD67E /* commond_icon_soccer_s@2x.png */; };
+		20D30821207C6D78001BD67E /* commond_icon_soccer_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D307F9207C6A6A001BD67E /* commond_icon_soccer_s@3x.png */; };
+		20D30822207C6D79001BD67E /* data_icon_close_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30809207C6A6B001BD67E /* data_icon_close_n@2x.png */; };
+		20D30823207C6D79001BD67E /* data_icon_close_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30803207C6A6B001BD67E /* data_icon_close_n@3x.png */; };
+		20D30824207C6D79001BD67E /* data_icon_open_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D3080B207C6A6C001BD67E /* data_icon_open_n@2x.png */; };
+		20D30825207C6D79001BD67E /* data_icon_open_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30802207C6A6A001BD67E /* data_icon_open_n@3x.png */; };
+		20D30826207C6D79001BD67E /* handicap_icon_down_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30813207C6A6D001BD67E /* handicap_icon_down_n@2x.png */; };
+		20D30827207C6D79001BD67E /* handicap_icon_down_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30800207C6A6A001BD67E /* handicap_icon_down_n@3x.png */; };
+		20D30828207C6D79001BD67E /* handicap_icon_up_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D307FA207C6A6A001BD67E /* handicap_icon_up_n@2x.png */; };
+		20D30829207C6D79001BD67E /* handicap_icon_up_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30805207C6A6B001BD67E /* handicap_icon_up_n@3x.png */; };
+		20D3082A207C6D79001BD67E /* index_icon_down_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D3080F207C6A6C001BD67E /* index_icon_down_n@2x.png */; };
+		20D3082B207C6D79001BD67E /* index_icon_down_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30812207C6A6D001BD67E /* index_icon_down_n@3x.png */; };
+		20D3082C207C6D79001BD67E /* live_bg_basketball_n@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20D30811207C6A6D001BD67E /* live_bg_basketball_n@2x.jpg */; };
+		20D3082D207C6D79001BD67E /* live_bg_basketball_n@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20D307FE207C6A6A001BD67E /* live_bg_basketball_n@3x.jpg */; };
+		20D3082E207C6D79001BD67E /* live_bg_soccer_n@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20D307FF207C6A6A001BD67E /* live_bg_soccer_n@2x.jpg */; };
+		20D3082F207C6D79001BD67E /* live_bg_soccer_n@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20D307F8207C6A6A001BD67E /* live_bg_soccer_n@3x.jpg */; };
+		20D30830207C6D79001BD67E /* live_icon_down_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30804207C6A6B001BD67E /* live_icon_down_n@2x.png */; };
+		20D30831207C6D79001BD67E /* live_icon_down_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30807207C6A6B001BD67E /* live_icon_down_n@3x.png */; };
+		20D30832207C6D79001BD67E /* result_chamfer_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D307F6207C6A6A001BD67E /* result_chamfer_n@2x.png */; };
+		20D30833207C6D79001BD67E /* result_chamfer_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D3080D207C6A6C001BD67E /* result_chamfer_n@3x.png */; };
+		20D30834207C6D79001BD67E /* soccer_icon_down_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D30815207C6A6D001BD67E /* soccer_icon_down_n@2x.png */; };
+		20D30835207C6D79001BD67E /* soccer_icon_down_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D3080A207C6A6B001BD67E /* soccer_icon_down_n@3x.png */; };
+		20D3083A207C6DFF001BD67E /* FootballMatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30838207C6DFF001BD67E /* FootballMatchTableViewCell.m */; };
+		20D3083B207C6DFF001BD67E /* FootballMatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D30839207C6DFF001BD67E /* FootballMatchTableViewCell.xib */; };
+		20D3083E207C7282001BD67E /* FootballMatchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3083D207C7282001BD67E /* FootballMatchListViewController.m */; };
+		20D30842207CA1DA001BD67E /* QSKCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30841207CA1DA001BD67E /* QSKCommon.m */; };
+		20D30847207DB842001BD67E /* LeagueFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30845207DB842001BD67E /* LeagueFilterCollectionViewCell.m */; };
+		20D30848207DB842001BD67E /* LeagueFilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D30846207DB842001BD67E /* LeagueFilterCollectionViewCell.xib */; };
+		20D3084B207DF89D001BD67E /* FootballDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3084A207DF89D001BD67E /* FootballDetailViewController.m */; };
+		20D3084E207E004B001BD67E /* FootDetailBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3084D207E004B001BD67E /* FootDetailBaseView.m */; };
+		20D30850207E0077001BD67E /* FootDetailBaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D3084F207E0077001BD67E /* FootDetailBaseView.xib */; };
+		20D30852207E0120001BD67E /* FootDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D30851207E0120001BD67E /* FootDetailHeaderView.xib */; };
+		20D30855207E012C001BD67E /* FootDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30854207E012C001BD67E /* FootDetailHeaderView.m */; };
+		B33AEC462A37E69604F9ED6B /* libPods-QiuShengKe-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAAC94A2B78E2A80B9B3D99 /* libPods-QiuShengKe-ios.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		209ADE0B207B52F900FC8AD8 /* QiuShengKe-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QiuShengKe-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		209ADE0E207B52F900FC8AD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		209ADE0F207B52F900FC8AD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		209ADE11207B52F900FC8AD8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		209ADE12207B52F900FC8AD8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		209ADE15207B52F900FC8AD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		209ADE17207B52F900FC8AD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		209ADE1C207B52F900FC8AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		209ADE1D207B52F900FC8AD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		20D306FC207B5A35001BD67E /* QSK_PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSK_PrefixHeader.pch; sourceTree = "<group>"; };
+		20D30701207B70FA001BD67E /* Football.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Football.storyboard; sourceTree = "<group>"; };
+		20D30703207B7A48001BD67E /* Basketball.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Basketball.storyboard; sourceTree = "<group>"; };
+		20D30709207B7E4B001BD67E /* UIButton+Qiumi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Qiumi.h"; sourceTree = "<group>"; };
+		20D3070A207B7E4B001BD67E /* UIButton+Qiumi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Qiumi.m"; sourceTree = "<group>"; };
+		20D3070C207B7E4B001BD67E /* UIImage+Qiumi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Qiumi.h"; sourceTree = "<group>"; };
+		20D3070D207B7E4B001BD67E /* UIImage+Qiumi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Qiumi.m"; sourceTree = "<group>"; };
+		20D3070F207B7E4B001BD67E /* UIImageView+Qiumi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Qiumi.h"; sourceTree = "<group>"; };
+		20D30710207B7E4B001BD67E /* UIImageView+Qiumi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Qiumi.m"; sourceTree = "<group>"; };
+		20D30712207B7E4B001BD67E /* UILabel+Qiumi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Qiumi.h"; sourceTree = "<group>"; };
+		20D30713207B7E4B001BD67E /* UILabel+Qiumi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Qiumi.m"; sourceTree = "<group>"; };
+		20D30716207B7E4B001BD67E /* ALAssetsLibrary+defaultAssetsLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+defaultAssetsLibrary.h"; sourceTree = "<group>"; };
+		20D30717207B7E4B001BD67E /* ALAssetsLibrary+defaultAssetsLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+defaultAssetsLibrary.m"; sourceTree = "<group>"; };
+		20D30719207B7E4B001BD67E /* NSArray+QiuMiArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+QiuMiArray.h"; sourceTree = "<group>"; };
+		20D3071A207B7E4B001BD67E /* NSArray+QiuMiArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+QiuMiArray.m"; sourceTree = "<group>"; };
+		20D3071C207B7E4B001BD67E /* NSDate+PCDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PCDate.h"; sourceTree = "<group>"; };
+		20D3071D207B7E4B001BD67E /* NSDate+PCDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PCDate.m"; sourceTree = "<group>"; };
+		20D3071E207B7E4B001BD67E /* NSDictionary+CommonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CommonKit.h"; sourceTree = "<group>"; };
+		20D3071F207B7E4B001BD67E /* NSDictionary+CommonKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CommonKit.m"; sourceTree = "<group>"; };
+		20D30721207B7E4B001BD67E /* NSMutableArray+PCMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+PCMutableArray.h"; sourceTree = "<group>"; };
+		20D30722207B7E4B001BD67E /* NSMutableArray+PCMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+PCMutableArray.m"; sourceTree = "<group>"; };
+		20D30724207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+PCMutableDictionary.h"; sourceTree = "<group>"; };
+		20D30725207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+PCMutableDictionary.m"; sourceTree = "<group>"; };
+		20D30726207B7E4B001BD67E /* NSObject+QiuMiCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+QiuMiCheck.h"; sourceTree = "<group>"; };
+		20D30727207B7E4B001BD67E /* NSObject+QiuMiCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+QiuMiCheck.m"; sourceTree = "<group>"; };
+		20D30729207B7E4B001BD67E /* NSString+Qiumi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Qiumi.h"; sourceTree = "<group>"; };
+		20D3072A207B7E4B001BD67E /* NSString+Qiumi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Qiumi.m"; sourceTree = "<group>"; };
+		20D3072C207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+PCUserDefaults.h"; sourceTree = "<group>"; };
+		20D3072D207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+PCUserDefaults.m"; sourceTree = "<group>"; };
+		20D3072E207B7E4B001BD67E /* UIColor+RGBA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBA.h"; sourceTree = "<group>"; };
+		20D3072F207B7E4B001BD67E /* UIColor+RGBA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBA.m"; sourceTree = "<group>"; };
+		20D30730207B7E4B001BD67E /* UIControl+UIControl_Click.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+UIControl_Click.h"; sourceTree = "<group>"; };
+		20D30731207B7E4B001BD67E /* UIControl+UIControl_Click.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+UIControl_Click.m"; sourceTree = "<group>"; };
+		20D30732207B7E4B001BD67E /* CommonKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonKit.h; sourceTree = "<group>"; };
+		20D30734207B7E4B001BD67E /* QiuMiCreateKeyBoardDelegater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCreateKeyBoardDelegater.h; sourceTree = "<group>"; };
+		20D30735207B7E4B001BD67E /* QiuMiCreateKeyBoardDelegater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCreateKeyBoardDelegater.m; sourceTree = "<group>"; };
+		20D30737207B7E4B001BD67E /* QiuMiLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiLine.h; sourceTree = "<group>"; };
+		20D30738207B7E4B001BD67E /* QiuMiLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiLine.m; sourceTree = "<group>"; };
+		20D3073A207B7E4B001BD67E /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
+		20D3073B207B7E4B001BD67E /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
+		20D30745207B7E4B001BD67E /* UIImage+effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+effect.h"; sourceTree = "<group>"; };
+		20D30746207B7E4B001BD67E /* UIImage+effect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+effect.m"; sourceTree = "<group>"; };
+		20D30747207B7E4B001BD67E /* PCPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCPhotoView.h; sourceTree = "<group>"; };
+		20D30748207B7E4B001BD67E /* PCPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCPhotoView.m; sourceTree = "<group>"; };
+		20D3074A207B7E4B001BD67E /* QiuMiAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiAlertView.h; sourceTree = "<group>"; };
+		20D3074B207B7E4B001BD67E /* QiuMiAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiAlertView.m; sourceTree = "<group>"; };
+		20D3074C207B7E4B001BD67E /* QiuMiPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiPickerView.h; sourceTree = "<group>"; };
+		20D3074D207B7E4B001BD67E /* QiuMiPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiPickerView.m; sourceTree = "<group>"; };
+		20D3074E207B7E4B001BD67E /* QiuMiActivityWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiActivityWebViewController.h; sourceTree = "<group>"; };
+		20D3074F207B7E4B001BD67E /* QiuMiActivityWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiActivityWebViewController.m; sourceTree = "<group>"; };
+		20D30750207B7E4B001BD67E /* QiuMiButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiButton.h; sourceTree = "<group>"; };
+		20D30751207B7E4B001BD67E /* QiuMiButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiButton.m; sourceTree = "<group>"; };
+		20D30752207B7E4B001BD67E /* QiuMiCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCommon.h; sourceTree = "<group>"; };
+		20D30753207B7E4B001BD67E /* QiuMiCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCommon.m; sourceTree = "<group>"; };
+		20D30755207B7E4B001BD67E /* QiuMiNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiNoDataView.h; sourceTree = "<group>"; };
+		20D30756207B7E4B001BD67E /* QiuMiNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiNoDataView.m; sourceTree = "<group>"; };
+		20D30757207B7E4B001BD67E /* QiuMiNoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiuMiNoDataView.xib; sourceTree = "<group>"; };
+		20D30759207B7E4B001BD67E /* QiuMiCommonTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCommonTableView.h; sourceTree = "<group>"; };
+		20D3075A207B7E4B001BD67E /* QiuMiCommonTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCommonTableView.m; sourceTree = "<group>"; };
+		20D3075C207B7E4B001BD67E /* QiuMiCommonTableHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCommonTableHeadView.h; sourceTree = "<group>"; };
+		20D3075D207B7E4B001BD67E /* QiuMiCommonTableHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCommonTableHeadView.m; sourceTree = "<group>"; };
+		20D3075E207B7E4B001BD67E /* QiuMiCommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCommonTableViewController.h; sourceTree = "<group>"; };
+		20D3075F207B7E4B001BD67E /* QiuMiCommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCommonTableViewController.m; sourceTree = "<group>"; };
+		20D30761207B7E4B001BD67E /* QiuMiCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCommonViewController.h; sourceTree = "<group>"; };
+		20D30762207B7E4B001BD67E /* QiuMiCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCommonViewController.m; sourceTree = "<group>"; };
+		20D30763207B7E4B001BD67E /* QiuMiNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiNavigationController.h; sourceTree = "<group>"; };
+		20D30764207B7E4B001BD67E /* QiuMiNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiNavigationController.m; sourceTree = "<group>"; };
+		20D30766207B7E4B001BD67E /* QiuMiCommonWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCommonWebViewController.h; sourceTree = "<group>"; };
+		20D30767207B7E4B001BD67E /* QiuMiCommonWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCommonWebViewController.m; sourceTree = "<group>"; };
+		20D30768207B7E4B001BD67E /* QiuMiCommonWKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCommonWKWebViewController.h; sourceTree = "<group>"; };
+		20D30769207B7E4B001BD67E /* QiuMiCommonWKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCommonWKWebViewController.m; sourceTree = "<group>"; };
+		20D3076A207B7E4B001BD67E /* WKCookieSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKCookieSyncManager.h; sourceTree = "<group>"; };
+		20D3076B207B7E4B001BD67E /* WKCookieSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKCookieSyncManager.m; sourceTree = "<group>"; };
+		20D3076D207B7E4B001BD67E /* QiuMiCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCount.h; sourceTree = "<group>"; };
+		20D3076E207B7E4B001BD67E /* QiuMiCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCount.m; sourceTree = "<group>"; };
+		20D30770207B7E4B001BD67E /* OLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLImage.h; sourceTree = "<group>"; };
+		20D30771207B7E4B001BD67E /* OLImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLImage.m; sourceTree = "<group>"; };
+		20D30772207B7E4B001BD67E /* OLImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLImageView.h; sourceTree = "<group>"; };
+		20D30773207B7E4B001BD67E /* OLImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLImageView.m; sourceTree = "<group>"; };
+		20D30774207B7E4B001BD67E /* QiuMiImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiImageView.h; sourceTree = "<group>"; };
+		20D30775207B7E4B001BD67E /* QiuMiImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiImageView.m; sourceTree = "<group>"; };
+		20D30776207B7E4B001BD67E /* QiuMiImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiuMiImageView.xib; sourceTree = "<group>"; };
+		20D30777207B7E4B001BD67E /* QiuMiLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiLabel.h; sourceTree = "<group>"; };
+		20D30778207B7E4B001BD67E /* QiuMiLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiLabel.m; sourceTree = "<group>"; };
+		20D3077A207B7E4B001BD67E /* QiuMiDatePickerAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiDatePickerAlertView.h; sourceTree = "<group>"; };
+		20D3077B207B7E4B001BD67E /* QiuMiDatePickerAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiDatePickerAlertView.m; sourceTree = "<group>"; };
+		20D3077C207B7E4B001BD67E /* QiuMiDatePickerAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiuMiDatePickerAlertView.xib; sourceTree = "<group>"; };
+		20D3077D207B7E4B001BD67E /* QiuMiPickAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiPickAlertView.h; sourceTree = "<group>"; };
+		20D3077E207B7E4B001BD67E /* QiuMiPickAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiPickAlertView.m; sourceTree = "<group>"; };
+		20D3077F207B7E4B001BD67E /* QiuMiPickAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiuMiPickAlertView.xib; sourceTree = "<group>"; };
+		20D30781207B7E4B001BD67E /* QiuMiPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiPlaceHolderTextView.h; sourceTree = "<group>"; };
+		20D30782207B7E4B001BD67E /* QiuMiPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiPlaceHolderTextView.m; sourceTree = "<group>"; };
+		20D30784207B7E4B001BD67E /* QiuMiCommonPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCommonPromptView.h; sourceTree = "<group>"; };
+		20D30785207B7E4B001BD67E /* QiuMiCommonPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCommonPromptView.m; sourceTree = "<group>"; };
+		20D30786207B7E4B001BD67E /* QiuMiPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiPromptView.h; sourceTree = "<group>"; };
+		20D30787207B7E4B001BD67E /* QiuMiPromptView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiPromptView.m; sourceTree = "<group>"; };
+		20D30788207B7E4B001BD67E /* QiuMiTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiTabBarViewController.h; sourceTree = "<group>"; };
+		20D30789207B7E4B001BD67E /* QiuMiTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiTabBarViewController.m; sourceTree = "<group>"; };
+		20D3078B207B7E4B001BD67E /* QiuMiTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiTabView.h; sourceTree = "<group>"; };
+		20D3078C207B7E4B001BD67E /* QiuMiTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiTabView.m; sourceTree = "<group>"; };
+		20D3078D207B7E4B001BD67E /* QiuMiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiView.h; sourceTree = "<group>"; };
+		20D3078E207B7E4B001BD67E /* QiuMiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiView.m; sourceTree = "<group>"; };
+		20D30790207B7E4B001BD67E /* QiuMiFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiFooterView.h; sourceTree = "<group>"; };
+		20D30791207B7E4B001BD67E /* QiuMiFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiFooterView.m; sourceTree = "<group>"; };
+		20D30792207B7E4B001BD67E /* QiuMiRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiRefreshControl.h; sourceTree = "<group>"; };
+		20D30793207B7E4B001BD67E /* QiuMiRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiRefreshControl.m; sourceTree = "<group>"; };
+		20D30796207B7E4B001BD67E /* CAKeyframeAnimationGIFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAKeyframeAnimationGIFView.h; sourceTree = "<group>"; };
+		20D30797207B7E4B001BD67E /* CAKeyframeAnimationGIFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAKeyframeAnimationGIFView.m; sourceTree = "<group>"; };
+		20D30799207B7E4B001BD67E /* AFJSONResponseSerializer+FixAFN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFJSONResponseSerializer+FixAFN.h"; sourceTree = "<group>"; };
+		20D3079A207B7E4B001BD67E /* AFJSONResponseSerializer+FixAFN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFJSONResponseSerializer+FixAFN.m"; sourceTree = "<group>"; };
+		20D3079B207B7E4B001BD67E /* DownLoadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownLoadOperation.h; sourceTree = "<group>"; };
+		20D3079C207B7E4B001BD67E /* DownLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownLoadOperation.m; sourceTree = "<group>"; };
+		20D3079E207B7E4B001BD67E /* QiuMiCommonRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiCommonRequest.h; sourceTree = "<group>"; };
+		20D3079F207B7E4B001BD67E /* QiuMiCommonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiCommonRequest.m; sourceTree = "<group>"; };
+		20D307A1207B7E4B001BD67E /* QiuMiHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuMiHttpClient.h; sourceTree = "<group>"; };
+		20D307A2207B7E4B001BD67E /* QiuMiHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuMiHttpClient.m; sourceTree = "<group>"; };
+		20D307A9207B7E4B001BD67E /* SDWebImageDownloaderOperation+FixSDImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImageDownloaderOperation+FixSDImage.h"; sourceTree = "<group>"; };
+		20D307AA207B7E4B001BD67E /* SDWebImageDownloaderOperation+FixSDImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDWebImageDownloaderOperation+FixSDImage.m"; sourceTree = "<group>"; };
+		20D307AB207B7E4B001BD67E /* UIImage+FixSDImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixSDImage.h"; sourceTree = "<group>"; };
+		20D307AC207B7E4B001BD67E /* UIImage+FixSDImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixSDImage.m"; sourceTree = "<group>"; };
+		20D307F2207C634B001BD67E /* FootballIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootballIndexViewController.h; sourceTree = "<group>"; };
+		20D307F3207C634B001BD67E /* FootballIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootballIndexViewController.m; sourceTree = "<group>"; };
+		20D307F6207C6A6A001BD67E /* result_chamfer_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "result_chamfer_n@2x.png"; sourceTree = "<group>"; };
+		20D307F7207C6A6A001BD67E /* commond_icon_live_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_live_n@3x.png"; sourceTree = "<group>"; };
+		20D307F8207C6A6A001BD67E /* live_bg_soccer_n@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "live_bg_soccer_n@3x.jpg"; sourceTree = "<group>"; };
+		20D307F9207C6A6A001BD67E /* commond_icon_soccer_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_soccer_s@3x.png"; sourceTree = "<group>"; };
+		20D307FA207C6A6A001BD67E /* handicap_icon_up_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handicap_icon_up_n@2x.png"; sourceTree = "<group>"; };
+		20D307FB207C6A6A001BD67E /* commond_icon_soccer_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_soccer_n@3x.png"; sourceTree = "<group>"; };
+		20D307FC207C6A6A001BD67E /* commond_icon_live_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_live_s@2x.png"; sourceTree = "<group>"; };
+		20D307FD207C6A6A001BD67E /* commond_icon_basket_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_basket_s@2x.png"; sourceTree = "<group>"; };
+		20D307FE207C6A6A001BD67E /* live_bg_basketball_n@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "live_bg_basketball_n@3x.jpg"; sourceTree = "<group>"; };
+		20D307FF207C6A6A001BD67E /* live_bg_soccer_n@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "live_bg_soccer_n@2x.jpg"; sourceTree = "<group>"; };
+		20D30800207C6A6A001BD67E /* handicap_icon_down_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handicap_icon_down_n@3x.png"; sourceTree = "<group>"; };
+		20D30801207C6A6A001BD67E /* commond_icon_basket_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_basket_n@3x.png"; sourceTree = "<group>"; };
+		20D30802207C6A6A001BD67E /* data_icon_open_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data_icon_open_n@3x.png"; sourceTree = "<group>"; };
+		20D30803207C6A6B001BD67E /* data_icon_close_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data_icon_close_n@3x.png"; sourceTree = "<group>"; };
+		20D30804207C6A6B001BD67E /* live_icon_down_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_icon_down_n@2x.png"; sourceTree = "<group>"; };
+		20D30805207C6A6B001BD67E /* handicap_icon_up_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handicap_icon_up_n@3x.png"; sourceTree = "<group>"; };
+		20D30806207C6A6B001BD67E /* commond_icon_basket_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_basket_s@3x.png"; sourceTree = "<group>"; };
+		20D30807207C6A6B001BD67E /* live_icon_down_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "live_icon_down_n@3x.png"; sourceTree = "<group>"; };
+		20D30808207C6A6B001BD67E /* commond_icon_live_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_live_s@3x.png"; sourceTree = "<group>"; };
+		20D30809207C6A6B001BD67E /* data_icon_close_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data_icon_close_n@2x.png"; sourceTree = "<group>"; };
+		20D3080A207C6A6B001BD67E /* soccer_icon_down_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soccer_icon_down_n@3x.png"; sourceTree = "<group>"; };
+		20D3080B207C6A6C001BD67E /* data_icon_open_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data_icon_open_n@2x.png"; sourceTree = "<group>"; };
+		20D3080C207C6A6C001BD67E /* commond_icon_soccer_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_soccer_s@2x.png"; sourceTree = "<group>"; };
+		20D3080D207C6A6C001BD67E /* result_chamfer_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "result_chamfer_n@3x.png"; sourceTree = "<group>"; };
+		20D3080E207C6A6C001BD67E /* commond_icon_live_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_live_n@2x.png"; sourceTree = "<group>"; };
+		20D3080F207C6A6C001BD67E /* index_icon_down_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_icon_down_n@2x.png"; sourceTree = "<group>"; };
+		20D30810207C6A6D001BD67E /* commond_icon_basket_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_basket_n@2x.png"; sourceTree = "<group>"; };
+		20D30811207C6A6D001BD67E /* live_bg_basketball_n@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "live_bg_basketball_n@2x.jpg"; sourceTree = "<group>"; };
+		20D30812207C6A6D001BD67E /* index_icon_down_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "index_icon_down_n@3x.png"; sourceTree = "<group>"; };
+		20D30813207C6A6D001BD67E /* handicap_icon_down_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handicap_icon_down_n@2x.png"; sourceTree = "<group>"; };
+		20D30814207C6A6D001BD67E /* commond_icon_soccer_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commond_icon_soccer_n@2x.png"; sourceTree = "<group>"; };
+		20D30815207C6A6D001BD67E /* soccer_icon_down_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soccer_icon_down_n@2x.png"; sourceTree = "<group>"; };
+		20D30837207C6DFF001BD67E /* FootballMatchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootballMatchTableViewCell.h; sourceTree = "<group>"; };
+		20D30838207C6DFF001BD67E /* FootballMatchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootballMatchTableViewCell.m; sourceTree = "<group>"; };
+		20D30839207C6DFF001BD67E /* FootballMatchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FootballMatchTableViewCell.xib; sourceTree = "<group>"; };
+		20D3083C207C7282001BD67E /* FootballMatchListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootballMatchListViewController.h; sourceTree = "<group>"; };
+		20D3083D207C7282001BD67E /* FootballMatchListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootballMatchListViewController.m; sourceTree = "<group>"; };
+		20D30840207CA1DA001BD67E /* QSKCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSKCommon.h; sourceTree = "<group>"; };
+		20D30841207CA1DA001BD67E /* QSKCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSKCommon.m; sourceTree = "<group>"; };
+		20D30843207CA95C001BD67E /* QSK_api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSK_api.h; sourceTree = "<group>"; };
+		20D30844207DB842001BD67E /* LeagueFilterCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeagueFilterCollectionViewCell.h; sourceTree = "<group>"; };
+		20D30845207DB842001BD67E /* LeagueFilterCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeagueFilterCollectionViewCell.m; sourceTree = "<group>"; };
+		20D30846207DB842001BD67E /* LeagueFilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueFilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		20D30849207DF89D001BD67E /* FootballDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootballDetailViewController.h; sourceTree = "<group>"; };
+		20D3084A207DF89D001BD67E /* FootballDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootballDetailViewController.m; sourceTree = "<group>"; };
+		20D3084C207E004B001BD67E /* FootDetailBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootDetailBaseView.h; sourceTree = "<group>"; };
+		20D3084D207E004B001BD67E /* FootDetailBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootDetailBaseView.m; sourceTree = "<group>"; };
+		20D3084F207E0077001BD67E /* FootDetailBaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FootDetailBaseView.xib; sourceTree = "<group>"; };
+		20D30851207E0120001BD67E /* FootDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FootDetailHeaderView.xib; sourceTree = "<group>"; };
+		20D30853207E012C001BD67E /* FootDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootDetailHeaderView.h; sourceTree = "<group>"; };
+		20D30854207E012C001BD67E /* FootDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootDetailHeaderView.m; sourceTree = "<group>"; };
+		2CAAC94A2B78E2A80B9B3D99 /* libPods-QiuShengKe-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QiuShengKe-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A005A44AEFD8459B2D8F7C47 /* Pods-QiuShengKe-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiuShengKe-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QiuShengKe-ios/Pods-QiuShengKe-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		ADD895BE01DE7C760A6C2F5D /* Pods-QiuShengKe-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiuShengKe-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-QiuShengKe-ios/Pods-QiuShengKe-ios.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		209ADE08207B52F900FC8AD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B33AEC462A37E69604F9ED6B /* libPods-QiuShengKe-ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		209ADE02207B52F900FC8AD8 = {
+			isa = PBXGroup;
+			children = (
+				209ADE0D207B52F900FC8AD8 /* QiuShengKe-ios */,
+				209ADE0C207B52F900FC8AD8 /* Products */,
+				42E98B95FCFD3E4EA2AD7FBC /* Pods */,
+				743E069ACB7934A37F6FCC1E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		209ADE0C207B52F900FC8AD8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				209ADE0B207B52F900FC8AD8 /* QiuShengKe-ios.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		209ADE0D207B52F900FC8AD8 /* QiuShengKe-ios */ = {
+			isa = PBXGroup;
+			children = (
+				20D3083F207CA1C7001BD67E /* QSKCommon */,
+				20D307F5207C6A5C001BD67E /* Image */,
+				20D307F0207C6329001BD67E /* Football */,
+				20D30706207B7E4B001BD67E /* Common */,
+				20D30700207B70E3001BD67E /* StoryBorad */,
+				209ADE0E207B52F900FC8AD8 /* AppDelegate.h */,
+				209ADE0F207B52F900FC8AD8 /* AppDelegate.m */,
+				209ADE11207B52F900FC8AD8 /* ViewController.h */,
+				209ADE12207B52F900FC8AD8 /* ViewController.m */,
+				209ADE14207B52F900FC8AD8 /* Main.storyboard */,
+				209ADE17207B52F900FC8AD8 /* Assets.xcassets */,
+				209ADE1C207B52F900FC8AD8 /* Info.plist */,
+				209ADE1D207B52F900FC8AD8 /* main.m */,
+				20D306FC207B5A35001BD67E /* QSK_PrefixHeader.pch */,
+				20D30843207CA95C001BD67E /* QSK_api.h */,
+			);
+			path = "QiuShengKe-ios";
+			sourceTree = "<group>";
+		};
+		20D30700207B70E3001BD67E /* StoryBorad */ = {
+			isa = PBXGroup;
+			children = (
+				20D30701207B70FA001BD67E /* Football.storyboard */,
+				20D30703207B7A48001BD67E /* Basketball.storyboard */,
+			);
+			path = StoryBorad;
+			sourceTree = "<group>";
+		};
+		20D30706207B7E4B001BD67E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				20D30707207B7E4B001BD67E /* Category */,
+				20D30714207B7E4B001BD67E /* CommonKit */,
+				20D30739207B7E4B001BD67E /* CustomIOS7AlertView */,
+				20D30744207B7E4B001BD67E /* ImageEffect */,
+				20D30747207B7E4B001BD67E /* PCPhotoView.h */,
+				20D30748207B7E4B001BD67E /* PCPhotoView.m */,
+				20D30749207B7E4B001BD67E /* PickerView */,
+				20D3074E207B7E4B001BD67E /* QiuMiActivityWebViewController.h */,
+				20D3074F207B7E4B001BD67E /* QiuMiActivityWebViewController.m */,
+				20D30750207B7E4B001BD67E /* QiuMiButton.h */,
+				20D30751207B7E4B001BD67E /* QiuMiButton.m */,
+				20D30752207B7E4B001BD67E /* QiuMiCommon.h */,
+				20D30753207B7E4B001BD67E /* QiuMiCommon.m */,
+				20D30754207B7E4B001BD67E /* QiuMiCommonNoData */,
+				20D30758207B7E4B001BD67E /* QiuMiCommonTable */,
+				20D3075B207B7E4B001BD67E /* QiuMiCommonTableHeadView */,
+				20D3075E207B7E4B001BD67E /* QiuMiCommonTableViewController.h */,
+				20D3075F207B7E4B001BD67E /* QiuMiCommonTableViewController.m */,
+				20D30760207B7E4B001BD67E /* QiuMiCommonViewController */,
+				20D30765207B7E4B001BD67E /* QiuMiCommonWebViewController */,
+				20D3076C207B7E4B001BD67E /* QiuMiCount */,
+				20D3076F207B7E4B001BD67E /* QiuMiImageView */,
+				20D30777207B7E4B001BD67E /* QiuMiLabel.h */,
+				20D30778207B7E4B001BD67E /* QiuMiLabel.m */,
+				20D30779207B7E4B001BD67E /* QiuMiPickerView */,
+				20D30780207B7E4B001BD67E /* QiuMiPlaceHolderTextView */,
+				20D30783207B7E4B001BD67E /* QiuMiPromptView */,
+				20D30788207B7E4B001BD67E /* QiuMiTabBarViewController.h */,
+				20D30789207B7E4B001BD67E /* QiuMiTabBarViewController.m */,
+				20D3078A207B7E4B001BD67E /* QiuMiTabView */,
+				20D3078D207B7E4B001BD67E /* QiuMiView.h */,
+				20D3078E207B7E4B001BD67E /* QiuMiView.m */,
+				20D3078F207B7E4B001BD67E /* refreshView */,
+				20D30794207B7E4B001BD67E /* Third */,
+				20D30798207B7E4B001BD67E /* ThirdCommonKit */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		20D30707207B7E4B001BD67E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				20D30708207B7E4B001BD67E /* UIButton+Qiumi */,
+				20D3070B207B7E4B001BD67E /* UIImage+Qiumi */,
+				20D3070E207B7E4B001BD67E /* UIImageView+Qiumi */,
+				20D30711207B7E4B001BD67E /* UILabel+Qiumi */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		20D30708207B7E4B001BD67E /* UIButton+Qiumi */ = {
+			isa = PBXGroup;
+			children = (
+				20D30709207B7E4B001BD67E /* UIButton+Qiumi.h */,
+				20D3070A207B7E4B001BD67E /* UIButton+Qiumi.m */,
+			);
+			path = "UIButton+Qiumi";
+			sourceTree = "<group>";
+		};
+		20D3070B207B7E4B001BD67E /* UIImage+Qiumi */ = {
+			isa = PBXGroup;
+			children = (
+				20D3070C207B7E4B001BD67E /* UIImage+Qiumi.h */,
+				20D3070D207B7E4B001BD67E /* UIImage+Qiumi.m */,
+			);
+			path = "UIImage+Qiumi";
+			sourceTree = "<group>";
+		};
+		20D3070E207B7E4B001BD67E /* UIImageView+Qiumi */ = {
+			isa = PBXGroup;
+			children = (
+				20D3070F207B7E4B001BD67E /* UIImageView+Qiumi.h */,
+				20D30710207B7E4B001BD67E /* UIImageView+Qiumi.m */,
+			);
+			path = "UIImageView+Qiumi";
+			sourceTree = "<group>";
+		};
+		20D30711207B7E4B001BD67E /* UILabel+Qiumi */ = {
+			isa = PBXGroup;
+			children = (
+				20D30712207B7E4B001BD67E /* UILabel+Qiumi.h */,
+				20D30713207B7E4B001BD67E /* UILabel+Qiumi.m */,
+			);
+			path = "UILabel+Qiumi";
+			sourceTree = "<group>";
+		};
+		20D30714207B7E4B001BD67E /* CommonKit */ = {
+			isa = PBXGroup;
+			children = (
+				20D30715207B7E4B001BD67E /* Category */,
+				20D30732207B7E4B001BD67E /* CommonKit.h */,
+				20D30733207B7E4B001BD67E /* QiuMiKeyBoardPop */,
+				20D30736207B7E4B001BD67E /* QiuMiLine */,
+			);
+			path = CommonKit;
+			sourceTree = "<group>";
+		};
+		20D30715207B7E4B001BD67E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				20D30716207B7E4B001BD67E /* ALAssetsLibrary+defaultAssetsLibrary.h */,
+				20D30717207B7E4B001BD67E /* ALAssetsLibrary+defaultAssetsLibrary.m */,
+				20D30718207B7E4B001BD67E /* NSArray+QiuMIArray */,
+				20D3071B207B7E4B001BD67E /* NSDate+PCDate */,
+				20D3071E207B7E4B001BD67E /* NSDictionary+CommonKit.h */,
+				20D3071F207B7E4B001BD67E /* NSDictionary+CommonKit.m */,
+				20D30720207B7E4B001BD67E /* NSMutableArray+PCMutableArray */,
+				20D30723207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary */,
+				20D30726207B7E4B001BD67E /* NSObject+QiuMiCheck.h */,
+				20D30727207B7E4B001BD67E /* NSObject+QiuMiCheck.m */,
+				20D30728207B7E4B001BD67E /* NSString+Qiumi */,
+				20D3072B207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults */,
+				20D3072E207B7E4B001BD67E /* UIColor+RGBA.h */,
+				20D3072F207B7E4B001BD67E /* UIColor+RGBA.m */,
+				20D30730207B7E4B001BD67E /* UIControl+UIControl_Click.h */,
+				20D30731207B7E4B001BD67E /* UIControl+UIControl_Click.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		20D30718207B7E4B001BD67E /* NSArray+QiuMIArray */ = {
+			isa = PBXGroup;
+			children = (
+				20D30719207B7E4B001BD67E /* NSArray+QiuMiArray.h */,
+				20D3071A207B7E4B001BD67E /* NSArray+QiuMiArray.m */,
+			);
+			path = "NSArray+QiuMIArray";
+			sourceTree = "<group>";
+		};
+		20D3071B207B7E4B001BD67E /* NSDate+PCDate */ = {
+			isa = PBXGroup;
+			children = (
+				20D3071C207B7E4B001BD67E /* NSDate+PCDate.h */,
+				20D3071D207B7E4B001BD67E /* NSDate+PCDate.m */,
+			);
+			path = "NSDate+PCDate";
+			sourceTree = "<group>";
+		};
+		20D30720207B7E4B001BD67E /* NSMutableArray+PCMutableArray */ = {
+			isa = PBXGroup;
+			children = (
+				20D30721207B7E4B001BD67E /* NSMutableArray+PCMutableArray.h */,
+				20D30722207B7E4B001BD67E /* NSMutableArray+PCMutableArray.m */,
+			);
+			path = "NSMutableArray+PCMutableArray";
+			sourceTree = "<group>";
+		};
+		20D30723207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				20D30724207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary.h */,
+				20D30725207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary.m */,
+			);
+			path = "NSMutableDictionary+PCMutableDictionary";
+			sourceTree = "<group>";
+		};
+		20D30728207B7E4B001BD67E /* NSString+Qiumi */ = {
+			isa = PBXGroup;
+			children = (
+				20D30729207B7E4B001BD67E /* NSString+Qiumi.h */,
+				20D3072A207B7E4B001BD67E /* NSString+Qiumi.m */,
+			);
+			path = "NSString+Qiumi";
+			sourceTree = "<group>";
+		};
+		20D3072B207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				20D3072C207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults.h */,
+				20D3072D207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults.m */,
+			);
+			path = "NSUserDefaults+PCUserDefaults";
+			sourceTree = "<group>";
+		};
+		20D30733207B7E4B001BD67E /* QiuMiKeyBoardPop */ = {
+			isa = PBXGroup;
+			children = (
+				20D30734207B7E4B001BD67E /* QiuMiCreateKeyBoardDelegater.h */,
+				20D30735207B7E4B001BD67E /* QiuMiCreateKeyBoardDelegater.m */,
+			);
+			path = QiuMiKeyBoardPop;
+			sourceTree = "<group>";
+		};
+		20D30736207B7E4B001BD67E /* QiuMiLine */ = {
+			isa = PBXGroup;
+			children = (
+				20D30737207B7E4B001BD67E /* QiuMiLine.h */,
+				20D30738207B7E4B001BD67E /* QiuMiLine.m */,
+			);
+			path = QiuMiLine;
+			sourceTree = "<group>";
+		};
+		20D30739207B7E4B001BD67E /* CustomIOS7AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				20D3073A207B7E4B001BD67E /* CustomIOS7AlertView.h */,
+				20D3073B207B7E4B001BD67E /* CustomIOS7AlertView.m */,
+			);
+			path = CustomIOS7AlertView;
+			sourceTree = "<group>";
+		};
+		20D30744207B7E4B001BD67E /* ImageEffect */ = {
+			isa = PBXGroup;
+			children = (
+				20D30745207B7E4B001BD67E /* UIImage+effect.h */,
+				20D30746207B7E4B001BD67E /* UIImage+effect.m */,
+			);
+			path = ImageEffect;
+			sourceTree = "<group>";
+		};
+		20D30749207B7E4B001BD67E /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				20D3074A207B7E4B001BD67E /* QiuMiAlertView.h */,
+				20D3074B207B7E4B001BD67E /* QiuMiAlertView.m */,
+				20D3074C207B7E4B001BD67E /* QiuMiPickerView.h */,
+				20D3074D207B7E4B001BD67E /* QiuMiPickerView.m */,
+			);
+			path = PickerView;
+			sourceTree = "<group>";
+		};
+		20D30754207B7E4B001BD67E /* QiuMiCommonNoData */ = {
+			isa = PBXGroup;
+			children = (
+				20D30755207B7E4B001BD67E /* QiuMiNoDataView.h */,
+				20D30756207B7E4B001BD67E /* QiuMiNoDataView.m */,
+				20D30757207B7E4B001BD67E /* QiuMiNoDataView.xib */,
+			);
+			path = QiuMiCommonNoData;
+			sourceTree = "<group>";
+		};
+		20D30758207B7E4B001BD67E /* QiuMiCommonTable */ = {
+			isa = PBXGroup;
+			children = (
+				20D30759207B7E4B001BD67E /* QiuMiCommonTableView.h */,
+				20D3075A207B7E4B001BD67E /* QiuMiCommonTableView.m */,
+			);
+			path = QiuMiCommonTable;
+			sourceTree = "<group>";
+		};
+		20D3075B207B7E4B001BD67E /* QiuMiCommonTableHeadView */ = {
+			isa = PBXGroup;
+			children = (
+				20D3075C207B7E4B001BD67E /* QiuMiCommonTableHeadView.h */,
+				20D3075D207B7E4B001BD67E /* QiuMiCommonTableHeadView.m */,
+			);
+			path = QiuMiCommonTableHeadView;
+			sourceTree = "<group>";
+		};
+		20D30760207B7E4B001BD67E /* QiuMiCommonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				20D30761207B7E4B001BD67E /* QiuMiCommonViewController.h */,
+				20D30762207B7E4B001BD67E /* QiuMiCommonViewController.m */,
+				20D30763207B7E4B001BD67E /* QiuMiNavigationController.h */,
+				20D30764207B7E4B001BD67E /* QiuMiNavigationController.m */,
+			);
+			path = QiuMiCommonViewController;
+			sourceTree = "<group>";
+		};
+		20D30765207B7E4B001BD67E /* QiuMiCommonWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				20D30766207B7E4B001BD67E /* QiuMiCommonWebViewController.h */,
+				20D30767207B7E4B001BD67E /* QiuMiCommonWebViewController.m */,
+				20D30768207B7E4B001BD67E /* QiuMiCommonWKWebViewController.h */,
+				20D30769207B7E4B001BD67E /* QiuMiCommonWKWebViewController.m */,
+				20D3076A207B7E4B001BD67E /* WKCookieSyncManager.h */,
+				20D3076B207B7E4B001BD67E /* WKCookieSyncManager.m */,
+			);
+			path = QiuMiCommonWebViewController;
+			sourceTree = "<group>";
+		};
+		20D3076C207B7E4B001BD67E /* QiuMiCount */ = {
+			isa = PBXGroup;
+			children = (
+				20D3076D207B7E4B001BD67E /* QiuMiCount.h */,
+				20D3076E207B7E4B001BD67E /* QiuMiCount.m */,
+			);
+			path = QiuMiCount;
+			sourceTree = "<group>";
+		};
+		20D3076F207B7E4B001BD67E /* QiuMiImageView */ = {
+			isa = PBXGroup;
+			children = (
+				20D30770207B7E4B001BD67E /* OLImage.h */,
+				20D30771207B7E4B001BD67E /* OLImage.m */,
+				20D30772207B7E4B001BD67E /* OLImageView.h */,
+				20D30773207B7E4B001BD67E /* OLImageView.m */,
+				20D30774207B7E4B001BD67E /* QiuMiImageView.h */,
+				20D30775207B7E4B001BD67E /* QiuMiImageView.m */,
+				20D30776207B7E4B001BD67E /* QiuMiImageView.xib */,
+			);
+			path = QiuMiImageView;
+			sourceTree = "<group>";
+		};
+		20D30779207B7E4B001BD67E /* QiuMiPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				20D3077A207B7E4B001BD67E /* QiuMiDatePickerAlertView.h */,
+				20D3077B207B7E4B001BD67E /* QiuMiDatePickerAlertView.m */,
+				20D3077C207B7E4B001BD67E /* QiuMiDatePickerAlertView.xib */,
+				20D3077D207B7E4B001BD67E /* QiuMiPickAlertView.h */,
+				20D3077E207B7E4B001BD67E /* QiuMiPickAlertView.m */,
+				20D3077F207B7E4B001BD67E /* QiuMiPickAlertView.xib */,
+			);
+			path = QiuMiPickerView;
+			sourceTree = "<group>";
+		};
+		20D30780207B7E4B001BD67E /* QiuMiPlaceHolderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				20D30781207B7E4B001BD67E /* QiuMiPlaceHolderTextView.h */,
+				20D30782207B7E4B001BD67E /* QiuMiPlaceHolderTextView.m */,
+			);
+			path = QiuMiPlaceHolderTextView;
+			sourceTree = "<group>";
+		};
+		20D30783207B7E4B001BD67E /* QiuMiPromptView */ = {
+			isa = PBXGroup;
+			children = (
+				20D30784207B7E4B001BD67E /* QiuMiCommonPromptView.h */,
+				20D30785207B7E4B001BD67E /* QiuMiCommonPromptView.m */,
+				20D30786207B7E4B001BD67E /* QiuMiPromptView.h */,
+				20D30787207B7E4B001BD67E /* QiuMiPromptView.m */,
+			);
+			path = QiuMiPromptView;
+			sourceTree = "<group>";
+		};
+		20D3078A207B7E4B001BD67E /* QiuMiTabView */ = {
+			isa = PBXGroup;
+			children = (
+				20D3078B207B7E4B001BD67E /* QiuMiTabView.h */,
+				20D3078C207B7E4B001BD67E /* QiuMiTabView.m */,
+			);
+			path = QiuMiTabView;
+			sourceTree = "<group>";
+		};
+		20D3078F207B7E4B001BD67E /* refreshView */ = {
+			isa = PBXGroup;
+			children = (
+				20D30790207B7E4B001BD67E /* QiuMiFooterView.h */,
+				20D30791207B7E4B001BD67E /* QiuMiFooterView.m */,
+				20D30792207B7E4B001BD67E /* QiuMiRefreshControl.h */,
+				20D30793207B7E4B001BD67E /* QiuMiRefreshControl.m */,
+			);
+			path = refreshView;
+			sourceTree = "<group>";
+		};
+		20D30794207B7E4B001BD67E /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				20D30795207B7E4B001BD67E /* QiuMiCommonGIFView */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		20D30795207B7E4B001BD67E /* QiuMiCommonGIFView */ = {
+			isa = PBXGroup;
+			children = (
+				20D30796207B7E4B001BD67E /* CAKeyframeAnimationGIFView.h */,
+				20D30797207B7E4B001BD67E /* CAKeyframeAnimationGIFView.m */,
+			);
+			path = QiuMiCommonGIFView;
+			sourceTree = "<group>";
+		};
+		20D30798207B7E4B001BD67E /* ThirdCommonKit */ = {
+			isa = PBXGroup;
+			children = (
+				20D30799207B7E4B001BD67E /* AFJSONResponseSerializer+FixAFN.h */,
+				20D3079A207B7E4B001BD67E /* AFJSONResponseSerializer+FixAFN.m */,
+				20D3079B207B7E4B001BD67E /* DownLoadOperation.h */,
+				20D3079C207B7E4B001BD67E /* DownLoadOperation.m */,
+				20D3079D207B7E4B001BD67E /* QiuMiCommonRequst */,
+				20D307A0207B7E4B001BD67E /* QiuMiHttpClient */,
+				20D307A9207B7E4B001BD67E /* SDWebImageDownloaderOperation+FixSDImage.h */,
+				20D307AA207B7E4B001BD67E /* SDWebImageDownloaderOperation+FixSDImage.m */,
+				20D307AB207B7E4B001BD67E /* UIImage+FixSDImage.h */,
+				20D307AC207B7E4B001BD67E /* UIImage+FixSDImage.m */,
+			);
+			path = ThirdCommonKit;
+			sourceTree = "<group>";
+		};
+		20D3079D207B7E4B001BD67E /* QiuMiCommonRequst */ = {
+			isa = PBXGroup;
+			children = (
+				20D3079E207B7E4B001BD67E /* QiuMiCommonRequest.h */,
+				20D3079F207B7E4B001BD67E /* QiuMiCommonRequest.m */,
+			);
+			path = QiuMiCommonRequst;
+			sourceTree = "<group>";
+		};
+		20D307A0207B7E4B001BD67E /* QiuMiHttpClient */ = {
+			isa = PBXGroup;
+			children = (
+				20D307A1207B7E4B001BD67E /* QiuMiHttpClient.h */,
+				20D307A2207B7E4B001BD67E /* QiuMiHttpClient.m */,
+			);
+			path = QiuMiHttpClient;
+			sourceTree = "<group>";
+		};
+		20D307F0207C6329001BD67E /* Football */ = {
+			isa = PBXGroup;
+			children = (
+				20D30836207C6DE6001BD67E /* View */,
+				20D307F1207C6331001BD67E /* Controller */,
+			);
+			path = Football;
+			sourceTree = "<group>";
+		};
+		20D307F1207C6331001BD67E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				20D307F2207C634B001BD67E /* FootballIndexViewController.h */,
+				20D307F3207C634B001BD67E /* FootballIndexViewController.m */,
+				20D3083C207C7282001BD67E /* FootballMatchListViewController.h */,
+				20D3083D207C7282001BD67E /* FootballMatchListViewController.m */,
+				20D30849207DF89D001BD67E /* FootballDetailViewController.h */,
+				20D3084A207DF89D001BD67E /* FootballDetailViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		20D307F5207C6A5C001BD67E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				20D30810207C6A6D001BD67E /* commond_icon_basket_n@2x.png */,
+				20D30801207C6A6A001BD67E /* commond_icon_basket_n@3x.png */,
+				20D307FD207C6A6A001BD67E /* commond_icon_basket_s@2x.png */,
+				20D30806207C6A6B001BD67E /* commond_icon_basket_s@3x.png */,
+				20D3080E207C6A6C001BD67E /* commond_icon_live_n@2x.png */,
+				20D307F7207C6A6A001BD67E /* commond_icon_live_n@3x.png */,
+				20D307FC207C6A6A001BD67E /* commond_icon_live_s@2x.png */,
+				20D30808207C6A6B001BD67E /* commond_icon_live_s@3x.png */,
+				20D30814207C6A6D001BD67E /* commond_icon_soccer_n@2x.png */,
+				20D307FB207C6A6A001BD67E /* commond_icon_soccer_n@3x.png */,
+				20D3080C207C6A6C001BD67E /* commond_icon_soccer_s@2x.png */,
+				20D307F9207C6A6A001BD67E /* commond_icon_soccer_s@3x.png */,
+				20D30809207C6A6B001BD67E /* data_icon_close_n@2x.png */,
+				20D30803207C6A6B001BD67E /* data_icon_close_n@3x.png */,
+				20D3080B207C6A6C001BD67E /* data_icon_open_n@2x.png */,
+				20D30802207C6A6A001BD67E /* data_icon_open_n@3x.png */,
+				20D30813207C6A6D001BD67E /* handicap_icon_down_n@2x.png */,
+				20D30800207C6A6A001BD67E /* handicap_icon_down_n@3x.png */,
+				20D307FA207C6A6A001BD67E /* handicap_icon_up_n@2x.png */,
+				20D30805207C6A6B001BD67E /* handicap_icon_up_n@3x.png */,
+				20D3080F207C6A6C001BD67E /* index_icon_down_n@2x.png */,
+				20D30812207C6A6D001BD67E /* index_icon_down_n@3x.png */,
+				20D30811207C6A6D001BD67E /* live_bg_basketball_n@2x.jpg */,
+				20D307FE207C6A6A001BD67E /* live_bg_basketball_n@3x.jpg */,
+				20D307FF207C6A6A001BD67E /* live_bg_soccer_n@2x.jpg */,
+				20D307F8207C6A6A001BD67E /* live_bg_soccer_n@3x.jpg */,
+				20D30804207C6A6B001BD67E /* live_icon_down_n@2x.png */,
+				20D30807207C6A6B001BD67E /* live_icon_down_n@3x.png */,
+				20D307F6207C6A6A001BD67E /* result_chamfer_n@2x.png */,
+				20D3080D207C6A6C001BD67E /* result_chamfer_n@3x.png */,
+				20D30815207C6A6D001BD67E /* soccer_icon_down_n@2x.png */,
+				20D3080A207C6A6B001BD67E /* soccer_icon_down_n@3x.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		20D30836207C6DE6001BD67E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20D30837207C6DFF001BD67E /* FootballMatchTableViewCell.h */,
+				20D30838207C6DFF001BD67E /* FootballMatchTableViewCell.m */,
+				20D30839207C6DFF001BD67E /* FootballMatchTableViewCell.xib */,
+				20D30844207DB842001BD67E /* LeagueFilterCollectionViewCell.h */,
+				20D30845207DB842001BD67E /* LeagueFilterCollectionViewCell.m */,
+				20D30846207DB842001BD67E /* LeagueFilterCollectionViewCell.xib */,
+				20D3084C207E004B001BD67E /* FootDetailBaseView.h */,
+				20D3084D207E004B001BD67E /* FootDetailBaseView.m */,
+				20D3084F207E0077001BD67E /* FootDetailBaseView.xib */,
+				20D30853207E012C001BD67E /* FootDetailHeaderView.h */,
+				20D30854207E012C001BD67E /* FootDetailHeaderView.m */,
+				20D30851207E0120001BD67E /* FootDetailHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		20D3083F207CA1C7001BD67E /* QSKCommon */ = {
+			isa = PBXGroup;
+			children = (
+				20D30840207CA1DA001BD67E /* QSKCommon.h */,
+				20D30841207CA1DA001BD67E /* QSKCommon.m */,
+			);
+			path = QSKCommon;
+			sourceTree = "<group>";
+		};
+		42E98B95FCFD3E4EA2AD7FBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A005A44AEFD8459B2D8F7C47 /* Pods-QiuShengKe-ios.debug.xcconfig */,
+				ADD895BE01DE7C760A6C2F5D /* Pods-QiuShengKe-ios.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		743E069ACB7934A37F6FCC1E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CAAC94A2B78E2A80B9B3D99 /* libPods-QiuShengKe-ios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		209ADE0A207B52F900FC8AD8 /* QiuShengKe-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 209ADE21207B52F900FC8AD8 /* Build configuration list for PBXNativeTarget "QiuShengKe-ios" */;
+			buildPhases = (
+				41244DA83291CE4E4AE031CF /* [CP] Check Pods Manifest.lock */,
+				209ADE07207B52F900FC8AD8 /* Sources */,
+				209ADE08207B52F900FC8AD8 /* Frameworks */,
+				209ADE09207B52F900FC8AD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "QiuShengKe-ios";
+			productName = "QiuShengKe-ios";
+			productReference = 209ADE0B207B52F900FC8AD8 /* QiuShengKe-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		209ADE03207B52F900FC8AD8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = xieweijie;
+				TargetAttributes = {
+					209ADE0A207B52F900FC8AD8 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 209ADE06207B52F900FC8AD8 /* Build configuration list for PBXProject "QiuShengKe-ios" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 209ADE02207B52F900FC8AD8;
+			productRefGroup = 209ADE0C207B52F900FC8AD8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				209ADE0A207B52F900FC8AD8 /* QiuShengKe-ios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		209ADE09207B52F900FC8AD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20D30850207E0077001BD67E /* FootDetailBaseView.xib in Resources */,
+				20D307DB207B7E4B001BD67E /* QiuMiDatePickerAlertView.xib in Resources */,
+				20D3082A207C6D79001BD67E /* index_icon_down_n@2x.png in Resources */,
+				20D307D8207B7E4B001BD67E /* QiuMiImageView.xib in Resources */,
+				20D30848207DB842001BD67E /* LeagueFilterCollectionViewCell.xib in Resources */,
+				20D30702207B70FA001BD67E /* Football.storyboard in Resources */,
+				209ADE18207B52F900FC8AD8 /* Assets.xcassets in Resources */,
+				20D30831207C6D79001BD67E /* live_icon_down_n@3x.png in Resources */,
+				20D3083B207C6DFF001BD67E /* FootballMatchTableViewCell.xib in Resources */,
+				20D30704207B7A48001BD67E /* Basketball.storyboard in Resources */,
+				20D3082B207C6D79001BD67E /* index_icon_down_n@3x.png in Resources */,
+				20D307DD207B7E4B001BD67E /* QiuMiPickAlertView.xib in Resources */,
+				20D3081A207C6D78001BD67E /* commond_icon_live_n@2x.png in Resources */,
+				20D30835207C6D79001BD67E /* soccer_icon_down_n@3x.png in Resources */,
+				20D30833207C6D79001BD67E /* result_chamfer_n@3x.png in Resources */,
+				20D30819207C6D78001BD67E /* commond_icon_basket_s@3x.png in Resources */,
+				20D30830207C6D79001BD67E /* live_icon_down_n@2x.png in Resources */,
+				20D3081C207C6D78001BD67E /* commond_icon_live_s@2x.png in Resources */,
+				209ADE16207B52F900FC8AD8 /* Main.storyboard in Resources */,
+				20D3081F207C6D78001BD67E /* commond_icon_soccer_n@3x.png in Resources */,
+				20D30824207C6D79001BD67E /* data_icon_open_n@2x.png in Resources */,
+				20D30834207C6D79001BD67E /* soccer_icon_down_n@2x.png in Resources */,
+				20D3082D207C6D79001BD67E /* live_bg_basketball_n@3x.jpg in Resources */,
+				20D30817207C6D78001BD67E /* commond_icon_basket_n@3x.png in Resources */,
+				20D30828207C6D79001BD67E /* handicap_icon_up_n@2x.png in Resources */,
+				20D30816207C6D78001BD67E /* commond_icon_basket_n@2x.png in Resources */,
+				20D30822207C6D79001BD67E /* data_icon_close_n@2x.png in Resources */,
+				20D30829207C6D79001BD67E /* handicap_icon_up_n@3x.png in Resources */,
+				20D30827207C6D79001BD67E /* handicap_icon_down_n@3x.png in Resources */,
+				20D307CB207B7E4B001BD67E /* QiuMiNoDataView.xib in Resources */,
+				20D3082F207C6D79001BD67E /* live_bg_soccer_n@3x.jpg in Resources */,
+				20D30820207C6D78001BD67E /* commond_icon_soccer_s@2x.png in Resources */,
+				20D30852207E0120001BD67E /* FootDetailHeaderView.xib in Resources */,
+				20D30818207C6D78001BD67E /* commond_icon_basket_s@2x.png in Resources */,
+				20D30826207C6D79001BD67E /* handicap_icon_down_n@2x.png in Resources */,
+				20D3082C207C6D79001BD67E /* live_bg_basketball_n@2x.jpg in Resources */,
+				20D3081D207C6D78001BD67E /* commond_icon_live_s@3x.png in Resources */,
+				20D30823207C6D79001BD67E /* data_icon_close_n@3x.png in Resources */,
+				20D3082E207C6D79001BD67E /* live_bg_soccer_n@2x.jpg in Resources */,
+				20D3081E207C6D78001BD67E /* commond_icon_soccer_n@2x.png in Resources */,
+				20D30832207C6D79001BD67E /* result_chamfer_n@2x.png in Resources */,
+				20D30825207C6D79001BD67E /* data_icon_open_n@3x.png in Resources */,
+				20D3081B207C6D78001BD67E /* commond_icon_live_n@3x.png in Resources */,
+				20D30821207C6D78001BD67E /* commond_icon_soccer_s@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		41244DA83291CE4E4AE031CF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QiuShengKe-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		209ADE07207B52F900FC8AD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20D307CC207B7E4B001BD67E /* QiuMiCommonTableView.m in Sources */,
+				20D307E4207B7E4B001BD67E /* QiuMiFooterView.m in Sources */,
+				20D307D9207B7E4B001BD67E /* QiuMiLabel.m in Sources */,
+				20D307E7207B7E4B001BD67E /* AFJSONResponseSerializer+FixAFN.m in Sources */,
+				20D30855207E012C001BD67E /* FootDetailHeaderView.m in Sources */,
+				20D307CD207B7E4B001BD67E /* QiuMiCommonTableHeadView.m in Sources */,
+				20D307E2207B7E4B001BD67E /* QiuMiTabView.m in Sources */,
+				20D307EE207B7E4B001BD67E /* SDWebImageDownloaderOperation+FixSDImage.m in Sources */,
+				20D307B0207B7E4B001BD67E /* UILabel+Qiumi.m in Sources */,
+				20D307D3207B7E4B001BD67E /* WKCookieSyncManager.m in Sources */,
+				20D307AF207B7E4B001BD67E /* UIImageView+Qiumi.m in Sources */,
+				20D307CA207B7E4B001BD67E /* QiuMiNoDataView.m in Sources */,
+				20D307E8207B7E4B001BD67E /* DownLoadOperation.m in Sources */,
+				20D307CE207B7E4B001BD67E /* QiuMiCommonTableViewController.m in Sources */,
+				20D307C3207B7E4B001BD67E /* UIImage+effect.m in Sources */,
+				20D307BC207B7E4B001BD67E /* QiuMiCreateKeyBoardDelegater.m in Sources */,
+				20D307BB207B7E4B001BD67E /* UIControl+UIControl_Click.m in Sources */,
+				209ADE13207B52F900FC8AD8 /* ViewController.m in Sources */,
+				20D307B8207B7E4B001BD67E /* NSString+Qiumi.m in Sources */,
+				20D307DA207B7E4B001BD67E /* QiuMiDatePickerAlertView.m in Sources */,
+				20D307E1207B7E4B001BD67E /* QiuMiTabBarViewController.m in Sources */,
+				20D307AD207B7E4B001BD67E /* UIButton+Qiumi.m in Sources */,
+				20D307D4207B7E4B001BD67E /* QiuMiCount.m in Sources */,
+				20D307B4207B7E4B001BD67E /* NSDictionary+CommonKit.m in Sources */,
+				209ADE1E207B52F900FC8AD8 /* main.m in Sources */,
+				20D307E0207B7E4B001BD67E /* QiuMiPromptView.m in Sources */,
+				20D307B9207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults.m in Sources */,
+				20D307BA207B7E4B001BD67E /* UIColor+RGBA.m in Sources */,
+				20D3084B207DF89D001BD67E /* FootballDetailViewController.m in Sources */,
+				20D307DF207B7E4B001BD67E /* QiuMiCommonPromptView.m in Sources */,
+				20D307D1207B7E4B001BD67E /* QiuMiCommonWebViewController.m in Sources */,
+				20D307C6207B7E4B001BD67E /* QiuMiPickerView.m in Sources */,
+				20D307D7207B7E4B001BD67E /* QiuMiImageView.m in Sources */,
+				20D307B3207B7E4B001BD67E /* NSDate+PCDate.m in Sources */,
+				20D307BE207B7E4B001BD67E /* CustomIOS7AlertView.m in Sources */,
+				20D307E6207B7E4B001BD67E /* CAKeyframeAnimationGIFView.m in Sources */,
+				20D307D5207B7E4B001BD67E /* OLImage.m in Sources */,
+				20D307EA207B7E4B001BD67E /* QiuMiHttpClient.m in Sources */,
+				20D307DE207B7E4B001BD67E /* QiuMiPlaceHolderTextView.m in Sources */,
+				20D307E9207B7E4B001BD67E /* QiuMiCommonRequest.m in Sources */,
+				20D30842207CA1DA001BD67E /* QSKCommon.m in Sources */,
+				20D307D2207B7E4B001BD67E /* QiuMiCommonWKWebViewController.m in Sources */,
+				20D307E3207B7E4B001BD67E /* QiuMiView.m in Sources */,
+				20D307D6207B7E4B001BD67E /* OLImageView.m in Sources */,
+				20D307C9207B7E4B001BD67E /* QiuMiCommon.m in Sources */,
+				20D3084E207E004B001BD67E /* FootDetailBaseView.m in Sources */,
+				20D307F4207C634B001BD67E /* FootballIndexViewController.m in Sources */,
+				20D3083E207C7282001BD67E /* FootballMatchListViewController.m in Sources */,
+				20D307B5207B7E4B001BD67E /* NSMutableArray+PCMutableArray.m in Sources */,
+				209ADE10207B52F900FC8AD8 /* AppDelegate.m in Sources */,
+				20D307C5207B7E4B001BD67E /* QiuMiAlertView.m in Sources */,
+				20D307B1207B7E4B001BD67E /* ALAssetsLibrary+defaultAssetsLibrary.m in Sources */,
+				20D307C7207B7E4B001BD67E /* QiuMiActivityWebViewController.m in Sources */,
+				20D307C8207B7E4B001BD67E /* QiuMiButton.m in Sources */,
+				20D307C4207B7E4B001BD67E /* PCPhotoView.m in Sources */,
+				20D307BD207B7E4B001BD67E /* QiuMiLine.m in Sources */,
+				20D307B2207B7E4B001BD67E /* NSArray+QiuMiArray.m in Sources */,
+				20D30847207DB842001BD67E /* LeagueFilterCollectionViewCell.m in Sources */,
+				20D307AE207B7E4B001BD67E /* UIImage+Qiumi.m in Sources */,
+				20D307DC207B7E4B001BD67E /* QiuMiPickAlertView.m in Sources */,
+				20D3083A207C6DFF001BD67E /* FootballMatchTableViewCell.m in Sources */,
+				20D307D0207B7E4B001BD67E /* QiuMiNavigationController.m in Sources */,
+				20D307E5207B7E4B001BD67E /* QiuMiRefreshControl.m in Sources */,
+				20D307EF207B7E4B001BD67E /* UIImage+FixSDImage.m in Sources */,
+				20D307B7207B7E4B001BD67E /* NSObject+QiuMiCheck.m in Sources */,
+				20D307B6207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary.m in Sources */,
+				20D307CF207B7E4B001BD67E /* QiuMiCommonViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		209ADE14207B52F900FC8AD8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				209ADE15207B52F900FC8AD8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		209ADE1F207B52F900FC8AD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		209ADE20207B52F900FC8AD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		209ADE22207B52F900FC8AD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A005A44AEFD8459B2D8F7C47 /* Pods-QiuShengKe-ios.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37GGQLN993;
+				GCC_PREFIX_HEADER = "QiuShengKe-ios/QSK_PrefixHeader.pch";
+				INFOPLIST_FILE = "QiuShengKe-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.QiuShengKe-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		209ADE23207B52F900FC8AD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADD895BE01DE7C760A6C2F5D /* Pods-QiuShengKe-ios.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37GGQLN993;
+				GCC_PREFIX_HEADER = "QiuShengKe-ios/QSK_PrefixHeader.pch";
+				INFOPLIST_FILE = "QiuShengKe-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.QiuShengKe-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		209ADE06207B52F900FC8AD8 /* Build configuration list for PBXProject "QiuShengKe-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				209ADE1F207B52F900FC8AD8 /* Debug */,
+				209ADE20207B52F900FC8AD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		209ADE21207B52F900FC8AD8 /* Build configuration list for PBXNativeTarget "QiuShengKe-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				209ADE22207B52F900FC8AD8 /* Debug */,
+				209ADE23207B52F900FC8AD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 209ADE03207B52F900FC8AD8 /* Project object */;
+}

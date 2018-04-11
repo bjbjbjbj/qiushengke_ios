@@ -1,0 +1,13 @@
+//
+//  FootDetailBaseView.h
+//  QiuShengKe-ios
+//
+//  Created by xieweijie on 2018/4/11.
+//  Copyright © 2018年 xieweijie. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface FootDetailBaseView : UIView<UITableViewDelegate,UITableViewDataSource>
+
+@end

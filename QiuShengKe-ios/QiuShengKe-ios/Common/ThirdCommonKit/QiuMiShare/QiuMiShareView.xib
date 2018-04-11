@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view multipleTouchEnabled="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="QiuMiShareView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JA6-fZ-FYd">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3zW-Qo-AT2">
+                    <rect key="frame" x="0.0" y="265" width="375" height="144"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_share_tag.png" translatesAutoresizingMaskIntoConstraints="NO" id="cdH-Vn-Soo">
+                            <rect key="frame" x="0.0" y="-5" width="54" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFc-iX-rn4">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        </scrollView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqL-IC-90J" customClass="QiuMiButton">
+                            <rect key="frame" x="0.0" y="100" width="375" height="45"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.027450980390000001" green="0.0078431372550000003" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g1"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="clickClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="2gs-cE-qas"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="JA6-fZ-FYd" firstAttribute="trailing" secondItem="zWN-dW-rka" secondAttribute="trailing" id="A2J-aD-Gxj"/>
+                <constraint firstItem="JA6-fZ-FYd" firstAttribute="bottom" secondItem="zWN-dW-rka" secondAttribute="bottom" id="Vpo-0E-m6N"/>
+                <constraint firstItem="JA6-fZ-FYd" firstAttribute="leading" secondItem="zWN-dW-rka" secondAttribute="leading" id="a51-im-xMz"/>
+                <constraint firstItem="JA6-fZ-FYd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bJZ-M9-m5k"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="zWN-dW-rka"/>
+            <connections>
+                <outlet property="alertView" destination="3zW-Qo-AT2" id="jUS-PU-zCV"/>
+                <outlet property="bgView" destination="JA6-fZ-FYd" id="KC0-zo-J0t"/>
+                <outlet property="cancelBtn" destination="tqL-IC-90J" id="bB3-Pz-usD"/>
+                <outlet property="shareScrollView" destination="TFc-iX-rn4" id="ikn-wa-SSj"/>
+            </connections>
+            <point key="canvasLocation" x="181" y="342"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_share_tag.png" width="54" height="20"/>
+    </resources>
+</document>
