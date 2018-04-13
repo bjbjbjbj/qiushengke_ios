@@ -95,8 +95,12 @@
         for (NSDictionary* filter in filters) {
             if([[filter objectForKey:@"type"] isEqualToString:@"all"]){
                 for (NSDictionary* data in [filter objectForKey:@"data"]) {
-                    [self.firstLids addObject:[data objectForKey:@"id"]];
                     [self.selfLids addObject:[data objectForKey:@"id"]];
+                }
+            }
+            if([[filter objectForKey:@"type"] isEqualToString:@"first"]){
+                for (NSDictionary* data in [filter objectForKey:@"data"]) {
+                    [self.firstLids addObject:[data objectForKey:@"id"]];
                 }
             }
         }
@@ -106,6 +110,7 @@
         self.lotteryF = [[responseObject objectForKey:@"filter"] objectAtIndex:1];
         self.selfF = [[responseObject objectForKey:@"filter"] objectAtIndex:0];
         [self _sortMathces];
+        [self.collectionView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -156,6 +161,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FootballDetailViewController* controller = (FootballDetailViewController*)[QiuMiCommonViewController controllerWithStoryBoardName:@"Football" withControllerName:@"FootballDetailViewController"];
+    if([_showMatches count] > indexPath.row){
+        [controller setMid:[[_showMatches objectAtIndex:indexPath.row] integerForKey:@"mid"]];
+    }
     [[QiuMiCommonViewController navigationController] pushViewController:controller animated:YES];
 }
 

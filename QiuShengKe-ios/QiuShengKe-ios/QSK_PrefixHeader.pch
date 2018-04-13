@@ -62,7 +62,7 @@
 
 #define QIUMI_ABOUT_US @""
 
-#define QIUMI_DEFAULT_IMAGE @"icon_default_image_bg"
+#define QIUMI_DEFAULT_IMAGE @"liver_bg_blank_n"
 
 #define LG_FONT @"PingFangSC-Regular"
 
@@ -70,13 +70,13 @@
 #define QIUMI_COLOR_C1 COLOR(52, 180, 93,1)
 #define QIUMI_COLOR_C1_L COLOR(192, 211, 198,1)
 #define QIUMI_COLOR_C1_D COLOR(30,170,255,.55)
-//绿
-#define QIUMI_COLOR_C2 COLOR(28,192,117,1)
-//橙
-#define QIUMI_COLOR_C3 COLOR(255,150,0,1)
+//橙色
+#define QIUMI_COLOR_C2 COLOR(229, 92, 0,1)
+//红
+#define QIUMI_COLOR_C3 COLOR(188,28,37,1)
 #define QIUMI_COLOR_C4 COLOR(255,104,104,1)
 //蓝色
-#define QIUMI_COLOR_C5 COLOR(88,161,246,1)
+#define QIUMI_COLOR_C5 COLOR(25, 116, 189,1)
 #define QIUMI_COLOR_C5_D COLOR(172, 194, 218,1)
 
 #define QIUMI_COLOR_D1 COLOR(0,92,149,1)//全局顶栏颜色

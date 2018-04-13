@@ -9,5 +9,5 @@
 #import "QiuMiCommonViewController.h"
 
 @interface FootballDetailViewController : QiuMiCommonViewController
-
+@property(nonatomic, assign)NSInteger mid;
 @end

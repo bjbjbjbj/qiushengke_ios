@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FootDetailBaseView : UIView<UITableViewDelegate,UITableViewDataSource>
-
+@interface FootDetailBaseView : UIView<UITableViewDataSource,UITableViewDelegate>
+@property(nonatomic, strong)IBOutlet UITableView* tableview;
+@property(nonatomic, strong)NSDictionary* match;
+@property(nonatomic, strong)NSDictionary* tech;
+@property(nonatomic, assign)NSInteger mid;
+- (void)loadData;
 @end

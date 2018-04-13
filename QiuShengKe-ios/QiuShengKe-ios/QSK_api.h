@@ -13,4 +13,12 @@
 
 #define QSK_MATCH_FOOT_LIST [QIUMI_API_PREFIX stringByAppendingString:@"/schedule/%@/1/all.json"]
 
+#define QSK_MATCH_FOOT_DETAIL [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/1/%@/match.json"]
+
+#define QSK_MATCH_FOOT_DETAIL_TECH [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/1/%@/tech.json"]
+
+#define QSK_MATCH_FOOT_DETAIL_ODD [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/1/%@/odd.json"]
+
+#define QSK_MATCH_FOOT_DETAIL_ANALYSE [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/1/%@/analyse.json"]
+
 #endif /* QSK_api_h */

@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDictionary (CommonKit)
+- (BOOL)existForKey:(NSString *)key;
 - (NSString*)stringForKey:(NSString *)key;
 - (NSString*)stringForKey:(NSString *)key withDefault:(NSString*)defaultString;
 - (NSInteger)integerForKey:(NSString *)key;
+- (float)floatForKey:(NSString *)key;
 + (NSDictionary *)httpParametersWithUri:(NSString *)uri;
 - (void)writeToStore:(NSString *)stroeKey;
 @end

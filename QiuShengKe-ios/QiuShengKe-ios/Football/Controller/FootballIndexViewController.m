@@ -23,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.needToHideNavigationBar = YES;
+    [self.view setBackgroundColor:QIUMI_COLOR_C1];
     self.controllers = [[NSMutableArray alloc] init];
     [self _setupUI];
     [self loadData:0];
@@ -38,7 +39,12 @@
     [_tabView setColumnTitles:@[@"即时比分",@"完场赛果",@"未来赛程"]];
     [_tabBG addSubview:_tabView];
     
-    [_contentView setContentSize:CGSizeMake(SCREENWIDTH*3, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
+    if ([self respondsToSelector:@selector(additionalSafeAreaInsets)]) {
+        [_contentView setContentSize:CGSizeMake(SCREENWIDTH*3, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
+    }
+    else{
+        [_contentView setContentSize:CGSizeMake(SCREENWIDTH*3, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
+    }
     
     __weak typeof(self) wself = self;
     _tabView.doSelectBlock = ^(NSInteger index){
@@ -63,7 +69,7 @@
             default:
                 break;
         }
-        [controller.view setFrame:CGRectMake(SCREENWIDTH*i, 0, SCREENWIDTH, SCREENHEIGHT - _tabBG.frame.size.height)];
+        [controller.view setFrame:CGRectMake(SCREENWIDTH*i, 0, SCREENWIDTH, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
         [_contentView addSubview:controller.view];
     }
 }

@@ -31,7 +31,7 @@
     NSMutableArray* controllers = [[NSMutableArray alloc]init];
     
     UIStoryboard* recommend = [ UIStoryboard storyboardWithName:@"Football" bundle:nil];
-    UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"Basketball" bundle:nil];
+    UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"Global" bundle:nil];
     [controllers addObject:[recommend instantiateInitialViewController]];
     [controllers addObject:[matchList instantiateInitialViewController]];
     

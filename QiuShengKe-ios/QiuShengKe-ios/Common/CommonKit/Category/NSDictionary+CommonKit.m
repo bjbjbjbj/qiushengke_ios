@@ -14,6 +14,18 @@
     return [self stringForKey:key withDefault:@""];
 }
 
+- (BOOL)existForKey:(NSString *)key{
+    if ([[self objectForKey:key] isKindOfClass:[NSNull class]]) {
+        return false;
+    }
+    
+    if (nil == [self objectForKey:key]) {
+        return false;
+    }
+    
+    return true;
+}
+
 - (NSString *)stringForKey:(NSString *)key withDefault:(NSString *)defaultString
 {
     if (nil == defaultString) {
@@ -37,6 +49,21 @@
     }
     return result;
 }
+
+- (float)floatForKey:(NSString *)key
+{
+    id result = [self objectForKey:key];
+    
+    if (result == [NSNull null]) {
+        return 0;
+    }
+    
+    if (result) {
+        return [result floatValue];
+    }
+    return 0;
+}
+
 
 - (NSInteger)integerForKey:(NSString *)key
 {

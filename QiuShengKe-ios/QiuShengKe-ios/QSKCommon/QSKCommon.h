@@ -10,6 +10,7 @@
 
 @interface QSKCommon : NSObject
 + (NSDictionary*)getMatchOdds:(float)handicap type:(NSInteger)type sport:(NSInteger)sport;
-
++ (NSString*)paramWithMid:(NSInteger)mid;
 + (NSString*)oddString:(float)handicap;
++ (NSInteger)getMatchAsiaOddResult:(NSInteger)hscore ascore:(NSInteger)ascore handicap:(float)middle isHost:(BOOL)isHomeTeam;
 @end

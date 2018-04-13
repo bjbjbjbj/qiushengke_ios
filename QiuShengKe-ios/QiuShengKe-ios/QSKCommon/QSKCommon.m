@@ -13,6 +13,11 @@
     return nil;
 }
 
++ (NSString*)paramWithMid:(NSInteger)mid{
+    NSString* result = [[NSNumber numberWithInteger:mid] stringValue];
+    return [NSString stringWithFormat:@"%@/%@/%@",[result substringWithRange:NSMakeRange(0, 2)],[result substringWithRange:NSMakeRange(2, 2)],result];
+}
+
 + (NSString *)oddString:(float)handicap{
     NSString* prefix = @"";
     if (handicap < 0) {
@@ -39,5 +44,30 @@
     }
     return [NSString stringWithFormat:@"%@%@",prefix,string];
 }
+
++ (NSInteger)getMatchAsiaOddResult:(NSInteger)hscore ascore:(NSInteger)ascore handicap:(float)middle isHost:(BOOL)isHomeTeam
+{
+    NSInteger result = -1;
+    NSInteger count = hscore - middle - ascore;
+    if (isHomeTeam) {
+        if (count < 0) {
+            result = 0; //输
+        } else if (count == 0) {
+            result = 1; //走
+        } else {
+            result = 3; //赢
+        }
+    } else {
+        if (count < 0) {
+            result = 3; //赢
+        } else if (count == 0) {
+            result = 1; //走
+        } else {
+            result = 0; //输
+        }
+    }
+    return result;
+}
+
 @end
 

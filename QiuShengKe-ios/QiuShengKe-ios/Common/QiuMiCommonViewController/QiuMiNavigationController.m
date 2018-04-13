@@ -18,10 +18,10 @@
     [self.view setBackgroundColor:QIUMI_COLOR_G7];
     [self.navigationBar setBarTintColor:QIUMI_COLOR_C1];
     
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: QIUMI_COLOR_G7}];
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
-                                      forBarPosition:UIBarPositionAny
-                                          barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: QIUMI_COLOR_G1}];
+//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
+//                                      forBarPosition:UIBarPositionAny
+//                                          barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[QiuMiCommon imageWithColor:QIUMI_COLOR_C1]];
     
     __weak QiuMiNavigationController *weakSelf = self;
