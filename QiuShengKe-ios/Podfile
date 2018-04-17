@@ -1,5 +1,5 @@
-platform :ios, '7.0'
-target ‘QiuShengKe-ios’ do
+platform :ios, '8.0'
+target 'QiuShengKe-ios' do
 	pod 'JSONKit-NoWarning', '~> 1.2'
 	pod 'Reachability',  '~> 3.0.0'
 	pod 'AFNetworking', '~> 2.4.1'
@@ -10,4 +10,5 @@ target ‘QiuShengKe-ios’ do
 	pod 'RegexKitLite'
     pod 'UMCCommon'
     pod 'UMCAnalytics'
+    pod 'PLPlayerKit', :podspec => 'https://raw.githubusercontent.com/pili-engineering/PLPlayerKit/master/PLPlayerKit-Universal.podspec'
 end

@@ -50,7 +50,7 @@
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
 
-#define QIUMIDEBUG 0
+#define QIUMIDEBUG 1
 #define LGREVIEW 0
 
 

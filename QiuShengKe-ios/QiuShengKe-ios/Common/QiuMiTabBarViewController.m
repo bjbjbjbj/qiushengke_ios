@@ -7,6 +7,7 @@
 //
 
 #import "QiuMiTabBarViewController.h"
+#import "PlayerViewController.h"
 
 @interface QiuMiTabBarViewController ()
 @property(nonatomic,strong)UIView* point;
@@ -106,26 +107,16 @@
  */
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    //    if ([[(UINavigationController*)self.selectedViewController topViewController] isKindOfClass:[QiuMiPhotosViewController class]]) {
-    //        return UIInterfaceOrientationMaskAll;
-    //    }
-    //    if ([[(UINavigationController*)self.selectedViewController topViewController] isKindOfClass:[QiuMiCommonWebViewController class]]) {
-    //        return UIInterfaceOrientationMaskAll;
-    //    }
-    //    NSArray * winArr = [self.view.window subviews];
-    //    for (int i = 0; i < [winArr count]; i++) {
-    //        if ([[winArr objectAtIndex:i] isKindOfClass:[QiuMiPhotoPopView class]]) {
-    //            [[NSNotificationCenter defaultCenter] postNotificationName:QIUMI_CHANGEIMAGEVIEW_SUCCESS object:nil];
-    //            return UIInterfaceOrientationMaskAll;
-    //        }
-    //    }
+    if ([[(UINavigationController*)self.selectedViewController topViewController] isKindOfClass:[PlayerViewController class]]) {
+        return UIInterfaceOrientationMaskAll;
+    }
     return UIInterfaceOrientationMaskPortrait;
 }
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    return NO;
+    return YES;
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController

@@ -133,19 +133,6 @@ cachePolicy:(QiuMiHttpClientCachePolicy)cachePolicy
     
     AFHTTPRequestOperation *operation = [self.manger HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([[operation response] statusCode] == 200) {
-            if (0 == [responseObject integerForKey:@"code"]) {
-                //lastmotify
-                NSDictionary *headers = [operation.response allHeaderFields];
-                NSString *lastModified = [headers objectForKey:@"Last-Modified"];
-                if (lastModified && [lastModified length] > 0) {
-                    NSMutableDictionary* data = [[NSMutableDictionary alloc]initWithStore:QIUMI_LASTMOTIFY];
-                    [data setObject:lastModified forKey:[operation.response.URL absoluteString]];
-                    [data writeToStore:QIUMI_LASTMOTIFY];
-                }
-                if ([responseObject objectForKey:@"exp"]) {
-                    [QiuMiCommonPromptView showText:prompt withSecText:nil withDic:[responseObject objectForKey:@"exp"] withPrompt:QiuMiCommonPromptSuccess];
-                }
-            }
             success(operation, responseObject);
         }
         else

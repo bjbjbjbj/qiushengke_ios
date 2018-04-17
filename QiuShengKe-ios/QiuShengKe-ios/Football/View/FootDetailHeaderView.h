@@ -10,4 +10,6 @@
 
 @interface FootDetailHeaderView : UIView
 @property(nonatomic, strong)IBOutlet UILabel* name;
+@property(nonatomic, strong)IBOutlet UIButton* sameH;
+@property(nonatomic, strong)IBOutlet UIButton* sameL;
 @end

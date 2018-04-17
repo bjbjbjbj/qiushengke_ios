@@ -9,6 +9,13 @@
 #import "QSKCommon.h"
 
 @implementation QSKCommon
++ (PlayerViewController*)getPlayerControllerWithMid:(NSInteger)mid sport:(NSInteger)sport{
+    PlayerViewController* player = (PlayerViewController*)[QiuMiCommonViewController controllerWithStoryBoardName:@"Football" withControllerName:@"PlayerViewController"];
+    [player setMid:mid];
+    [player setSport:sport];
+    return player;
+}
+
 + (NSDictionary *)getMatchOdds:(float)handicap type:(NSInteger)type sport:(NSInteger)sport{
     return nil;
 }

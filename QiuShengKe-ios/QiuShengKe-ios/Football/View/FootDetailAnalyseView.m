@@ -402,9 +402,21 @@
             break;
         case 1:
             [head.name setText:@"交锋往绩"];
+            [[head.sameH superview] setHidden:NO];
+            [[head.sameL superview] setHidden:NO];
+            [head.sameH addTarget:self action:@selector(clickHisH:) forControlEvents:UIControlEventTouchDown];
+            [head.sameL addTarget:self action:@selector(clickHisL:) forControlEvents:UIControlEventTouchDown];
+            [head.sameH setSelected:_history_h];
+            [head.sameL setSelected:_history_l];
             break;
         case 2:
             [head.name setText:@"最近战绩"];
+            [[head.sameH superview] setHidden:NO];
+            [[head.sameL superview] setHidden:NO];
+            [head.sameH addTarget:self action:@selector(clickRecH:) forControlEvents:UIControlEventTouchDown];
+            [head.sameL addTarget:self action:@selector(clickRecL:) forControlEvents:UIControlEventTouchDown];
+            [head.sameH setSelected:_recent_h];
+            [head.sameL setSelected:_recent_l];
             break;
         case 3:
             [head.name setText:@"赛事盘路"];
@@ -416,6 +428,31 @@
             break;
     }
     return head;
+}
+
+- (void)clickRecH:(UIButton*)btn{
+    [btn setSelected:!btn.isSelected];
+    _recent_h = btn.isSelected;
+    [_tableview reloadData];
+}
+
+- (void)clickRecL:(UIButton*)btn{
+    [btn setSelected:!btn.isSelected];
+    _recent_l = btn.isSelected;
+    [_tableview reloadData];
+}
+
+
+- (void)clickHisH:(UIButton*)btn{
+    [btn setSelected:!btn.isSelected];
+    _history_h = btn.isSelected;
+    [_tableview reloadData];
+}
+
+- (void)clickHisL:(UIButton*)btn{
+    [btn setSelected:!btn.isSelected];
+    _history_l = btn.isSelected;
+    [_tableview reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

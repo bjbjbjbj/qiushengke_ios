@@ -10,6 +10,7 @@
 #import "FootballDetailViewController.h"
 #import "FootballMatchTableViewCell.h"
 #import "LeagueFilterCollectionViewCell.h"
+#import "PlayerViewController.h"
 
 @interface FootballMatchListViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate,UICollectionViewDataSource>{
     BOOL _isSelf;
@@ -163,6 +164,12 @@
     FootballDetailViewController* controller = (FootballDetailViewController*)[QiuMiCommonViewController controllerWithStoryBoardName:@"Football" withControllerName:@"FootballDetailViewController"];
     if([_showMatches count] > indexPath.row){
         [controller setMid:[[_showMatches objectAtIndex:indexPath.row] integerForKey:@"mid"]];
+        if ([[_showMatches objectAtIndex:indexPath.row] integerForKey:@"pc_live"] > 0) {
+            [controller setHasLive:YES];
+        }
+        else{
+            [controller setHasLive:NO];
+        }
     }
     [[QiuMiCommonViewController navigationController] pushViewController:controller animated:YES];
 }

@@ -86,6 +86,13 @@
         [_time setText:[NSDate stringWithFormat:@"HH:mm" withTime:[[dic objectForKey:@"time"] longLongValue]]];
         [_time setTextColor:QIUMI_COLOR_G1];
     }
+    
+    if ([dic integerForKey:@"pc_live"] > 0) {
+        [_liveBtn setHidden:NO];
+    }
+    else{
+        [_liveBtn setHidden:YES];
+    }
 }
 
 + (NSString *)getStatusText:(NSInteger)status{

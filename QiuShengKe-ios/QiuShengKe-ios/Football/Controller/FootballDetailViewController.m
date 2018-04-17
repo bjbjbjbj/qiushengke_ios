@@ -42,6 +42,13 @@
 }
 
 - (void)_setupUI{
+    if (_hasLive) {
+        [_liveBtn setHidden:NO];
+    }
+    else{
+        [_liveBtn setHidden:YES];
+    }
+    QiuMiViewBorder(_liveBtn, 2, 0, QIUMI_COLOR_C1);
     [_content setDelegate:self];
     QiuMiViewBorder(_hicon, _hicon.frame.size.height/2, 0, [UIColor clearColor]);
     QiuMiViewBorder(_aicon, _aicon.frame.size.height/2, 0, [UIColor clearColor]);
@@ -157,6 +164,8 @@
     [super goBack:sender];
 }
 
+
+
 #pragma mark - scrollview
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == _content) {
@@ -169,5 +178,10 @@
 //        NSInteger index = scrollView.contentOffset.x/SCREENWIDTH;
 //        [self loadData:index];
     }
+}
+
+- (IBAction)clicklive:(id)sender{
+    QiuMiCommonViewController* player = [QSKCommon getPlayerControllerWithMid:_mid sport:1];
+    [[QiuMiCommonViewController navigationController] pushViewController:player animated:YES];
 }
 @end

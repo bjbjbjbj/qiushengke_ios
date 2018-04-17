@@ -21,4 +21,6 @@
 
 #define QSK_MATCH_FOOT_DETAIL_ANALYSE [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/1/%@/analyse.json"]
 
+#define QSK_MATCH_CHANNELS [@"https://www.qiushengke.com" stringByAppendingString:@"/json/live/%@/%@.json"]
+
 #endif /* QSK_api_h */

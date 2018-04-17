@@ -26,6 +26,7 @@
 @property(nonatomic, strong)IBOutlet UILabel* time;
 @property(nonatomic, strong)IBOutlet UIImageView* hicon;
 @property(nonatomic, strong)IBOutlet UIImageView* aicon;
+@property(nonatomic, strong)IBOutlet UIButton* liveBtn;
 + (NSInteger)heightOfCell;
 - (void)loadData:(NSDictionary*)dic;
 @end
