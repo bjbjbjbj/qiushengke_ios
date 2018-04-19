@@ -24,6 +24,12 @@
     BOOL _recent_l;
     //近期同主客
     BOOL _recent_h;
+    //关闭
+    BOOL _closeScore;
+    BOOL _closeHis;
+    BOOL _closeRec;
+    BOOL _closeTrend;
+    BOOL _closeSch;
 }
 @property(nonatomic, strong)NSDictionary* analyse;
 @end
@@ -32,12 +38,25 @@
     [super awakeFromNib];
     _history_l = false;
     _history_h = false;
+    
+    _closeScore = false;
+    _closeHis = false;
+    _closeRec = false;
+    _closeTrend = false;
+    _closeSch = false;
+    
     [_tableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_tableview setBackgroundColor:QIUMI_COLOR_G5];
 }
 
 - (void)loadData{
-    NSString* url = [NSString stringWithFormat:QSK_MATCH_FOOT_DETAIL_ANALYSE,[QSKCommon paramWithMid:_mid]];
+    NSString* url = @"";
+    if (_sport == 2) {
+        url = [NSString stringWithFormat:QSK_MATCH_BASKET_DETAIL_ANALYSE,[QSKCommon paramWithMid:_mid]];;
+    }
+    else{
+        url = [NSString stringWithFormat:QSK_MATCH_FOOT_DETAIL_ANALYSE,[QSKCommon paramWithMid:_mid]];;
+    }
     QiuMiWeakSelf(self);
     [[QiuMiHttpClient instance] GET:url parameters:nil cachePolicy:QiuMiHttpClientCachePolicyHttpCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);
@@ -62,6 +81,9 @@
     switch (section) {
         case 0:
         {
+            if (_closeScore) {
+                return 0;
+            }
             if ([_analyse existForKey:@"rank"] && [[_analyse objectForKey:@"rank"] existForKey:@"rank"]) {
                 return 3;
             }
@@ -71,6 +93,9 @@
         }
             break;
         case 1:{
+            if (_closeHis) {
+                return 0;
+            }
             if ([_analyse existForKey:@"historyBattle"] && [[_analyse objectForKey:@"historyBattle"] isKindOfClass:[NSDictionary class]] && [[_analyse objectForKey:@"historyBattle"] existForKey:@"historyBattle"]) {
                 NSString* key = [self _historyString];
                 return 1 + [(NSArray*)[[[_analyse objectForKey:@"historyBattle"] objectForKey:@"historyBattle"] objectForKey:key] count];
@@ -79,6 +104,9 @@
         }
             break;
         case 2:{
+            if (_closeRec) {
+                return 0;
+            }
             NSString* key = [self _recentString];
             NSInteger hcount = 0;
             NSInteger acount = 0;
@@ -90,9 +118,15 @@
         }
             break;
         case 3:{
+            if (_closeTrend) {
+                return 0;
+            }
             return 10;
         }
         case 4:{
+            if (_closeSch) {
+                return 0;
+            }
             return 4 + ([(NSArray*)[[_analyse objectForKey:@"schedule"] objectForKey:@"home"] count]) + ([(NSArray*)[[_analyse objectForKey:@"schedule"] objectForKey:@"away"] count]);
         }
         default:
@@ -399,17 +433,53 @@
     switch (section) {
         case 0:
             [head.name setText:@"积分排名"];
+            head.closeImg.tag = 0;
+            [head.closeImg addTarget:self action:@selector(clickClose:) forControlEvents:UIControlEventTouchDown];
+            if (_closeScore) {
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_close_n"] forState:UIControlStateNormal];
+            }
+            else{
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_open_n"] forState:UIControlStateNormal];
+            }
             break;
         case 1:
             [head.name setText:@"交锋往绩"];
+            head.closeImg.tag = 1;
+            [head.closeImg addTarget:self action:@selector(clickClose:) forControlEvents:UIControlEventTouchDown];
+            if (_closeHis) {
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_close_n"] forState:UIControlStateNormal];
+            }
+            else{
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_open_n"] forState:UIControlStateNormal];
+            }
             [[head.sameH superview] setHidden:NO];
             [[head.sameL superview] setHidden:NO];
             [head.sameH addTarget:self action:@selector(clickHisH:) forControlEvents:UIControlEventTouchDown];
             [head.sameL addTarget:self action:@selector(clickHisL:) forControlEvents:UIControlEventTouchDown];
             [head.sameH setSelected:_history_h];
             [head.sameL setSelected:_history_l];
+            if (head.sameL.isSelected) {
+                [(UIImageView*)[[head.sameL superview] viewWithTag:99] setImage:[UIImage imageNamed:@"match_icon_choose_s"]];
+            }
+            else{
+                [(UIImageView*)[[head.sameL superview] viewWithTag:99] setImage:[UIImage imageNamed:@"match_icon_choose_n"]];
+            }
+            if (head.sameH.isSelected) {
+                [(UIImageView*)[[head.sameH superview] viewWithTag:99] setImage:[UIImage imageNamed:@"match_icon_choose_s"]];
+            }
+            else{
+                [(UIImageView*)[[head.sameH superview] viewWithTag:99] setImage:[UIImage imageNamed:@"match_icon_choose_n"]];
+            }
             break;
         case 2:
+            head.closeImg.tag = 2;
+            [head.closeImg addTarget:self action:@selector(clickClose:) forControlEvents:UIControlEventTouchDown];
+            if (_closeRec) {
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_close_n"] forState:UIControlStateNormal];
+            }
+            else{
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_open_n"] forState:UIControlStateNormal];
+            }
             [head.name setText:@"最近战绩"];
             [[head.sameH superview] setHidden:NO];
             [[head.sameL superview] setHidden:NO];
@@ -417,17 +487,68 @@
             [head.sameL addTarget:self action:@selector(clickRecL:) forControlEvents:UIControlEventTouchDown];
             [head.sameH setSelected:_recent_h];
             [head.sameL setSelected:_recent_l];
+            if (head.sameL.isSelected) {
+                [(UIImageView*)[[head.sameL superview] viewWithTag:99] setImage:[UIImage imageNamed:@"match_icon_choose_s"]];
+            }
+            else{
+                [(UIImageView*)[[head.sameL superview] viewWithTag:99] setImage:[UIImage imageNamed:@"match_icon_choose_n"]];
+            }
+            if (head.sameH.isSelected) {
+                [(UIImageView*)[[head.sameH superview] viewWithTag:99] setImage:[UIImage imageNamed:@"match_icon_choose_s"]];
+            }
+            else{
+                [(UIImageView*)[[head.sameH superview] viewWithTag:99] setImage:[UIImage imageNamed:@"match_icon_choose_n"]];
+            }
             break;
         case 3:
+            head.closeImg.tag = 3;
+            [head.closeImg addTarget:self action:@selector(clickClose:) forControlEvents:UIControlEventTouchDown];
+            if (_closeTrend) {
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_close_n"] forState:UIControlStateNormal];
+            }
+            else{
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_open_n"] forState:UIControlStateNormal];
+            }
             [head.name setText:@"赛事盘路"];
             break;
         case 4:
+            head.closeImg.tag = 4;
+            [head.closeImg addTarget:self action:@selector(clickClose:) forControlEvents:UIControlEventTouchDown];
+            if (_closeSch) {
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_close_n"] forState:UIControlStateNormal];
+            }
+            else{
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_open_n"] forState:UIControlStateNormal];
+            }
             [head.name setText:@"未来赛程"];
             break;
         default:
             break;
     }
     return head;
+}
+
+- (void)clickClose:(UIButton*)btn{
+    switch (btn.tag) {
+        case 0:
+            _closeScore = !_closeScore;
+            break;
+        case 1:
+            _closeHis = !_closeHis;
+            break;
+        case 2:
+            _closeRec = !_closeRec;
+            break;
+        case 3:
+            _closeTrend = !_closeTrend;
+            break;
+        case 4:
+            _closeSch = !_closeSch;
+            break;
+        default:
+            break;
+    }
+    [_tableview reloadData];
 }
 
 - (void)clickRecH:(UIButton*)btn{

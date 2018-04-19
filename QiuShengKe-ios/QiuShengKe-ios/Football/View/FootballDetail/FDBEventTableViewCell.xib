@@ -26,7 +26,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bCu-Qe-SNm">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="event_icon_ending_n.png" translatesAutoresizingMaskIntoConstraints="NO" id="bCu-Qe-SNm">
                         <rect key="frame" x="152.5" y="21" width="15" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -43,6 +43,9 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="point" destination="UXV-7f-Ff6" id="O7S-eb-AlV"/>
+            </connections>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FDBEventTableViewCell2" id="daK-sH-RaZ" customClass="FDBEventTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -74,7 +77,7 @@
                         <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bzz-Me-9j6">
-                        <rect key="frame" x="0.0" y="-2" width="136" height="34"/>
+                        <rect key="frame" x="0.0" y="0.0" width="136" height="34"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRp-Go-0as">
                                 <rect key="frame" x="0.0" y="0.0" width="136" height="15"/>
@@ -122,7 +125,7 @@
                         </constraints>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="6dC-I3-8pE">
-                        <rect key="frame" x="184" y="-2" width="136" height="34"/>
+                        <rect key="frame" x="184" y="0.0" width="136" height="34"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCb-ay-WCu">
                                 <rect key="frame" x="0.0" y="0.0" width="136" height="15"/>
@@ -136,7 +139,7 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uf-i1-0V2">
                                         <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -156,7 +159,7 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K3P-nO-6dI">
                                         <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -170,10 +173,11 @@
                         </constraints>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="6dC-I3-8pE" firstAttribute="top" secondItem="uhp-Xf-PQT" secondAttribute="top" constant="-2" id="4p5-Be-w5d"/>
+                    <constraint firstItem="6dC-I3-8pE" firstAttribute="top" secondItem="uhp-Xf-PQT" secondAttribute="top" id="4p5-Be-w5d"/>
                     <constraint firstItem="bzz-Me-9j6" firstAttribute="leading" secondItem="uhp-Xf-PQT" secondAttribute="leading" id="EU6-Jz-ZWi"/>
-                    <constraint firstItem="bzz-Me-9j6" firstAttribute="top" secondItem="uhp-Xf-PQT" secondAttribute="top" constant="-2" id="KoP-rI-ZeA"/>
+                    <constraint firstItem="bzz-Me-9j6" firstAttribute="top" secondItem="uhp-Xf-PQT" secondAttribute="top" id="KoP-rI-ZeA"/>
                     <constraint firstItem="6dC-I3-8pE" firstAttribute="leading" secondItem="G65-dW-KkF" secondAttribute="trailing" constant="9" id="QWP-OA-TU9"/>
                     <constraint firstItem="G65-dW-KkF" firstAttribute="top" secondItem="uhp-Xf-PQT" secondAttribute="top" id="ZRq-nv-Iqm"/>
                     <constraint firstAttribute="trailing" secondItem="6dC-I3-8pE" secondAttribute="trailing" id="a5u-mM-AWT"/>
@@ -181,8 +185,13 @@
                     <constraint firstItem="G65-dW-KkF" firstAttribute="leading" secondItem="bzz-Me-9j6" secondAttribute="trailing" constant="9" id="zeo-bp-cZ7"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="P5Q-5b-Fe3"/>
             <connections>
+                <outlet property="icon1" destination="cya-CO-hXQ" id="lmh-j5-HFe"/>
+                <outlet property="icon2" destination="Msa-J0-BEO" id="Yui-K2-Olw"/>
+                <outlet property="icon3" destination="4uf-i1-0V2" id="XTp-EG-ldJ"/>
+                <outlet property="icon4" destination="K3P-nO-6dI" id="fDI-sQ-PhV"/>
                 <outlet property="name1" destination="4Ff-0k-avW" id="H2c-gZ-pEh"/>
                 <outlet property="name2" destination="zp9-vm-ZcT" id="Ss5-Ui-qJj"/>
                 <outlet property="name3" destination="Kch-r7-Ho5" id="Mdy-F5-zTS"/>
@@ -198,14 +207,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="47.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="比赛结束" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amK-uy-rAh">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="比赛开始" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amK-uy-rAh">
                         <rect key="frame" x="135" y="33" width="50" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0F-UV-xn6">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="event_icon_start_n.png" translatesAutoresizingMaskIntoConstraints="NO" id="V0F-UV-xn6">
                         <rect key="frame" x="152.5" y="16" width="15" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -217,7 +226,14 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="fDY-ZD-AsG"/>
+            <connections>
+                <outlet property="point" destination="fki-pJ-fEk" id="STr-Zx-6ey"/>
+            </connections>
             <point key="canvasLocation" x="34" y="397"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="event_icon_ending_n.png" width="15" height="15"/>
+        <image name="event_icon_start_n.png" width="15" height="15"/>
+    </resources>
 </document>

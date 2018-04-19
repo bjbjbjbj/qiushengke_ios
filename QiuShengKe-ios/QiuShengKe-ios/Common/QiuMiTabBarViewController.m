@@ -32,18 +32,24 @@
     NSMutableArray* controllers = [[NSMutableArray alloc]init];
     
     UIStoryboard* recommend = [ UIStoryboard storyboardWithName:@"Football" bundle:nil];
+    UIStoryboard* basket = [ UIStoryboard storyboardWithName:@"Basketball" bundle:nil];
     UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"Global" bundle:nil];
     [controllers addObject:[recommend instantiateInitialViewController]];
+    [controllers addObject:[basket instantiateInitialViewController]];
     [controllers addObject:[matchList instantiateInitialViewController]];
     
     [self setViewControllers:controllers];
     
     //初始化item
-    NSArray* title = @[@"足球",@"世界杯"];
+    NSArray* title = @[@"足球",@"篮球",@"世界杯"];
     NSArray* images = @[
                         @[
                             @"commond_icon_soccer_n",
                             @"commond_icon_soccer_s",
+                            ],
+                        @[
+                            @"commond_icon_basket_n",
+                            @"commond_icon_basket_s",
                             ],
                         @[
                             @"commond_icon_live_n",

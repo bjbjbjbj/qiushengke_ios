@@ -35,6 +35,39 @@
 		205FC4B520845AE10030807E /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FC4B420845AE10030807E /* PlayerViewController.m */; };
 		205FC4B92085EAD80030807E /* FDBEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FC4B72085EAD80030807E /* FDBEventTableViewCell.m */; };
 		205FC4BA2085EAD80030807E /* FDBEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4B82085EAD80030807E /* FDBEventTableViewCell.xib */; };
+		205FC4BF2086F0E40030807E /* BasketballIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FC4BE2086F0E40030807E /* BasketballIndexViewController.m */; };
+		205FC4C22086F0FF0030807E /* BasketballMatchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FC4C12086F0FF0030807E /* BasketballMatchListViewController.m */; };
+		205FC4C72086F1850030807E /* BasketballMatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FC4C52086F1850030807E /* BasketballMatchTableViewCell.m */; };
+		205FC4C82086F1850030807E /* BasketballMatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4C62086F1850030807E /* BasketballMatchTableViewCell.xib */; };
+		205FC4CB208708000030807E /* BasketballMatchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FC4CA208708000030807E /* BasketballMatchDetailViewController.m */; };
+		205FC4CF2087321A0030807E /* BasketDetailBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FC4CE2087321A0030807E /* BasketDetailBaseView.m */; };
+		205FC4D1208732210030807E /* BasketDetailBaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4D0208732210030807E /* BasketDetailBaseView.xib */; };
+		205FC4D520874DF80030807E /* BDBScoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 205FC4D320874DF80030807E /* BDBScoreTableViewCell.m */; };
+		205FC4D620874DF80030807E /* BDBScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4D420874DF80030807E /* BDBScoreTableViewCell.xib */; };
+		205FC4DB208837CA0030807E /* icon_live_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4D8208837BB0030807E /* icon_live_n@2x.png */; };
+		205FC4DC208837CA0030807E /* icon_live_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4D7208837BA0030807E /* icon_live_n@3x.png */; };
+		205FC4E120883AA90030807E /* match_icon_choose_s@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4DD20883AA80030807E /* match_icon_choose_s@3x.png */; };
+		205FC4E220883AA90030807E /* match_icon_choose_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4DE20883AA80030807E /* match_icon_choose_n@3x.png */; };
+		205FC4E320883AA90030807E /* match_icon_choose_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4DF20883AA90030807E /* match_icon_choose_n@2x.png */; };
+		205FC4E420883AA90030807E /* match_icon_choose_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4E020883AA90030807E /* match_icon_choose_s@2x.png */; };
+		205FC4F720884AF00030807E /* event_icon_kick_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4E520884AEF0030807E /* event_icon_kick_n@2x.png */; };
+		205FC4F820884AF00030807E /* event_icon_kick_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4E620884AEF0030807E /* event_icon_kick_n@3x.png */; };
+		205FC4F920884AF00030807E /* event_icon_up_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4E720884AEF0030807E /* event_icon_up_n@2x.png */; };
+		205FC4FA20884AF00030807E /* event_icon_red_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4E820884AEF0030807E /* event_icon_red_n@3x.png */; };
+		205FC4FB20884AF00030807E /* event_icon_down_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4E920884AEF0030807E /* event_icon_down_n@3x.png */; };
+		205FC4FC20884AF00030807E /* event_icon_maingoal_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4EA20884AF00030807E /* event_icon_maingoal_n@3x.png */; };
+		205FC4FD20884AF00030807E /* event_icon_start_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4EB20884AF00030807E /* event_icon_start_n@3x.png */; };
+		205FC4FE20884AF00030807E /* event_icon_red_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4EC20884AF00030807E /* event_icon_red_n@2x.png */; };
+		205FC4FF20884AF00030807E /* event_icon_ending_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4ED20884AF00030807E /* event_icon_ending_n@3x.png */; };
+		205FC50020884AF00030807E /* event_icon_customergoal_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4EE20884AF00030807E /* event_icon_customergoal_n@2x.png */; };
+		205FC50120884AF00030807E /* event_icon_ending_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4EF20884AF00030807E /* event_icon_ending_n@2x.png */; };
+		205FC50220884AF00030807E /* event_icon_maingoal_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F020884AF00030807E /* event_icon_maingoal_n@2x.png */; };
+		205FC50320884AF00030807E /* event_icon_yellow_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F120884AF00030807E /* event_icon_yellow_n@2x.png */; };
+		205FC50420884AF00030807E /* event_icon_start_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F220884AF00030807E /* event_icon_start_n@2x.png */; };
+		205FC50520884AF00030807E /* event_icon_down_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F320884AF00030807E /* event_icon_down_n@2x.png */; };
+		205FC50620884AF00030807E /* event_icon_yellow_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F420884AF00030807E /* event_icon_yellow_n@3x.png */; };
+		205FC50720884AF00030807E /* event_icon_customergoal_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F520884AF00030807E /* event_icon_customergoal_n@3x.png */; };
+		205FC50820884AF00030807E /* event_icon_up_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F620884AF00030807E /* event_icon_up_n@3x.png */; };
 		209ADE10207B52F900FC8AD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE0F207B52F900FC8AD8 /* AppDelegate.m */; };
 		209ADE13207B52F900FC8AD8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE12207B52F900FC8AD8 /* ViewController.m */; };
 		209ADE16207B52F900FC8AD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209ADE14207B52F900FC8AD8 /* Main.storyboard */; };
@@ -192,6 +225,45 @@
 		205FC4B62085EAD80030807E /* FDBEventTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDBEventTableViewCell.h; sourceTree = "<group>"; };
 		205FC4B72085EAD80030807E /* FDBEventTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDBEventTableViewCell.m; sourceTree = "<group>"; };
 		205FC4B82085EAD80030807E /* FDBEventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FDBEventTableViewCell.xib; sourceTree = "<group>"; };
+		205FC4BD2086F0E40030807E /* BasketballIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasketballIndexViewController.h; sourceTree = "<group>"; };
+		205FC4BE2086F0E40030807E /* BasketballIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasketballIndexViewController.m; sourceTree = "<group>"; };
+		205FC4C02086F0FF0030807E /* BasketballMatchListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasketballMatchListViewController.h; sourceTree = "<group>"; };
+		205FC4C12086F0FF0030807E /* BasketballMatchListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasketballMatchListViewController.m; sourceTree = "<group>"; };
+		205FC4C42086F1850030807E /* BasketballMatchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasketballMatchTableViewCell.h; sourceTree = "<group>"; };
+		205FC4C52086F1850030807E /* BasketballMatchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasketballMatchTableViewCell.m; sourceTree = "<group>"; };
+		205FC4C62086F1850030807E /* BasketballMatchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketballMatchTableViewCell.xib; sourceTree = "<group>"; };
+		205FC4C9208708000030807E /* BasketballMatchDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasketballMatchDetailViewController.h; sourceTree = "<group>"; };
+		205FC4CA208708000030807E /* BasketballMatchDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasketballMatchDetailViewController.m; sourceTree = "<group>"; };
+		205FC4CD2087321A0030807E /* BasketDetailBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasketDetailBaseView.h; sourceTree = "<group>"; };
+		205FC4CE2087321A0030807E /* BasketDetailBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasketDetailBaseView.m; sourceTree = "<group>"; };
+		205FC4D0208732210030807E /* BasketDetailBaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketDetailBaseView.xib; sourceTree = "<group>"; };
+		205FC4D220874DF80030807E /* BDBScoreTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BDBScoreTableViewCell.h; sourceTree = "<group>"; };
+		205FC4D320874DF80030807E /* BDBScoreTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BDBScoreTableViewCell.m; sourceTree = "<group>"; };
+		205FC4D420874DF80030807E /* BDBScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BDBScoreTableViewCell.xib; sourceTree = "<group>"; };
+		205FC4D7208837BA0030807E /* icon_live_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_live_n@3x.png"; sourceTree = "<group>"; };
+		205FC4D8208837BB0030807E /* icon_live_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_live_n@2x.png"; sourceTree = "<group>"; };
+		205FC4DD20883AA80030807E /* match_icon_choose_s@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "match_icon_choose_s@3x.png"; sourceTree = "<group>"; };
+		205FC4DE20883AA80030807E /* match_icon_choose_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "match_icon_choose_n@3x.png"; sourceTree = "<group>"; };
+		205FC4DF20883AA90030807E /* match_icon_choose_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "match_icon_choose_n@2x.png"; sourceTree = "<group>"; };
+		205FC4E020883AA90030807E /* match_icon_choose_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "match_icon_choose_s@2x.png"; sourceTree = "<group>"; };
+		205FC4E520884AEF0030807E /* event_icon_kick_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_kick_n@2x.png"; sourceTree = "<group>"; };
+		205FC4E620884AEF0030807E /* event_icon_kick_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_kick_n@3x.png"; sourceTree = "<group>"; };
+		205FC4E720884AEF0030807E /* event_icon_up_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_up_n@2x.png"; sourceTree = "<group>"; };
+		205FC4E820884AEF0030807E /* event_icon_red_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_red_n@3x.png"; sourceTree = "<group>"; };
+		205FC4E920884AEF0030807E /* event_icon_down_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_down_n@3x.png"; sourceTree = "<group>"; };
+		205FC4EA20884AF00030807E /* event_icon_maingoal_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_maingoal_n@3x.png"; sourceTree = "<group>"; };
+		205FC4EB20884AF00030807E /* event_icon_start_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_start_n@3x.png"; sourceTree = "<group>"; };
+		205FC4EC20884AF00030807E /* event_icon_red_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_red_n@2x.png"; sourceTree = "<group>"; };
+		205FC4ED20884AF00030807E /* event_icon_ending_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_ending_n@3x.png"; sourceTree = "<group>"; };
+		205FC4EE20884AF00030807E /* event_icon_customergoal_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_customergoal_n@2x.png"; sourceTree = "<group>"; };
+		205FC4EF20884AF00030807E /* event_icon_ending_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_ending_n@2x.png"; sourceTree = "<group>"; };
+		205FC4F020884AF00030807E /* event_icon_maingoal_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_maingoal_n@2x.png"; sourceTree = "<group>"; };
+		205FC4F120884AF00030807E /* event_icon_yellow_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_yellow_n@2x.png"; sourceTree = "<group>"; };
+		205FC4F220884AF00030807E /* event_icon_start_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_start_n@2x.png"; sourceTree = "<group>"; };
+		205FC4F320884AF00030807E /* event_icon_down_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_down_n@2x.png"; sourceTree = "<group>"; };
+		205FC4F420884AF00030807E /* event_icon_yellow_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_yellow_n@3x.png"; sourceTree = "<group>"; };
+		205FC4F520884AF00030807E /* event_icon_customergoal_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_customergoal_n@3x.png"; sourceTree = "<group>"; };
+		205FC4F620884AF00030807E /* event_icon_up_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_up_n@3x.png"; sourceTree = "<group>"; };
 		209ADE0B207B52F900FC8AD8 /* QiuShengKe-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QiuShengKe-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		209ADE0E207B52F900FC8AD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		209ADE0F207B52F900FC8AD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -437,6 +509,52 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
+		205FC4BB2086F0A40030807E /* Basketball */ = {
+			isa = PBXGroup;
+			children = (
+				205FC4C32086F1630030807E /* View */,
+				205FC4BC2086F0C00030807E /* Controller */,
+			);
+			path = Basketball;
+			sourceTree = "<group>";
+		};
+		205FC4BC2086F0C00030807E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				205FC4BD2086F0E40030807E /* BasketballIndexViewController.h */,
+				205FC4BE2086F0E40030807E /* BasketballIndexViewController.m */,
+				205FC4C02086F0FF0030807E /* BasketballMatchListViewController.h */,
+				205FC4C12086F0FF0030807E /* BasketballMatchListViewController.m */,
+				205FC4C9208708000030807E /* BasketballMatchDetailViewController.h */,
+				205FC4CA208708000030807E /* BasketballMatchDetailViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		205FC4C32086F1630030807E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				205FC4CC208731810030807E /* BasketballDetail */,
+				205FC4C42086F1850030807E /* BasketballMatchTableViewCell.h */,
+				205FC4C52086F1850030807E /* BasketballMatchTableViewCell.m */,
+				205FC4C62086F1850030807E /* BasketballMatchTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		205FC4CC208731810030807E /* BasketballDetail */ = {
+			isa = PBXGroup;
+			children = (
+				205FC4CD2087321A0030807E /* BasketDetailBaseView.h */,
+				205FC4CE2087321A0030807E /* BasketDetailBaseView.m */,
+				205FC4D0208732210030807E /* BasketDetailBaseView.xib */,
+				205FC4D220874DF80030807E /* BDBScoreTableViewCell.h */,
+				205FC4D320874DF80030807E /* BDBScoreTableViewCell.m */,
+				205FC4D420874DF80030807E /* BDBScoreTableViewCell.xib */,
+			);
+			path = BasketballDetail;
+			sourceTree = "<group>";
+		};
 		209ADE02207B52F900FC8AD8 = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +576,7 @@
 		209ADE0D207B52F900FC8AD8 /* QiuShengKe-ios */ = {
 			isa = PBXGroup;
 			children = (
+				205FC4BB2086F0A40030807E /* Basketball */,
 				205FC4AD20809F9D0030807E /* Global */,
 				20D3083F207CA1C7001BD67E /* QSKCommon */,
 				20D307F5207C6A5C001BD67E /* Image */,
@@ -918,6 +1037,30 @@
 		20D307F5207C6A5C001BD67E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				205FC4EE20884AF00030807E /* event_icon_customergoal_n@2x.png */,
+				205FC4F520884AF00030807E /* event_icon_customergoal_n@3x.png */,
+				205FC4F320884AF00030807E /* event_icon_down_n@2x.png */,
+				205FC4E920884AEF0030807E /* event_icon_down_n@3x.png */,
+				205FC4EF20884AF00030807E /* event_icon_ending_n@2x.png */,
+				205FC4ED20884AF00030807E /* event_icon_ending_n@3x.png */,
+				205FC4E520884AEF0030807E /* event_icon_kick_n@2x.png */,
+				205FC4E620884AEF0030807E /* event_icon_kick_n@3x.png */,
+				205FC4F020884AF00030807E /* event_icon_maingoal_n@2x.png */,
+				205FC4EA20884AF00030807E /* event_icon_maingoal_n@3x.png */,
+				205FC4EC20884AF00030807E /* event_icon_red_n@2x.png */,
+				205FC4E820884AEF0030807E /* event_icon_red_n@3x.png */,
+				205FC4F220884AF00030807E /* event_icon_start_n@2x.png */,
+				205FC4EB20884AF00030807E /* event_icon_start_n@3x.png */,
+				205FC4E720884AEF0030807E /* event_icon_up_n@2x.png */,
+				205FC4F620884AF00030807E /* event_icon_up_n@3x.png */,
+				205FC4F120884AF00030807E /* event_icon_yellow_n@2x.png */,
+				205FC4F420884AF00030807E /* event_icon_yellow_n@3x.png */,
+				205FC4DF20883AA90030807E /* match_icon_choose_n@2x.png */,
+				205FC4DE20883AA80030807E /* match_icon_choose_n@3x.png */,
+				205FC4E020883AA90030807E /* match_icon_choose_s@2x.png */,
+				205FC4DD20883AA80030807E /* match_icon_choose_s@3x.png */,
+				205FC4D8208837BB0030807E /* icon_live_n@2x.png */,
+				205FC4D7208837BA0030807E /* icon_live_n@3x.png */,
 				205FC4A320809AFD0030807E /* live_bg_blank_n@2x.png */,
 				205FC4A420809AFE0030807E /* live_bg_blank_n@3x.png */,
 				205FC4A620809AFE0030807E /* liver_bg_blank_n@2x.png */,
@@ -1076,11 +1219,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205FC4DB208837CA0030807E /* icon_live_n@2x.png in Resources */,
 				20D30850207E0077001BD67E /* FootDetailBaseView.xib in Resources */,
 				20D307DB207B7E4B001BD67E /* QiuMiDatePickerAlertView.xib in Resources */,
+				205FC50520884AF00030807E /* event_icon_down_n@2x.png in Resources */,
 				20D3082A207C6D79001BD67E /* index_icon_down_n@2x.png in Resources */,
+				205FC4DC208837CA0030807E /* icon_live_n@3x.png in Resources */,
 				20D307D8207B7E4B001BD67E /* QiuMiImageView.xib in Resources */,
 				20D30848207DB842001BD67E /* LeagueFilterCollectionViewCell.xib in Resources */,
+				205FC50320884AF00030807E /* event_icon_yellow_n@2x.png in Resources */,
+				205FC4E420883AA90030807E /* match_icon_choose_s@2x.png in Resources */,
 				205FC4AC20809CAB0030807E /* Images.xcassets in Resources */,
 				20D30702207B70FA001BD67E /* Football.storyboard in Resources */,
 				209ADE18207B52F900FC8AD8 /* Assets.xcassets in Resources */,
@@ -1093,16 +1241,28 @@
 				20D3081A207C6D78001BD67E /* commond_icon_live_n@2x.png in Resources */,
 				205FC4A2208095910030807E /* live_icon_back_white@3x.png in Resources */,
 				20D30835207C6D79001BD67E /* soccer_icon_down_n@3x.png in Resources */,
+				205FC50720884AF00030807E /* event_icon_customergoal_n@3x.png in Resources */,
 				20D30833207C6D79001BD67E /* result_chamfer_n@3x.png in Resources */,
 				20D30819207C6D78001BD67E /* commond_icon_basket_s@3x.png in Resources */,
+				205FC50820884AF00030807E /* event_icon_up_n@3x.png in Resources */,
+				205FC4FB20884AF00030807E /* event_icon_down_n@3x.png in Resources */,
+				205FC50620884AF00030807E /* event_icon_yellow_n@3x.png in Resources */,
 				205FC4AF20809FFE0030807E /* Global.storyboard in Resources */,
 				20D30830207C6D79001BD67E /* live_icon_down_n@2x.png in Resources */,
 				20D3081C207C6D78001BD67E /* commond_icon_live_s@2x.png in Resources */,
 				209ADE16207B52F900FC8AD8 /* Main.storyboard in Resources */,
+				205FC4E320883AA90030807E /* match_icon_choose_n@2x.png in Resources */,
+				205FC4F720884AF00030807E /* event_icon_kick_n@2x.png in Resources */,
 				20D7E66D207F10B00032AB2B /* FootDetailOddView.xib in Resources */,
+				205FC50120884AF00030807E /* event_icon_ending_n@2x.png in Resources */,
+				205FC50220884AF00030807E /* event_icon_maingoal_n@2x.png in Resources */,
 				20D3081F207C6D78001BD67E /* commond_icon_soccer_n@3x.png in Resources */,
+				205FC4C82086F1850030807E /* BasketballMatchTableViewCell.xib in Resources */,
 				20D30824207C6D79001BD67E /* data_icon_open_n@2x.png in Resources */,
+				205FC4FC20884AF00030807E /* event_icon_maingoal_n@3x.png in Resources */,
 				20D30834207C6D79001BD67E /* soccer_icon_down_n@2x.png in Resources */,
+				205FC4FF20884AF00030807E /* event_icon_ending_n@3x.png in Resources */,
+				205FC4D1208732210030807E /* BasketDetailBaseView.xib in Resources */,
 				205FC4BA2085EAD80030807E /* FDBEventTableViewCell.xib in Resources */,
 				20D3082D207C6D79001BD67E /* live_bg_basketball_n@3x.jpg in Resources */,
 				20D30817207C6D78001BD67E /* commond_icon_basket_n@3x.png in Resources */,
@@ -1110,6 +1270,7 @@
 				20D30816207C6D78001BD67E /* commond_icon_basket_n@2x.png in Resources */,
 				205FC490207F627F0030807E /* FDAScheduleTableViewCell.xib in Resources */,
 				205FC48B207F4DD30030807E /* FDARankTableViewCell.xib in Resources */,
+				205FC4FD20884AF00030807E /* event_icon_start_n@3x.png in Resources */,
 				20D30822207C6D79001BD67E /* data_icon_close_n@2x.png in Resources */,
 				20D30829207C6D79001BD67E /* handicap_icon_up_n@3x.png in Resources */,
 				205FC4A0208095910030807E /* live_icon_back_white@2x.png in Resources */,
@@ -1118,11 +1279,19 @@
 				20D307CB207B7E4B001BD67E /* QiuMiNoDataView.xib in Resources */,
 				20D3082F207C6D79001BD67E /* live_bg_soccer_n@3x.jpg in Resources */,
 				20D30820207C6D78001BD67E /* commond_icon_soccer_s@2x.png in Resources */,
+				205FC4D620874DF80030807E /* BDBScoreTableViewCell.xib in Resources */,
+				205FC4FA20884AF00030807E /* event_icon_red_n@3x.png in Resources */,
+				205FC4E220883AA90030807E /* match_icon_choose_n@3x.png in Resources */,
 				205FC4AA20809AFE0030807E /* liver_bg_blank_n@2x.png in Resources */,
 				20D7E668207F0E490032AB2B /* FootballDetailOddTableViewCell.xib in Resources */,
+				205FC4F820884AF00030807E /* event_icon_kick_n@3x.png in Resources */,
+				205FC4F920884AF00030807E /* event_icon_up_n@2x.png in Resources */,
+				205FC50020884AF00030807E /* event_icon_customergoal_n@2x.png in Resources */,
 				20D30852207E0120001BD67E /* FootDetailHeaderView.xib in Resources */,
 				20D30818207C6D78001BD67E /* commond_icon_basket_s@2x.png in Resources */,
+				205FC4E120883AA90030807E /* match_icon_choose_s@3x.png in Resources */,
 				205FC4A720809AFE0030807E /* live_bg_blank_n@2x.png in Resources */,
+				205FC4FE20884AF00030807E /* event_icon_red_n@2x.png in Resources */,
 				205FC49A20805F320030807E /* FDAHistoryTableViewCell.xib in Resources */,
 				20D30826207C6D79001BD67E /* handicap_icon_down_n@2x.png in Resources */,
 				205FC495208054C60030807E /* FDAResultTableViewCell.xib in Resources */,
@@ -1139,6 +1308,7 @@
 				205FC4A1208095910030807E /* live_icon_back_black@2x.png in Resources */,
 				205FC47E207F4A1C0030807E /* FootDetailAnalyseView.xib in Resources */,
 				20D3081B207C6D78001BD67E /* commond_icon_live_n@3x.png in Resources */,
+				205FC50420884AF00030807E /* event_icon_start_n@2x.png in Resources */,
 				20D30821207C6D78001BD67E /* commond_icon_soccer_s@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1210,8 +1380,10 @@
 				20D307C3207B7E4B001BD67E /* UIImage+effect.m in Sources */,
 				20D307BC207B7E4B001BD67E /* QiuMiCreateKeyBoardDelegater.m in Sources */,
 				20D307BB207B7E4B001BD67E /* UIControl+UIControl_Click.m in Sources */,
+				205FC4CB208708000030807E /* BasketballMatchDetailViewController.m in Sources */,
 				209ADE13207B52F900FC8AD8 /* ViewController.m in Sources */,
 				20D307B8207B7E4B001BD67E /* NSString+Qiumi.m in Sources */,
+				205FC4D520874DF80030807E /* BDBScoreTableViewCell.m in Sources */,
 				20D307DA207B7E4B001BD67E /* QiuMiDatePickerAlertView.m in Sources */,
 				20D307E1207B7E4B001BD67E /* QiuMiTabBarViewController.m in Sources */,
 				20D307AD207B7E4B001BD67E /* UIButton+Qiumi.m in Sources */,
@@ -1227,6 +1399,7 @@
 				20D307B9207B7E4B001BD67E /* NSUserDefaults+PCUserDefaults.m in Sources */,
 				20D307BA207B7E4B001BD67E /* UIColor+RGBA.m in Sources */,
 				20D3084B207DF89D001BD67E /* FootballDetailViewController.m in Sources */,
+				205FC4BF2086F0E40030807E /* BasketballIndexViewController.m in Sources */,
 				20D307DF207B7E4B001BD67E /* QiuMiCommonPromptView.m in Sources */,
 				20D307D1207B7E4B001BD67E /* QiuMiCommonWebViewController.m in Sources */,
 				20D307C6207B7E4B001BD67E /* QiuMiPickerView.m in Sources */,
@@ -1244,6 +1417,7 @@
 				20D307D6207B7E4B001BD67E /* OLImageView.m in Sources */,
 				2010CDD3207E24F60031291C /* FootballDetailBaseTechTableViewCell.m in Sources */,
 				20D307C9207B7E4B001BD67E /* QiuMiCommon.m in Sources */,
+				205FC4C72086F1850030807E /* BasketballMatchTableViewCell.m in Sources */,
 				20D3084E207E004B001BD67E /* FootDetailBaseView.m in Sources */,
 				20D307F4207C634B001BD67E /* FootballIndexViewController.m in Sources */,
 				205FC494208054C60030807E /* FDAResultTableViewCell.m in Sources */,
@@ -1255,6 +1429,7 @@
 				20D307C7207B7E4B001BD67E /* QiuMiActivityWebViewController.m in Sources */,
 				20D307C8207B7E4B001BD67E /* QiuMiButton.m in Sources */,
 				20D307C4207B7E4B001BD67E /* PCPhotoView.m in Sources */,
+				205FC4C22086F0FF0030807E /* BasketballMatchListViewController.m in Sources */,
 				20D307BD207B7E4B001BD67E /* QiuMiLine.m in Sources */,
 				20D307B2207B7E4B001BD67E /* NSArray+QiuMiArray.m in Sources */,
 				20D30847207DB842001BD67E /* LeagueFilterCollectionViewCell.m in Sources */,
@@ -1265,6 +1440,7 @@
 				20D307E5207B7E4B001BD67E /* QiuMiRefreshControl.m in Sources */,
 				20D307EF207B7E4B001BD67E /* UIImage+FixSDImage.m in Sources */,
 				20D307B7207B7E4B001BD67E /* NSObject+QiuMiCheck.m in Sources */,
+				205FC4CF2087321A0030807E /* BasketDetailBaseView.m in Sources */,
 				20D307B6207B7E4B001BD67E /* NSMutableDictionary+PCMutableDictionary.m in Sources */,
 				205FC4B92085EAD80030807E /* FDBEventTableViewCell.m in Sources */,
 				20D307CF207B7E4B001BD67E /* QiuMiCommonViewController.m in Sources */,

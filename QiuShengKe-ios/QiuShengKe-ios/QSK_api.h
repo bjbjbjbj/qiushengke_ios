@@ -11,6 +11,7 @@
 #define HOST @"http://match.qiushengke.com"
 #define QIUMI_API_PREFIX [NSString stringWithFormat:@"%@/static",HOST]
 
+//足球
 #define QSK_MATCH_FOOT_LIST [QIUMI_API_PREFIX stringByAppendingString:@"/schedule/%@/1/all.json"]
 
 #define QSK_MATCH_FOOT_DETAIL [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/1/%@/match.json"]
@@ -20,6 +21,17 @@
 #define QSK_MATCH_FOOT_DETAIL_ODD [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/1/%@/odd.json"]
 
 #define QSK_MATCH_FOOT_DETAIL_ANALYSE [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/1/%@/analyse.json"]
+
+//篮球
+#define QSK_MATCH_BASKET_LIST [QIUMI_API_PREFIX stringByAppendingString:@"/schedule/%@/2/all.json"]
+
+#define QSK_MATCH_BASKET_DETAIL [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/2/%@/match.json"]
+
+#define QSK_MATCH_BASKET_DETAIL_TECH [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/2/%@/tech.json"]
+
+#define QSK_MATCH_BASKET_DETAIL_ODD [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/2/%@/odd.json"]
+
+#define QSK_MATCH_BASKET_DETAIL_ANALYSE [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/2/%@/analyse.json"]
 
 #define QSK_MATCH_CHANNELS [@"https://www.qiushengke.com" stringByAppendingString:@"/json/live/%@/%@.json"]
 

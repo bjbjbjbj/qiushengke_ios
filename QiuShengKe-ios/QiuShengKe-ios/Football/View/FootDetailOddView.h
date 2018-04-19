@@ -12,5 +12,6 @@
 @property(nonatomic, strong)NSDictionary* match;
 @property(nonatomic, strong)NSDictionary* tech;
 @property(nonatomic, assign)NSInteger mid;
+@property(nonatomic, assign)NSInteger sport;
 - (void)loadData;
 @end

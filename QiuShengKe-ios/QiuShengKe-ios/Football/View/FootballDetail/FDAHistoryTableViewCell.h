@@ -21,4 +21,5 @@
 + (NSInteger)heightOfCell;
 
 - (void)loadData:(NSDictionary*)dic teamId:(NSInteger)tid;
+- (void)loadData:(NSDictionary*)dic teamId:(NSInteger)tid sport:(NSInteger)sport;
 @end

@@ -42,7 +42,13 @@
 }
 
 - (void)loadData{
-    NSString* url = [NSString stringWithFormat:QSK_MATCH_FOOT_DETAIL_ODD,[QSKCommon paramWithMid:_mid]];
+    NSString* url = @"";
+    if (_sport == 2) {
+        url = [NSString stringWithFormat:QSK_MATCH_BASKET_DETAIL_ODD,[QSKCommon paramWithMid:_mid]];
+    }
+    else{
+        url = [NSString stringWithFormat:QSK_MATCH_FOOT_DETAIL_ODD,[QSKCommon paramWithMid:_mid]];
+    }
     QiuMiWeakSelf(self);
     [[QiuMiHttpClient instance] GET:url parameters:nil cachePolicy:QiuMiHttpClientCachePolicyHttpCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);

@@ -20,5 +20,6 @@
 +(NSUInteger)heightOfCell;
 +(NSUInteger)heightOfCell2;
 - (void)loadData:(NSDictionary*)dic;
+- (void)loadData:(NSDictionary*)dic sport:(NSInteger)sport;
 - (void)loadMatchData:(NSDictionary*)dic;
 @end

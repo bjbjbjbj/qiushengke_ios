@@ -32,6 +32,10 @@
 }
 
 - (void)loadData:(NSDictionary *)dic teamId:(NSInteger)tid{
+    [self loadData:dic teamId:tid sport:1];
+}
+
+- (void)loadData:(NSDictionary *)dic teamId:(NSInteger)tid sport:(NSInteger)sport{
     NSString* timeStr = [NSString stringWithFormat:@"%@",[[dic objectForKey:@"time"] componentsSeparatedByString:@" "][0]];
     [_time setText:timeStr];
     [_league setText:[dic stringForKey:@"league" withDefault:@"-"]];
@@ -41,13 +45,58 @@
     if ([dic existForKey:@"goalmiddle1"]) {
         [_goal setHidden:NO];
         if (([dic integerForKey:@"hscore"] + [dic integerForKey:@"ascore"]) > [dic floatForKey:@"goalmiddle1"]) {
-            [_goal setText:[NSString stringWithFormat:@"大%@",[dic stringForKey:@"goalmiddle1"]]];
+            NSInteger num = [dic floatForKey:@"goalmiddle1"]*100;
+            NSString* tmp = @"";
+            if (num%100 == 25) {
+                tmp = [dic stringForKey:@"goalmiddle1"];
+            }
+            else if (num%100 == 50) {
+                tmp = [[dic stringForKey:@"goalmiddle1"] stringByReplacingOccurrencesOfString:@".50" withString:@".5"];
+            }
+            else if (num%100 == 75) {
+                tmp = [dic stringForKey:@"goalmiddle1"];
+            }
+            else if (num%100 == 0) {
+                tmp = [[dic stringForKey:@"goalmiddle1"] stringByReplacingOccurrencesOfString:@".00" withString:@""];
+            }
+            
+            [_goal setText:[NSString stringWithFormat:@"大%@",tmp]];
         }
         else if(([dic integerForKey:@"hscore"] + [dic integerForKey:@"ascore"]) < [dic floatForKey:@"goalmiddle1"]){
-            [_goal setText:[NSString stringWithFormat:@"小%@",[dic stringForKey:@"goalmiddle1"]]];
+            NSInteger num = [dic floatForKey:@"goalmiddle1"]*100;
+            NSString* tmp = @"";
+            if (num%100 == 25) {
+                tmp = [dic stringForKey:@"goalmiddle1"];
+            }
+            else if (num%100 == 50) {
+                tmp = [[dic stringForKey:@"goalmiddle1"] stringByReplacingOccurrencesOfString:@".50" withString:@".5"];
+            }
+            else if (num%100 == 75) {
+                tmp = [dic stringForKey:@"goalmiddle1"];
+            }
+            else if (num%100 == 0) {
+                tmp = [[dic stringForKey:@"goalmiddle1"] stringByReplacingOccurrencesOfString:@".00" withString:@""];
+            }
+            
+            [_goal setText:[NSString stringWithFormat:@"小%@",tmp]];
         }
         else{
-            [_goal setText:[NSString stringWithFormat:@"走%@",[dic stringForKey:@"goalmiddle1"]]];
+            NSInteger num = [dic floatForKey:@"goalmiddle1"]*100;
+            NSString* tmp = @"";
+            if (num%100 == 25) {
+                tmp = [dic stringForKey:@"goalmiddle1"];
+            }
+            else if (num%100 == 50) {
+                tmp = [[dic stringForKey:@"goalmiddle1"] stringByReplacingOccurrencesOfString:@".50" withString:@".5"];
+            }
+            else if (num%100 == 75) {
+                tmp = [dic stringForKey:@"goalmiddle1"];
+            }
+            else if (num%100 == 0) {
+                tmp = [[dic stringForKey:@"goalmiddle1"] stringByReplacingOccurrencesOfString:@".00" withString:@""];
+            }
+            
+            [_goal setText:[NSString stringWithFormat:@"走%@",tmp]];
         }
     }
     else{

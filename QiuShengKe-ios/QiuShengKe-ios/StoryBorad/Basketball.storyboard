@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5QE-S8-tPN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5QE-S8-tPN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,33 +15,485 @@
             <objects>
                 <navigationController id="5QE-S8-tPN" customClass="QiuMiNavigationController" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cwq-gE-Htj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="cwq-gE-Htj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="clg-gV-LM2" kind="relationship" relationship="rootViewController" id="GLH-ZU-4fv"/>
+                        <segue destination="18o-c8-Hgg" kind="relationship" relationship="rootViewController" id="8Eo-vx-E3l"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EQa-lp-tfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-951" y="209"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Qf0-W6-vor">
+        <!--Basketball Index View Controller-->
+        <scene sceneID="nsD-kT-E5p">
             <objects>
-                <viewController id="clg-gV-LM2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Tdw-NC-D4N">
+                <viewController storyboardIdentifier="BasketballIndexViewController" id="18o-c8-Hgg" customClass="BasketballIndexViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KAg-wd-b2m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJB-CR-7ja">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GER-Yh-dWc">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </scrollView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujp-ed-HAw" customClass="QiuMiView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                        <subviews>
+                                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zPU-Ps-jjk">
+                                                <rect key="frame" x="0.0" y="20" width="240" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="xtK-L5-ScI"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="QiumiColor" value="c1"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ujp-ed-HAw" firstAttribute="top" secondItem="dJB-CR-7ja" secondAttribute="top" id="Jvl-ev-SVQ"/>
+                                    <constraint firstItem="ujp-ed-HAw" firstAttribute="leading" secondItem="dJB-CR-7ja" secondAttribute="leading" id="tE7-iU-JWU"/>
+                                    <constraint firstAttribute="trailing" secondItem="ujp-ed-HAw" secondAttribute="trailing" id="tX9-9I-fEO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="LNL-hn-03d"/>
+                        <constraints>
+                            <constraint firstItem="dJB-CR-7ja" firstAttribute="trailing" secondItem="xXS-mz-wFO" secondAttribute="trailing" id="4wQ-nq-ulS"/>
+                            <constraint firstItem="dJB-CR-7ja" firstAttribute="bottom" secondItem="xXS-mz-wFO" secondAttribute="bottom" id="YP7-82-yDq"/>
+                            <constraint firstItem="dJB-CR-7ja" firstAttribute="top" secondItem="xXS-mz-wFO" secondAttribute="top" constant="-20" id="oCZ-2C-Q6d"/>
+                            <constraint firstItem="dJB-CR-7ja" firstAttribute="leading" secondItem="xXS-mz-wFO" secondAttribute="leading" id="zrv-AP-qNK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xXS-mz-wFO"/>
                     </view>
-                    <navigationItem key="navigationItem" id="XMS-AB-7Xz"/>
+                    <navigationItem key="navigationItem" id="Sw2-Dp-cWI"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="contentView" destination="GER-Yh-dWc" id="IdJ-6l-ftR"/>
+                        <outlet property="tabBG" destination="ujp-ed-HAw" id="pxR-Cz-sUa"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="duY-tY-AbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="osr-aV-neG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-67" y="-58"/>
+            <point key="canvasLocation" x="-161" y="697"/>
+        </scene>
+        <!--Basketball Match List View Controller-->
+        <scene sceneID="Hyy-qI-foc">
+            <objects>
+                <viewController storyboardIdentifier="BasketballMatchListViewController" id="D8f-OC-jvq" customClass="BasketballMatchListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RCS-6l-FUt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HrK-w4-pQ5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izL-ai-G69">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLa-Ti-8qw" customClass="QiuMiButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="125" id="WLe-Qh-sDF"/>
+                                                    <constraint firstAttribute="height" constant="36" id="t04-Fe-At2"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="赛事    " image="soccer_icon_down_n.png">
+                                                    <color key="titleColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="clickChooseFilter:" destination="D8f-OC-jvq" eventType="touchUpInside" id="LPV-u5-fPX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Zdq-D0-87H"/>
+                                            <constraint firstItem="oLa-Ti-8qw" firstAttribute="leading" secondItem="izL-ai-G69" secondAttribute="leading" id="tlk-cc-Rwo"/>
+                                            <constraint firstItem="oLa-Ti-8qw" firstAttribute="top" secondItem="izL-ai-G69" secondAttribute="top" id="yw2-mo-JRb"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYf-JZ-kLA" customClass="QiuMiLabel">
+                                        <rect key="frame" x="250" y="0.0" width="125" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dR6-tt-1Re" customClass="QiuMiView">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="0.5"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g6"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="ITN-zF-pCu"/>
+                                    <constraint firstItem="izL-ai-G69" firstAttribute="top" secondItem="HrK-w4-pQ5" secondAttribute="top" id="JKP-SE-f5H"/>
+                                    <constraint firstAttribute="trailing" secondItem="izL-ai-G69" secondAttribute="trailing" constant="125" id="eeF-r4-Mlw"/>
+                                    <constraint firstItem="izL-ai-G69" firstAttribute="leading" secondItem="HrK-w4-pQ5" secondAttribute="leading" id="rVT-jA-L91"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" estimatedRowHeight="105" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Khb-cJ-fgt">
+                                <rect key="frame" x="0.0" y="36" width="375" height="631"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="D8f-OC-jvq" id="IAy-K7-Ba4"/>
+                                    <outlet property="delegate" destination="D8f-OC-jvq" id="egz-a7-S2S"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Lc-QZ-atu" customClass="QiuMiView">
+                                <rect key="frame" x="0.0" y="36" width="375" height="350"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjQ-6C-dDh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCu-6N-KeL" customClass="QiuMiButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="JVF-9y-2qu"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="全部赛事"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="c1"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="clickFilter:" destination="D8f-OC-jvq" eventType="touchUpInside" id="JEV-US-LlE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztv-D1-Ji9" customClass="QiuMiButton">
+                                                <rect key="frame" x="125" y="0.0" width="125" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="ihj-vD-SoF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="NBA"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="c1"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="clickFilter:" destination="D8f-OC-jvq" eventType="touchUpInside" id="kFC-SV-LLV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ha4-ds-p9V" customClass="QiuMiButton">
+                                                <rect key="frame" x="250" y="0.0" width="125" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="c77-Xa-Uum"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="自定义"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="c1"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="clickFilter:" destination="D8f-OC-jvq" eventType="touchUpInside" id="voG-EE-nKz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="094-eU-sWN"/>
+                                            <constraint firstItem="JCu-6N-KeL" firstAttribute="leading" secondItem="gjQ-6C-dDh" secondAttribute="leading" id="9hN-hd-Wpf"/>
+                                            <constraint firstItem="JCu-6N-KeL" firstAttribute="top" secondItem="gjQ-6C-dDh" secondAttribute="top" id="B1s-hh-rAn"/>
+                                            <constraint firstItem="Ha4-ds-p9V" firstAttribute="leading" secondItem="ztv-D1-Ji9" secondAttribute="trailing" id="Bgl-sE-rw2"/>
+                                            <constraint firstItem="ztv-D1-Ji9" firstAttribute="width" secondItem="JCu-6N-KeL" secondAttribute="width" id="C4P-kL-KCA"/>
+                                            <constraint firstItem="Ha4-ds-p9V" firstAttribute="width" secondItem="JCu-6N-KeL" secondAttribute="width" id="O40-fd-O8M"/>
+                                            <constraint firstItem="ztv-D1-Ji9" firstAttribute="leading" secondItem="JCu-6N-KeL" secondAttribute="trailing" id="RTN-ev-Pbz"/>
+                                            <constraint firstItem="Ha4-ds-p9V" firstAttribute="leading" secondItem="ztv-D1-Ji9" secondAttribute="trailing" id="UOz-M7-5ok"/>
+                                            <constraint firstItem="ztv-D1-Ji9" firstAttribute="top" secondItem="gjQ-6C-dDh" secondAttribute="top" id="YTq-RX-6k4"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ha4-ds-p9V" secondAttribute="trailing" id="bXJ-g0-PON"/>
+                                            <constraint firstItem="Ha4-ds-p9V" firstAttribute="top" secondItem="gjQ-6C-dDh" secondAttribute="top" id="jAd-Yu-sDj"/>
+                                            <constraint firstItem="ztv-D1-Ji9" firstAttribute="leading" secondItem="JCu-6N-KeL" secondAttribute="trailing" id="oDi-o1-l5k"/>
+                                        </constraints>
+                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q6g-qr-Ih4">
+                                        <rect key="frame" x="0.0" y="54" width="375" height="236"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="0.0" id="3fv-Lg-nTs">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="D8f-OC-jvq" id="DDW-9F-bIj"/>
+                                            <outlet property="delegate" destination="D8f-OC-jvq" id="jLG-cT-djC"/>
+                                        </connections>
+                                    </collectionView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PEg-GT-hdr">
+                                        <rect key="frame" x="0.0" y="300" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppO-HG-yRq" customClass="QiuMiButton">
+                                                <rect key="frame" x="88" y="5" width="200" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="确认"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g7"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiBGColor" value="c1"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="clickConfirm:" destination="D8f-OC-jvq" eventType="touchUpInside" id="c3U-Ig-zaL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="gjQ-6C-dDh" firstAttribute="leading" secondItem="1Lc-QZ-atu" secondAttribute="leading" id="Ngy-c5-zrs"/>
+                                    <constraint firstItem="gjQ-6C-dDh" firstAttribute="top" secondItem="1Lc-QZ-atu" secondAttribute="top" id="VV0-cw-VgJ"/>
+                                    <constraint firstAttribute="height" constant="350" id="cEE-wn-alr"/>
+                                    <constraint firstAttribute="trailing" secondItem="gjQ-6C-dDh" secondAttribute="trailing" id="swF-Le-f4C"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g5"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1Lc-QZ-atu" firstAttribute="leading" secondItem="Syg-iC-2eI" secondAttribute="leading" id="4SB-Uy-pCw"/>
+                            <constraint firstItem="1Lc-QZ-atu" firstAttribute="top" secondItem="HrK-w4-pQ5" secondAttribute="bottom" id="et2-oD-HD5"/>
+                            <constraint firstItem="1Lc-QZ-atu" firstAttribute="trailing" secondItem="Syg-iC-2eI" secondAttribute="trailing" id="fD4-07-zFA"/>
+                            <constraint firstItem="HrK-w4-pQ5" firstAttribute="leading" secondItem="Syg-iC-2eI" secondAttribute="leading" id="h7V-lQ-Edt"/>
+                            <constraint firstItem="HrK-w4-pQ5" firstAttribute="top" secondItem="RCS-6l-FUt" secondAttribute="top" id="uHg-Ke-kmY"/>
+                            <constraint firstItem="HrK-w4-pQ5" firstAttribute="trailing" secondItem="Syg-iC-2eI" secondAttribute="trailing" id="xBZ-xb-Pod"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Syg-iC-2eI"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Q6g-qr-Ih4" id="xhb-st-5Wn"/>
+                        <outlet property="filterBtn1" destination="JCu-6N-KeL" id="jnA-vD-DTL"/>
+                        <outlet property="filterBtn2" destination="ztv-D1-Ji9" id="grx-6e-AXa"/>
+                        <outlet property="filterBtn3" destination="Ha4-ds-p9V" id="QOb-sI-q7V"/>
+                        <outlet property="leagueBtn" destination="oLa-Ti-8qw" id="vsI-D2-h2F"/>
+                        <outlet property="tableView" destination="Khb-cJ-fgt" id="nfg-fi-tza"/>
+                        <outlet property="tips" destination="AYf-JZ-kLA" id="xvK-bB-7gm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9r-CO-KrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="540" y="696"/>
+        </scene>
+        <!--Basketball Match Detail View Controller-->
+        <scene sceneID="XUv-IQ-eYd">
+            <objects>
+                <viewController storyboardIdentifier="BasketballMatchDetailViewController" id="XFd-E0-GPf" customClass="BasketballMatchDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XO6-3a-ge9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j1J-bB-sYK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="live_bg_soccer_n.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7fD-0c-VPj">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hc3-1Q-QSl">
+                                        <rect key="frame" x="142" y="64" width="90" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7M-g0-MBj" customClass="QiuMiLabel">
+                                                <rect key="frame" x="0.0" y="2" width="90" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g7"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXZ-QJ-F9l" customClass="QiuMiLabel">
+                                                <rect key="frame" x="-20" y="16" width="130" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g7"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0e-At-ZfF" customClass="QiuMiButton">
+                                                <rect key="frame" x="1.5" y="74" width="87" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="视频直播"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiBGColor" value="c1"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="clicklive:" destination="XFd-E0-GPf" eventType="touchUpInside" id="kkv-9r-nyE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pbb-Kt-Mxm">
+                                        <rect key="frame" x="242" y="64" width="123" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8f2-9x-C3u">
+                                                <rect key="frame" x="36.5" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl9-CM-BoH" customClass="QiuMiLabel">
+                                                <rect key="frame" x="0.0" y="60" width="123" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g7"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjF-a1-rfe" customClass="QiuMiLabel">
+                                                <rect key="frame" x="0.0" y="82" width="123" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g7"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KP4-up-V58">
+                                        <rect key="frame" x="10" y="64" width="123" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDQ-cC-48q">
+                                                <rect key="frame" x="36.5" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKO-6b-KtM" customClass="QiuMiLabel">
+                                                <rect key="frame" x="0.0" y="60" width="123" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g7"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sx7-zy-QfL" customClass="QiuMiLabel">
+                                                <rect key="frame" x="0.0" y="82" width="123" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g7"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PfC-Qc-4A0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whC-XC-m64">
+                                        <rect key="frame" x="0.0" y="20" width="44" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="live_icon_back_white.png"/>
+                                        <connections>
+                                            <action selector="clickBack:" destination="XFd-E0-GPf" eventType="touchUpInside" id="UwG-5b-fmi"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2j2-mD-eml">
+                                        <rect key="frame" x="50" y="20" width="275" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gt-oC-h5X">
+                                <rect key="frame" x="0.0" y="190" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEr-gv-YhG" customClass="QiuMiView">
+                                        <rect key="frame" x="0.0" y="43" width="375" height="0.5"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g4"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H8B-wo-1pJ">
+                                <rect key="frame" x="0.0" y="234" width="375" height="433"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="XFd-E0-GPf" id="vYa-8y-42g"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="0rG-Wg-WfH"/>
+                    </view>
+                    <connections>
+                        <outlet property="aicon" destination="8f2-9x-C3u" id="7wN-tC-mNW"/>
+                        <outlet property="aname" destination="Jl9-CM-BoH" id="wUH-xi-EOU"/>
+                        <outlet property="arank" destination="jjF-a1-rfe" id="KFV-kl-Zu7"/>
+                        <outlet property="content" destination="H8B-wo-1pJ" id="pxw-yg-Psd"/>
+                        <outlet property="hicon" destination="fDQ-cC-48q" id="vUw-Kc-TcI"/>
+                        <outlet property="hname" destination="nKO-6b-KtM" id="fdH-oN-3cM"/>
+                        <outlet property="hrank" destination="sx7-zy-QfL" id="uJC-8o-73Q"/>
+                        <outlet property="liveBtn" destination="A0e-At-ZfF" id="zUt-u9-ydh"/>
+                        <outlet property="nav" destination="2j2-mD-eml" id="hlx-V3-2bV"/>
+                        <outlet property="score" destination="jXZ-QJ-F9l" id="prr-s1-Sxs"/>
+                        <outlet property="tabBG" destination="9gt-oC-h5X" id="mGl-kM-TCh"/>
+                        <outlet property="time" destination="o7M-g0-MBj" id="D39-dh-tVL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNX-lu-ffU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1322.4000000000001" y="206.44677661169416"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="live_bg_soccer_n.jpg" width="375" height="190"/>
+        <image name="live_icon_back_white.png" width="22" height="22"/>
+        <image name="soccer_icon_down_n.png" width="13" height="13"/>
+    </resources>
 </document>

@@ -12,6 +12,10 @@
 #import "FDBEventTableViewCell.h"
 
 @interface FootDetailBaseView()
+{
+    BOOL _closeEvent;
+    BOOL _closeTech;
+}
 @property(nonatomic, strong)NSArray* techs;
 @property(nonatomic, strong)NSArray* events;
 @end
@@ -20,6 +24,8 @@
     [super awakeFromNib];
     [_tableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_tableview setBackgroundColor:QIUMI_COLOR_G5];
+    _closeTech = false;
+    _closeEvent = false;
 }
 
 - (void)loadData{
@@ -48,9 +54,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
         case 0:
+            if (_closeTech) {
+                return 0;
+            }
             return [_techs count];
             break;
         case 1:
+            if (_closeEvent) {
+                return 0;
+            }
             return [_events count] + 2;
         default:
             break;
@@ -160,14 +172,44 @@
     switch (section) {
         case 0:
             [head.name setText:@"技术统计"];
+            head.closeImg.tag = 0;
+            [head.closeImg addTarget:self action:@selector(clickClose:) forControlEvents:UIControlEventTouchDown];
+            if (_closeTech) {
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_close_n"] forState:UIControlStateNormal];
+            }
+            else{
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_open_n"] forState:UIControlStateNormal];
+            }
             break;
         case 1:
             [head.name setText:@"比赛事件"];
+            head.closeImg.tag = 1;
+            [head.closeImg addTarget:self action:@selector(clickClose:) forControlEvents:UIControlEventTouchDown];
+            if (_closeEvent) {
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_close_n"] forState:UIControlStateNormal];
+            }
+            else{
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_open_n"] forState:UIControlStateNormal];
+            }
             break;
         default:
             break;
     }
     return head;
+}
+
+- (void)clickClose:(UIButton*)btn{
+    switch (btn.tag) {
+        case 0:
+            _closeTech = !_closeTech;
+            break;
+        case 1:
+            _closeEvent = !_closeEvent;
+            break;
+        default:
+            break;
+    }
+    [_tableview reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

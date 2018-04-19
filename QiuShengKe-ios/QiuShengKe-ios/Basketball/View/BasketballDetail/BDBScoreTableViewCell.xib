@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BDBScoreTableViewCell" id="Eph-14-pIs" customClass="BDBScoreTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eph-14-pIs" id="Yb7-g0-A5G">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r21-O8-xbR">
+                        <rect key="frame" x="0.0" y="0.0" width="97" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="球队" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDy-zd-C1Y" customClass="QiuMiLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHU-0r-VOn">
+                        <rect key="frame" x="97" y="0.0" width="223" height="22"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="645-ro-XxW">
+                                <rect key="frame" x="0.0" y="0.0" width="223" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bvc-Qe-BHq" customClass="QiuMiLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="37" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2nd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-aO-2aQ" customClass="QiuMiLabel">
+                                        <rect key="frame" x="37" y="0.0" width="37.5" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3rd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKt-Un-9pN" customClass="QiuMiLabel">
+                                        <rect key="frame" x="74.5" y="0.0" width="37" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4th" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ih2-uY-aOb" customClass="QiuMiLabel">
+                                        <rect key="frame" x="111.5" y="0.0" width="37" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加时" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nW7-ib-5xe" customClass="QiuMiLabel">
+                                        <rect key="frame" x="148.5" y="0.0" width="37.5" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zL-C1-mGU" customClass="QiuMiLabel">
+                                        <rect key="frame" x="186" y="0.0" width="37" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="645-ro-XxW" secondAttribute="trailing" id="1hv-ca-cLr"/>
+                            <constraint firstItem="645-ro-XxW" firstAttribute="top" secondItem="tHU-0r-VOn" secondAttribute="top" id="3rr-g3-Xl5"/>
+                            <constraint firstItem="645-ro-XxW" firstAttribute="leading" secondItem="tHU-0r-VOn" secondAttribute="leading" id="PID-Z4-7pA"/>
+                            <constraint firstAttribute="bottom" secondItem="645-ro-XxW" secondAttribute="bottom" id="foO-um-DzO"/>
+                            <constraint firstAttribute="height" constant="22" id="w9j-41-xv7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tHU-0r-VOn" firstAttribute="top" secondItem="Yb7-g0-A5G" secondAttribute="top" id="30Y-NV-DAL"/>
+                    <constraint firstAttribute="trailing" secondItem="tHU-0r-VOn" secondAttribute="trailing" id="LmT-oG-2Z6"/>
+                    <constraint firstItem="tHU-0r-VOn" firstAttribute="leading" secondItem="Yb7-g0-A5G" secondAttribute="leading" constant="97" id="qG0-jC-WCg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="gpl-cF-w6c"/>
+            <connections>
+                <outlet property="score" destination="5zL-C1-mGU" id="njd-ge-LKN"/>
+                <outlet property="score1" destination="Bvc-Qe-BHq" id="elt-sl-dmm"/>
+                <outlet property="score2" destination="JGa-aO-2aQ" id="G4r-if-jne"/>
+                <outlet property="score3" destination="lKt-Un-9pN" id="rxl-DV-hTB"/>
+                <outlet property="score4" destination="Ih2-uY-aOb" id="3Ru-3F-U5L"/>
+                <outlet property="scoreOT" destination="nW7-ib-5xe" id="0N3-Sg-5Ug"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="210"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BDBScoreTableViewCell2" id="HZU-sj-R7z" customClass="BDBScoreTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HZU-sj-R7z" id="DS9-xy-VaB">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lXh-4A-69F">
+                        <rect key="frame" x="0.0" y="0.0" width="97" height="50"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-IR-B5M">
+                                <rect key="frame" x="28.5" y="5" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ao-3t-DTm">
+                        <rect key="frame" x="97" y="0.0" width="223" height="50"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bTJ-eo-qRM">
+                                <rect key="frame" x="0.0" y="0.0" width="223" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5x-ST-stA" customClass="QiuMiLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="37" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2H-lt-PZD" customClass="QiuMiLabel">
+                                        <rect key="frame" x="37" y="0.0" width="37.5" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qD-Cb-y42" customClass="QiuMiLabel">
+                                        <rect key="frame" x="74.5" y="0.0" width="37" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPU-VL-p4l" customClass="QiuMiLabel">
+                                        <rect key="frame" x="111.5" y="0.0" width="37" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5t-My-o4M" customClass="QiuMiLabel">
+                                        <rect key="frame" x="148.5" y="0.0" width="37.5" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MT-jD-Qmx" customClass="QiuMiLabel">
+                                        <rect key="frame" x="186" y="0.0" width="37" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bTJ-eo-qRM" secondAttribute="trailing" id="2dK-r2-CIJ"/>
+                            <constraint firstItem="bTJ-eo-qRM" firstAttribute="leading" secondItem="7Ao-3t-DTm" secondAttribute="leading" id="BRv-tx-e4x"/>
+                            <constraint firstAttribute="height" constant="50" id="VAO-NS-BO1"/>
+                            <constraint firstItem="bTJ-eo-qRM" firstAttribute="top" secondItem="7Ao-3t-DTm" secondAttribute="top" id="VGJ-pR-fqv"/>
+                            <constraint firstAttribute="bottom" secondItem="bTJ-eo-qRM" secondAttribute="bottom" id="ghd-uB-ZlW"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SG-PO-Dji" customClass="QiuMiView">
+                        <rect key="frame" x="0.0" y="49" width="320" height="0.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="qiumiColor" value="g5"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="7Ao-3t-DTm" secondAttribute="trailing" id="DPG-tF-uVr"/>
+                    <constraint firstItem="7Ao-3t-DTm" firstAttribute="leading" secondItem="DS9-xy-VaB" secondAttribute="leading" constant="97" id="I7z-6x-c1z"/>
+                    <constraint firstItem="7Ao-3t-DTm" firstAttribute="top" secondItem="DS9-xy-VaB" secondAttribute="top" id="n2n-Ya-5qB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="zOq-BQ-7ao"/>
+            <connections>
+                <outlet property="score" destination="4MT-jD-Qmx" id="Tzm-Hp-arl"/>
+                <outlet property="score1" destination="y5x-ST-stA" id="Ydy-8u-BUA"/>
+                <outlet property="score2" destination="A2H-lt-PZD" id="V05-m7-axU"/>
+                <outlet property="score3" destination="4qD-Cb-y42" id="84b-Oo-EXY"/>
+                <outlet property="score4" destination="gPU-VL-p4l" id="wvL-2l-DTU"/>
+                <outlet property="scoreOT" destination="V5t-My-o4M" id="n3k-Zf-wK3"/>
+                <outlet property="teamIcon" destination="Dgp-IR-B5M" id="mkD-yg-O4Y"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="328"/>
+        </tableViewCell>
+    </objects>
+</document>

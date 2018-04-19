@@ -14,6 +14,11 @@
 @property(nonatomic, strong)IBOutlet UILabel* name2;
 @property(nonatomic, strong)IBOutlet UILabel* name3;
 @property(nonatomic, strong)IBOutlet UILabel* name4;
+
+@property(nonatomic, strong)IBOutlet UIImageView* icon1;
+@property(nonatomic, strong)IBOutlet UIImageView* icon2;
+@property(nonatomic, strong)IBOutlet UIImageView* icon3;
+@property(nonatomic, strong)IBOutlet UIImageView* icon4;
 +(NSInteger)heightOfHead;
 +(NSInteger)heightOfEvent;
 +(NSInteger)heightOfEnd;
