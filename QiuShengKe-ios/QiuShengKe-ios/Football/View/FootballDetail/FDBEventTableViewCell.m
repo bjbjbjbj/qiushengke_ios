@@ -21,6 +21,7 @@
     if(_point){
         QiuMiViewBorder(_point, _point.frame.size.height/2, 0, [UIColor clearColor]);
     }
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

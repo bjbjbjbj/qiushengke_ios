@@ -15,6 +15,7 @@
     // Initialization code
     [_result setTextColor:QIUMI_COLOR_G7];
     QiuMiViewBorder(_result, 2, 0, [UIColor clearColor]);
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

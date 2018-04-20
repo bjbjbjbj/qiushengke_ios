@@ -11,6 +11,10 @@
 #import "FootDetailHeaderView.h"
 #import "BDBScoreTableViewCell.h"
 @interface BasketDetailBaseView()
+{
+    BOOL _closeScore;
+    BOOL _closeTech;
+}
 @property(nonatomic, strong)NSArray* techs;
 @end
 
@@ -19,6 +23,8 @@
     [super awakeFromNib];
     [_tableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_tableview setBackgroundColor:QIUMI_COLOR_G5];
+    _closeScore = false;
+    _closeTech = false;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -45,9 +51,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
         case 1:
+            if (_closeTech) {
+                return 0;
+            }
             return [_techs count];
             break;
         case 0:
+            if (_closeScore) {
+                return 0;
+            }
             return 3;
         default:
             break;
@@ -161,14 +173,45 @@
     switch (section) {
         case 1:
             [head.name setText:@"技术统计"];
+            head.closeImg.tag = 1;
+            [head.closeImg addTarget:self action:@selector(clickClose:) forControlEvents:UIControlEventTouchDown];
+            if (_closeTech) {
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_close_n"] forState:UIControlStateNormal];
+            }
+            else{
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_open_n"] forState:UIControlStateNormal];
+            }
             break;
         case 0:
             [head.name setText:@"比分统计"];
+            head.closeImg.tag = 0;
+            [head.closeImg addTarget:self action:@selector(clickClose:) forControlEvents:UIControlEventTouchDown];
+            if (_closeScore) {
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_close_n"] forState:UIControlStateNormal];
+            }
+            else{
+                [head.closeImg setImage:[UIImage imageNamed:@"data_icon_open_n"] forState:UIControlStateNormal];
+            }
             break;
         default:
             break;
     }
     return head;
+}
+
+
+- (void)clickClose:(UIButton*)btn{
+    switch (btn.tag) {
+        case 0:
+            _closeScore = !_closeScore;
+            break;
+        case 1:
+            _closeTech = !_closeTech;
+            break;
+        default:
+            break;
+    }
+    [_tableview reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

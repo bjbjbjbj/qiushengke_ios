@@ -33,15 +33,15 @@
     
     UIStoryboard* recommend = [ UIStoryboard storyboardWithName:@"Football" bundle:nil];
     UIStoryboard* basket = [ UIStoryboard storyboardWithName:@"Basketball" bundle:nil];
-    UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"Global" bundle:nil];
+//    UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"Global" bundle:nil];
     [controllers addObject:[recommend instantiateInitialViewController]];
     [controllers addObject:[basket instantiateInitialViewController]];
-    [controllers addObject:[matchList instantiateInitialViewController]];
+//    [controllers addObject:[matchList instantiateInitialViewController]];
     
     [self setViewControllers:controllers];
     
     //初始化item
-    NSArray* title = @[@"足球",@"篮球",@"世界杯"];
+    NSArray* title = @[@"足球",@"篮球"];
     NSArray* images = @[
                         @[
                             @"commond_icon_soccer_n",

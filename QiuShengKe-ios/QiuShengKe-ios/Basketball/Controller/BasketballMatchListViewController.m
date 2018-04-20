@@ -10,15 +10,17 @@
 #import "BasketballMatchTableViewCell.h"
 #import "LeagueFilterCollectionViewCell.h"
 #import "BasketballMatchDetailViewController.h"
+#import "QiuMiDatePickerAlertView.h"
 
 @interface BasketballMatchListViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate,UICollectionViewDataSource>{
     BOOL _isSelf;
 }
-@property(nonatomic, strong)IBOutlet UITableView* tableView;
+@property(nonatomic, strong)NSString* selectDate;
+
 @property(nonatomic, strong)IBOutlet UIButton* leagueBtn;
 @property(nonatomic, strong)IBOutlet UIButton* oddBtn;
-@property(nonatomic, strong)IBOutlet UILabel* tips;
-@property(nonatomic, strong)IBOutlet UICollectionView* collectionView;
+
+@property(nonatomic, strong)IBOutlet UIButton* dateBtn;
 
 @property(nonatomic, strong)IBOutlet UIButton* filterBtn1;
 @property(nonatomic, strong)IBOutlet UIButton* filterBtn2;
@@ -65,6 +67,7 @@
     _oddBtn.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     _oddBtn.titleLabel.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     _oddBtn.imageView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    [self updateTime];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,10 +85,15 @@
  }
  */
 
+- (void)setTimeStr:(NSString *)timeStr{
+    _timeStr = timeStr;
+    self.selectDate = timeStr;
+}
+
 #pragma mark - load data
 - (void)loadData{
     QiuMiWeakSelf(self);
-    [[QiuMiHttpClient instance]GET:[NSString stringWithFormat:QSK_MATCH_BASKET_LIST,_timeStr] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyHttpCache prompt:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[QiuMiHttpClient instance]GET:[NSString stringWithFormat:QSK_MATCH_BASKET_LIST,_selectDate] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyHttpCache prompt:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);
         self.matches = [responseObject objectForKey:@"matches"];
         NSArray* filters = [responseObject objectForKey:@"filter"];
@@ -227,6 +235,51 @@
 }
 
 #pragma mark - click
+- (IBAction)clickDate:(id)sender{
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+    dateFormatter.dateFormat=@"yyyyMMdd";
+    QiuMiDatePickerAlertView* picker = [QiuMiDatePickerAlertView createWithXib:1];
+    //赛程
+    if (_type == 1) {
+        NSDate* min = [dateFormatter dateFromString:_timeStr];
+        NSDate* max = [min dateByAddingTimeInterval:7*24*3600];
+        [picker.datePicker setMaximumDate:max];
+        [picker.datePicker setMinimumDate:min];
+    }
+    //赛果
+    else if (_type == 2){
+        NSDate* max = [dateFormatter dateFromString:_timeStr];
+        NSDate* min = [max dateByAddingTimeInterval:-7*24*3600];
+        [picker.datePicker setMaximumDate:max];
+        [picker.datePicker setMinimumDate:min];
+    }
+    [picker selectTimeWithDate:[dateFormatter dateFromString:_selectDate]];
+    QiuMiWeakSelf(self);
+    [picker setDateTime:^(NSDate *time) {
+        NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+        dateFormatter.dateFormat=@"yyyyMMdd";
+        if ([time timeIntervalSince1970] == [[dateFormatter dateFromString:self.selectDate] timeIntervalSince1970]) {
+            return ;
+        }
+        QiuMiStrongSelf(self);
+        self.selectDate = [dateFormatter stringFromDate:time];
+        [self updateTime];
+        [self loadData];
+    }];
+    [picker showAlert];
+}
+
+- (void)updateTime{
+    if(_type == 0){
+        [_dateBtn setHidden:YES];
+    }
+    else{
+        [_dateBtn setHidden:NO];
+    }
+    NSString* tmp = [NSString stringWithFormat:@"%@年%@月%@日",[self.selectDate substringWithRange:NSMakeRange(0, 4)],[self.selectDate substringWithRange:NSMakeRange(4, 2)],[self.selectDate substringWithRange:NSMakeRange(6, 2)]];
+    [_dateBtn setTitle:tmp forState:UIControlStateNormal];
+}
+
 - (IBAction)clickFilter:(UIButton*)sender{
     [_filterBtn1 setTitleColor:COLOR(158, 158, 158, 1) forState:UIControlStateNormal];
     [_filterBtn2 setTitleColor:COLOR(158, 158, 158, 1) forState:UIControlStateNormal];

@@ -42,7 +42,7 @@
                 <outlet property="hicon" destination="zXI-Df-TH7" id="gTM-qR-WYc"/>
             </connections>
         </tableViewCell>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FootballDetailBaseTechTableViewCell2" id="4OT-I4-3LA" customClass="FootballDetailBaseTechTableViewCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FootballDetailBaseTechTableViewCell2" id="4OT-I4-3LA" customClass="FootballDetailBaseTechTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4OT-I4-3LA" id="tUN-09-oi1">
@@ -61,7 +61,7 @@
                     </label>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fxy-Sp-ycr">
                         <rect key="frame" x="95" y="11" width="54" height="4"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mb5-ku-3wQ" customClass="QiuMiView">
                                 <rect key="frame" x="0.0" y="0.0" width="54" height="4"/>
@@ -86,7 +86,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjJ-ah-jof" customClass="QiuMiLabel">
                         <rect key="frame" x="289" y="0.0" width="87" height="28"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                     </label>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UcH-PU-NdA">
                         <rect key="frame" x="227" y="11" width="54" height="4"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PXi-gL-79f" customClass="QiuMiView">
                                 <rect key="frame" x="0.0" y="0.0" width="54" height="4"/>

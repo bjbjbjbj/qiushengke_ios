@@ -84,7 +84,7 @@
             if (_closeScore) {
                 return 0;
             }
-            if ([_analyse existForKey:@"rank"] && [[_analyse objectForKey:@"rank"] existForKey:@"rank"]) {
+            if ([_analyse existForKey:@"rank"] && [[_analyse objectForKey:@"rank"] isKindOfClass:[NSDictionary class]] && [[_analyse objectForKey:@"rank"] existForKey:@"rank"] && [[_analyse objectForKey:@"rank"] existForKey:@"rank"]) {
                 return 3;
             }
             else{

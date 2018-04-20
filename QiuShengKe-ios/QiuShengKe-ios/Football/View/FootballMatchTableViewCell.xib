@@ -289,8 +289,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6b-KA-Lr2">
                                 <rect key="frame" x="290" y="42" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.70588235290000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="icon_live_n.png"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -335,4 +335,7 @@
             <point key="canvasLocation" x="42" y="119.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon_live_n.png" width="25" height="25"/>
+    </resources>
 </document>
