@@ -11,5 +11,6 @@
 @interface FootballDetailViewController : QiuMiCommonViewController
 @property(nonatomic, assign)NSInteger mid;
 @property(nonatomic, assign)BOOL hasLive;
+@property(nonatomic, assign)BOOL afterInReview;
 @property(nonatomic, assign)IBOutlet UIButton* liveBtn;
 @end

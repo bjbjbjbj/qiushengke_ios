@@ -73,6 +73,8 @@
 		209ADE16207B52F900FC8AD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209ADE14207B52F900FC8AD8 /* Main.storyboard */; };
 		209ADE18207B52F900FC8AD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209ADE17207B52F900FC8AD8 /* Assets.xcassets */; };
 		209ADE1E207B52F900FC8AD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE1D207B52F900FC8AD8 /* main.m */; };
+		20CE5DBB208DEB3B005AB89C /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20CE5DBA208DEB3B005AB89C /* My.storyboard */; };
+		20CE5DBE208ECBAA005AB89C /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE5DBD208ECBAA005AB89C /* MyViewController.m */; };
 		20D30702207B70FA001BD67E /* Football.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D30701207B70FA001BD67E /* Football.storyboard */; };
 		20D30704207B7A48001BD67E /* Basketball.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D30703207B7A48001BD67E /* Basketball.storyboard */; };
 		20D307AD207B7E4B001BD67E /* UIButton+Qiumi.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3070A207B7E4B001BD67E /* UIButton+Qiumi.m */; };
@@ -273,6 +275,10 @@
 		209ADE17207B52F900FC8AD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		209ADE1C207B52F900FC8AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		209ADE1D207B52F900FC8AD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		20CE5DBA208DEB3B005AB89C /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
+		20CE5DBC208ECBAA005AB89C /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		20CE5DBD208ECBAA005AB89C /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		20CE5DBF208ED254005AB89C /* QiuShengKe-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "QiuShengKe-ios.entitlements"; sourceTree = "<group>"; };
 		20D306FC207B5A35001BD67E /* QSK_PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSK_PrefixHeader.pch; sourceTree = "<group>"; };
 		20D30701207B70FA001BD67E /* Football.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Football.storyboard; sourceTree = "<group>"; };
 		20D30703207B7A48001BD67E /* Basketball.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Basketball.storyboard; sourceTree = "<group>"; };
@@ -505,6 +511,8 @@
 			children = (
 				205FC4B02080A06C0030807E /* GlobalViewController.h */,
 				205FC4B12080A06C0030807E /* GlobalViewController.m */,
+				20CE5DBC208ECBAA005AB89C /* MyViewController.h */,
+				20CE5DBD208ECBAA005AB89C /* MyViewController.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -576,6 +584,7 @@
 		209ADE0D207B52F900FC8AD8 /* QiuShengKe-ios */ = {
 			isa = PBXGroup;
 			children = (
+				20CE5DBF208ED254005AB89C /* QiuShengKe-ios.entitlements */,
 				205FC4BB2086F0A40030807E /* Basketball */,
 				205FC4AD20809F9D0030807E /* Global */,
 				20D3083F207CA1C7001BD67E /* QSKCommon */,
@@ -604,6 +613,7 @@
 				20D30701207B70FA001BD67E /* Football.storyboard */,
 				20D30703207B7A48001BD67E /* Basketball.storyboard */,
 				205FC4AE20809FFE0030807E /* Global.storyboard */,
+				20CE5DBA208DEB3B005AB89C /* My.storyboard */,
 			);
 			path = StoryBorad;
 			sourceTree = "<group>";
@@ -1193,6 +1203,11 @@
 					209ADE0A207B52F900FC8AD8 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1229,6 +1244,7 @@
 				20D30848207DB842001BD67E /* LeagueFilterCollectionViewCell.xib in Resources */,
 				205FC50320884AF00030807E /* event_icon_yellow_n@2x.png in Resources */,
 				205FC4E420883AA90030807E /* match_icon_choose_s@2x.png in Resources */,
+				20CE5DBB208DEB3B005AB89C /* My.storyboard in Resources */,
 				205FC4AC20809CAB0030807E /* Images.xcassets in Resources */,
 				20D30702207B70FA001BD67E /* Football.storyboard in Resources */,
 				209ADE18207B52F900FC8AD8 /* Assets.xcassets in Resources */,
@@ -1431,6 +1447,7 @@
 				20D307C4207B7E4B001BD67E /* PCPhotoView.m in Sources */,
 				205FC4C22086F0FF0030807E /* BasketballMatchListViewController.m in Sources */,
 				20D307BD207B7E4B001BD67E /* QiuMiLine.m in Sources */,
+				20CE5DBE208ECBAA005AB89C /* MyViewController.m in Sources */,
 				20D307B2207B7E4B001BD67E /* NSArray+QiuMiArray.m in Sources */,
 				20D30847207DB842001BD67E /* LeagueFilterCollectionViewCell.m in Sources */,
 				20D307AE207B7E4B001BD67E /* UIImage+Qiumi.m in Sources */,
@@ -1571,6 +1588,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
+				CODE_SIGN_ENTITLEMENTS = "QiuShengKe-ios/QiuShengKe-ios.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6432ELWGP;
 				ENABLE_BITCODE = NO;
@@ -1590,6 +1608,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
+				CODE_SIGN_ENTITLEMENTS = "QiuShengKe-ios/QiuShengKe-ios.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6432ELWGP;
 				ENABLE_BITCODE = NO;

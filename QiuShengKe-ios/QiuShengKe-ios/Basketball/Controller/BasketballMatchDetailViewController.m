@@ -46,6 +46,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)_setupBtn{
+    [_liveBtn setHidden:NO];
+    [_liveBtn setTitle:@"预约" forState:UIControlStateNormal];
+    NSMutableDictionary* tmp = [[NSMutableDictionary alloc] initWithStore:@"test"];
+    if ([tmp objectForKey:[[NSNumber numberWithInteger:_mid] stringValue]]) {
+        [_liveBtn setTitle:@"取消预约" forState:UIControlStateNormal];
+    }
+}
+
 - (void)_setupUI{
     if (_hasLive) {
         [_liveBtn setHidden:NO];
@@ -53,6 +62,13 @@
     else{
         [_liveBtn setHidden:YES];
     }
+    if (_afterInReview) {
+        
+    }
+    else{
+        [self _setupBtn];
+    }
+    
     QiuMiViewBorder(_liveBtn, 2, 0, QIUMI_COLOR_C1);
     [_content setDelegate:self];
     QiuMiViewBorder(_hicon, _hicon.frame.size.height/2, 0, [UIColor clearColor]);
@@ -183,6 +199,23 @@
 }
 
 - (IBAction)clicklive:(id)sender{
+    if (!_afterInReview) {
+        [_liveBtn setHidden:NO];
+        [_liveBtn setTitle:@"预约" forState:UIControlStateNormal];
+        NSMutableDictionary* tmp = [[NSMutableDictionary alloc] initWithStore:@"test"];
+        if ([tmp objectForKey:[[NSNumber numberWithInteger:_mid] stringValue]]) {
+            [tmp removeObjectForKey:[[NSNumber numberWithInteger:_mid] stringValue]];
+            [_liveBtn setTitle:@"预约" forState:UIControlStateNormal];
+            [QiuMiPromptView showText:@"取消预约"];
+        }
+        else{
+            [tmp setObject:@"1" forKey:[[NSNumber numberWithInteger:_mid] stringValue]];
+            [_liveBtn setTitle:@"取消预约" forState:UIControlStateNormal];
+            [QiuMiPromptView showText:@"预约成功"];
+        }
+        [tmp writeToStore:@"test"];
+        return;
+    }
     QiuMiCommonViewController* player = [QSKCommon getPlayerControllerWithMid:_mid sport:1];
     [[QiuMiCommonViewController navigationController] pushViewController:player animated:YES];
 }

@@ -89,6 +89,9 @@
     
     if ([dic integerForKey:@"pc_live"] > 0) {
         [_liveBtn setHidden:NO];
+        if ([dic integerForKey:@"afterInReview"] == 0) {
+            [_liveBtn setHidden:YES];
+        }
     }
     else{
         [_liveBtn setHidden:YES];

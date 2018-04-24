@@ -33,15 +33,15 @@
     
     UIStoryboard* recommend = [ UIStoryboard storyboardWithName:@"Football" bundle:nil];
     UIStoryboard* basket = [ UIStoryboard storyboardWithName:@"Basketball" bundle:nil];
-//    UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"Global" bundle:nil];
+    UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"My" bundle:nil];
     [controllers addObject:[recommend instantiateInitialViewController]];
     [controllers addObject:[basket instantiateInitialViewController]];
-//    [controllers addObject:[matchList instantiateInitialViewController]];
+    [controllers addObject:[matchList instantiateInitialViewController]];
     
     [self setViewControllers:controllers];
     
     //初始化item
-    NSArray* title = @[@"足球",@"篮球"];
+    NSArray* title = @[@"足球",@"篮球",@"设置"];
     NSArray* images = @[
                         @[
                             @"commond_icon_soccer_n",
@@ -67,6 +67,9 @@
         UIViewController* ct = [self.viewControllers objectAtIndex:i];
         UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:[title objectAtIndex:i] image:musicImage selectedImage:musicImageSel];
         [ct setTabBarItem:item];
+        if (i == 2) {
+            [ct.tabBarItem setImageInsets:UIEdgeInsetsMake(-4, 0, 4, 0)];
+        }
         [ct.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, 0)];
     }
     [UITabBarItem.appearance setTitleTextAttributes:@{

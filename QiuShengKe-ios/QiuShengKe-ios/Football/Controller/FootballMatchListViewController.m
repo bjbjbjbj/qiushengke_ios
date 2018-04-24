@@ -178,6 +178,12 @@
         else{
             [controller setHasLive:NO];
         }
+        if ([[_showMatches objectAtIndex:indexPath.row] integerForKey:@"afterInReview"] > 0) {
+            [controller setAfterInReview:YES];
+        }
+        else{
+            [controller setAfterInReview:NO];
+        }
     }
     [[QiuMiCommonViewController navigationController] pushViewController:controller animated:YES];
 }
