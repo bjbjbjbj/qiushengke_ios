@@ -68,6 +68,10 @@
 		205FC50620884AF00030807E /* event_icon_yellow_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F420884AF00030807E /* event_icon_yellow_n@3x.png */; };
 		205FC50720884AF00030807E /* event_icon_customergoal_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F520884AF00030807E /* event_icon_customergoal_n@3x.png */; };
 		205FC50820884AF00030807E /* event_icon_up_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 205FC4F620884AF00030807E /* event_icon_up_n@3x.png */; };
+		2063CDD02091B04F00318267 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2063CDCF2091B04F00318267 /* ChatViewController.m */; };
+		2063CDD42091B1EE00318267 /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2063CDD22091B1EE00318267 /* ChatTableViewCell.m */; };
+		2063CDD52091B1EE00318267 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2063CDD32091B1EE00318267 /* ChatTableViewCell.xib */; };
+		2063CDD82091BA2B00318267 /* ChatCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2063CDD72091BA2B00318267 /* ChatCreateViewController.m */; };
 		209ADE10207B52F900FC8AD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE0F207B52F900FC8AD8 /* AppDelegate.m */; };
 		209ADE13207B52F900FC8AD8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE12207B52F900FC8AD8 /* ViewController.m */; };
 		209ADE16207B52F900FC8AD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209ADE14207B52F900FC8AD8 /* Main.storyboard */; };
@@ -181,6 +185,8 @@
 		20D30850207E0077001BD67E /* FootDetailBaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D3084F207E0077001BD67E /* FootDetailBaseView.xib */; };
 		20D30852207E0120001BD67E /* FootDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D30851207E0120001BD67E /* FootDetailHeaderView.xib */; };
 		20D30855207E012C001BD67E /* FootDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D30854207E012C001BD67E /* FootDetailHeaderView.m */; };
+		20D342BA209C70D200379197 /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D342B9209C70D200379197 /* ChatView.m */; };
+		20D342BC209C70E700379197 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D342BB209C70E700379197 /* ChatView.xib */; };
 		20D7E667207F0E490032AB2B /* FootballDetailOddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D7E665207F0E490032AB2B /* FootballDetailOddTableViewCell.m */; };
 		20D7E668207F0E490032AB2B /* FootballDetailOddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20D7E666207F0E490032AB2B /* FootballDetailOddTableViewCell.xib */; };
 		20D7E66B207F10A20032AB2B /* FootDetailOddView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D7E66A207F10A20032AB2B /* FootDetailOddView.m */; };
@@ -266,6 +272,13 @@
 		205FC4F420884AF00030807E /* event_icon_yellow_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_yellow_n@3x.png"; sourceTree = "<group>"; };
 		205FC4F520884AF00030807E /* event_icon_customergoal_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_customergoal_n@3x.png"; sourceTree = "<group>"; };
 		205FC4F620884AF00030807E /* event_icon_up_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event_icon_up_n@3x.png"; sourceTree = "<group>"; };
+		2063CDCE2091B04F00318267 /* ChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		2063CDCF2091B04F00318267 /* ChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		2063CDD12091B1EE00318267 /* ChatTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
+		2063CDD22091B1EE00318267 /* ChatTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
+		2063CDD32091B1EE00318267 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
+		2063CDD62091BA2B00318267 /* ChatCreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatCreateViewController.h; sourceTree = "<group>"; };
+		2063CDD72091BA2B00318267 /* ChatCreateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatCreateViewController.m; sourceTree = "<group>"; };
 		209ADE0B207B52F900FC8AD8 /* QiuShengKe-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QiuShengKe-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		209ADE0E207B52F900FC8AD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		209ADE0F207B52F900FC8AD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -452,6 +465,9 @@
 		20D30851207E0120001BD67E /* FootDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FootDetailHeaderView.xib; sourceTree = "<group>"; };
 		20D30853207E012C001BD67E /* FootDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootDetailHeaderView.h; sourceTree = "<group>"; };
 		20D30854207E012C001BD67E /* FootDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootDetailHeaderView.m; sourceTree = "<group>"; };
+		20D342B8209C70D200379197 /* ChatView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
+		20D342B9209C70D200379197 /* ChatView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
+		20D342BB209C70E700379197 /* ChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		20D7E664207F0E490032AB2B /* FootballDetailOddTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootballDetailOddTableViewCell.h; sourceTree = "<group>"; };
 		20D7E665207F0E490032AB2B /* FootballDetailOddTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootballDetailOddTableViewCell.m; sourceTree = "<group>"; };
 		20D7E666207F0E490032AB2B /* FootballDetailOddTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FootballDetailOddTableViewCell.xib; sourceTree = "<group>"; };
@@ -513,6 +529,16 @@
 				205FC4B12080A06C0030807E /* GlobalViewController.m */,
 				20CE5DBC208ECBAA005AB89C /* MyViewController.h */,
 				20CE5DBD208ECBAA005AB89C /* MyViewController.m */,
+				2063CDCE2091B04F00318267 /* ChatViewController.h */,
+				2063CDCF2091B04F00318267 /* ChatViewController.m */,
+				2063CDD12091B1EE00318267 /* ChatTableViewCell.h */,
+				2063CDD22091B1EE00318267 /* ChatTableViewCell.m */,
+				2063CDD32091B1EE00318267 /* ChatTableViewCell.xib */,
+				2063CDD62091BA2B00318267 /* ChatCreateViewController.h */,
+				2063CDD72091BA2B00318267 /* ChatCreateViewController.m */,
+				20D342B8209C70D200379197 /* ChatView.h */,
+				20D342B9209C70D200379197 /* ChatView.m */,
+				20D342BB209C70E700379197 /* ChatView.xib */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -1262,6 +1288,7 @@
 				20D30819207C6D78001BD67E /* commond_icon_basket_s@3x.png in Resources */,
 				205FC50820884AF00030807E /* event_icon_up_n@3x.png in Resources */,
 				205FC4FB20884AF00030807E /* event_icon_down_n@3x.png in Resources */,
+				20D342BC209C70E700379197 /* ChatView.xib in Resources */,
 				205FC50620884AF00030807E /* event_icon_yellow_n@3x.png in Resources */,
 				205FC4AF20809FFE0030807E /* Global.storyboard in Resources */,
 				20D30830207C6D79001BD67E /* live_icon_down_n@2x.png in Resources */,
@@ -1313,6 +1340,7 @@
 				205FC495208054C60030807E /* FDAResultTableViewCell.xib in Resources */,
 				20D3082C207C6D79001BD67E /* live_bg_basketball_n@2x.jpg in Resources */,
 				20D3081D207C6D78001BD67E /* commond_icon_live_s@3x.png in Resources */,
+				2063CDD52091B1EE00318267 /* ChatTableViewCell.xib in Resources */,
 				20D30823207C6D79001BD67E /* data_icon_close_n@3x.png in Resources */,
 				205FC4A820809AFE0030807E /* live_bg_blank_n@3x.png in Resources */,
 				205FC49F208095910030807E /* live_icon_back_black@3x.png in Resources */,
@@ -1393,6 +1421,7 @@
 				20D307E8207B7E4B001BD67E /* DownLoadOperation.m in Sources */,
 				205FC4B22080A06C0030807E /* GlobalViewController.m in Sources */,
 				20D307CE207B7E4B001BD67E /* QiuMiCommonTableViewController.m in Sources */,
+				20D342BA209C70D200379197 /* ChatView.m in Sources */,
 				20D307C3207B7E4B001BD67E /* UIImage+effect.m in Sources */,
 				20D307BC207B7E4B001BD67E /* QiuMiCreateKeyBoardDelegater.m in Sources */,
 				20D307BB207B7E4B001BD67E /* UIControl+UIControl_Click.m in Sources */,
@@ -1408,6 +1437,7 @@
 				205FC481207F4A260030807E /* FootDetailAnalyseView.m in Sources */,
 				20D307B4207B7E4B001BD67E /* NSDictionary+CommonKit.m in Sources */,
 				205FC49920805F320030807E /* FDAHistoryTableViewCell.m in Sources */,
+				2063CDD42091B1EE00318267 /* ChatTableViewCell.m in Sources */,
 				209ADE1E207B52F900FC8AD8 /* main.m in Sources */,
 				20D307E0207B7E4B001BD67E /* QiuMiPromptView.m in Sources */,
 				205FC48E207F62370030807E /* FDAScheduleTableViewCell.m in Sources */,
@@ -1416,9 +1446,11 @@
 				20D307BA207B7E4B001BD67E /* UIColor+RGBA.m in Sources */,
 				20D3084B207DF89D001BD67E /* FootballDetailViewController.m in Sources */,
 				205FC4BF2086F0E40030807E /* BasketballIndexViewController.m in Sources */,
+				2063CDD82091BA2B00318267 /* ChatCreateViewController.m in Sources */,
 				20D307DF207B7E4B001BD67E /* QiuMiCommonPromptView.m in Sources */,
 				20D307D1207B7E4B001BD67E /* QiuMiCommonWebViewController.m in Sources */,
 				20D307C6207B7E4B001BD67E /* QiuMiPickerView.m in Sources */,
+				2063CDD02091B04F00318267 /* ChatViewController.m in Sources */,
 				20D307D7207B7E4B001BD67E /* QiuMiImageView.m in Sources */,
 				20D307B3207B7E4B001BD67E /* NSDate+PCDate.m in Sources */,
 				20D307BE207B7E4B001BD67E /* CustomIOS7AlertView.m in Sources */,

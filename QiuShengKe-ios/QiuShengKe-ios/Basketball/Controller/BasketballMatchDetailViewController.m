@@ -10,6 +10,10 @@
 #import "BasketDetailBaseView.h"
 #import "FootDetailOddView.h"
 #import "FootDetailAnalyseView.h"
+#import "ChatViewController.h"
+#import "ChatViewController.h"
+#import "ChatView.h"
+
 
 @interface BasketballMatchDetailViewController ()<UIScrollViewDelegate>
 @property(nonatomic, strong)IBOutlet UIView* tabBG;
@@ -73,11 +77,11 @@
     [_content setDelegate:self];
     QiuMiViewBorder(_hicon, _hicon.frame.size.height/2, 0, [UIColor clearColor]);
     QiuMiViewBorder(_aicon, _aicon.frame.size.height/2, 0, [UIColor clearColor]);
-    [_content setContentSize:CGSizeMake(SCREENWIDTH*3, SCREENHEIGHT - 190 - 44)];
+    [_content setContentSize:CGSizeMake(SCREENWIDTH*4, SCREENHEIGHT - 190 - 44)];
     self.tab = [[QiuMiTabView alloc] initWithFrame:CGRectMake(0, 2, SCREENWIDTH, 40) withCanScroll:NO];
     [_tab setSelectedColor:QIUMI_COLOR_C1];
     [_tab setNormalColor:QIUMI_COLOR_G2];
-    [_tab setColumnTitles:@[@"分析",@"赛况",@"指数"]];
+    [_tab setColumnTitles:@[@"分析",@"赛况",@"指数",@"讨论"]];
     [_tabBG addSubview:_tab];
     
     __weak typeof(self) wself = self;
@@ -87,9 +91,16 @@
         [wself.content scrollRectToVisible:rect animated:YES];
     };
     
-    for(NSInteger i = 0 ; i < 3 ; i++){
+    for(NSInteger i = 0 ; i < 4 ; i++){
         UIView* view = nil;
         switch (i) {
+            case 3:
+                view = [[NSBundle mainBundle] loadNibNamed:@"ChatView" owner:nil options:nil][0];
+                [self.views addObject:view];
+                [(ChatView*)view setMid:_mid];
+                [(ChatView*)view setSport:2];
+                [(ChatView*)view loadData];
+                break;
             case 1:
                 view = [[NSBundle mainBundle] loadNibNamed:@"BasketDetailBaseView" owner:nil options:nil][0];
                 [self.views addObject:view];
@@ -196,6 +207,13 @@
         //        NSInteger index = scrollView.contentOffset.x/SCREENWIDTH;
         //        [self loadData:index];
     }
+}
+
+- (IBAction)clickChat:(id)sender{
+    ChatViewController* controller = (ChatViewController*)[QiuMiCommonViewController controllerWithStoryBoardName:@"My" withControllerName:@"ChatViewController"];
+    controller.mid = _mid;
+    controller.sport = 2;
+    [[QiuMiCommonViewController navigationController] pushViewController:controller animated:YES];
 }
 
 - (IBAction)clicklive:(id)sender{

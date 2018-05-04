@@ -135,7 +135,7 @@ static UIWindow *_window;
     [userCenterBtn setFrame:CGRectMake(0, 0, 44, 44)];
     [userCenterBtn setExclusiveTouch:YES];
     [userCenterBtn setImageEdgeInsets:UIEdgeInsetsMake(0, - 28, 0, 0)];
-    [userCenterBtn setImage:[UIImage imageNamed:@"match_icon_back_n.png"] forState:UIControlStateNormal];
+    [userCenterBtn setImage:[UIImage imageNamed:@"live_icon_back_white"] forState:UIControlStateNormal];
     [userCenterBtn addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* leftItem = [[UIBarButtonItem alloc]initWithCustomView:userCenterBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
