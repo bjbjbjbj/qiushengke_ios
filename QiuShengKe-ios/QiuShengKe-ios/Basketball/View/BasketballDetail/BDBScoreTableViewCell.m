@@ -52,12 +52,12 @@
     if ([dic existForKey:@"h_ot"] || [dic existForKey:@"a_ot"]) {
         [_scoreOT setHidden:NO];
         NSInteger total = 0;
-        if (isHost) {
+        if (isHost && [[dic objectForKey:@"h_ot"] isKindOfClass:[NSArray class]]) {
             for (NSNumber* tmp in [dic objectForKey:@"h_ot"]) {
                 total += [tmp integerValue];
             }
         }
-        else{
+        else if([[dic objectForKey:@"a_ot"] isKindOfClass:[NSArray class]]){
             for (NSNumber* tmp in [dic objectForKey:@"a_ot"]) {
                 total += [tmp integerValue];
             }
