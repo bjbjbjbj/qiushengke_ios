@@ -35,25 +35,21 @@
     UIStoryboard* basket = [ UIStoryboard storyboardWithName:@"Basketball" bundle:nil];
     UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"My" bundle:nil];
     [controllers addObject:[recommend instantiateInitialViewController]];
-    [controllers addObject:[basket instantiateInitialViewController]];
+//    [controllers addObject:[basket instantiateInitialViewController]];
     [controllers addObject:[matchList instantiateInitialViewController]];
     
     [self setViewControllers:controllers];
     
     //初始化item
-    NSArray* title = @[@"足球",@"篮球",@"设置"];
+    NSArray* title = @[@"直播",@"更多"];
     NSArray* images = @[
                         @[
-                            @"commond_icon_soccer_n",
-                            @"commond_icon_soccer_s",
+                            @"tab_icon_live_n",
+                            @"tab_icon_live_s",
                             ],
                         @[
-                            @"commond_icon_basket_n",
-                            @"commond_icon_basket_s",
-                            ],
-                        @[
-                            @"commond_icon_live_n",
-                            @"commond_icon_live_s",
+                            @"tab_icon_more_n",
+                            @"tab_icon_more_s",
                             ],
                         ];
     
@@ -68,7 +64,7 @@
         UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:[title objectAtIndex:i] image:musicImage selectedImage:musicImageSel];
         [ct setTabBarItem:item];
         if (i == 2) {
-            [ct.tabBarItem setImageInsets:UIEdgeInsetsMake(-4, 0, 4, 0)];
+//            [ct.tabBarItem setImageInsets:UIEdgeInsetsMake(-4, 0, 4, 0)];
         }
         [ct.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, 0)];
     }

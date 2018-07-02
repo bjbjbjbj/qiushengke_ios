@@ -37,7 +37,7 @@
     [_tabView setNormalColor:COLOR(234, 234, 234, 1)];
     [_tabView setLineColor:QIUMI_COLOR_G7];
     [_tabView setColumnTitles:@[@"即时比分",@"完场赛果",@"未来赛程"]];
-    [_tabBG addSubview:_tabView];
+//    [_tabBG addSubview:_tabView];
     
     if ([self respondsToSelector:@selector(additionalSafeAreaInsets)]) {
         [_contentView setContentSize:CGSizeMake(SCREENWIDTH*3, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];

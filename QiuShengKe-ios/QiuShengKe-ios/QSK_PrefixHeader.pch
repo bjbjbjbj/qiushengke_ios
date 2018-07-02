@@ -50,6 +50,8 @@
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
 
+#import "OCBarrage.h"
+
 #define QIUMIDEBUG 1
 #define LGREVIEW 0
 
@@ -67,7 +69,7 @@
 #define LG_FONT @"PingFangSC-Regular"
 
 //宏颜色
-#define QIUMI_COLOR_C1 COLOR(52, 180, 93,1)
+#define QIUMI_COLOR_C1 COLOR(68, 146, 253,1)
 #define QIUMI_COLOR_C1_L COLOR(192, 211, 198,1)
 #define QIUMI_COLOR_C1_D COLOR(30,170,255,.55)
 //橙色

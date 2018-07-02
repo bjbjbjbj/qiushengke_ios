@@ -14,14 +14,13 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [UMConfigure initWithAppkey:@"Your Appkey" channel:@"App Store"];
     [QiuMiCommonViewController startupWithNavigateDelegate:self window:self.window];
+//    IQKeyboardManager.sharedManager.enable = YES;
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -57,5 +56,15 @@
 - (UIWindow *)window
 {
     return _window;
+}
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window
+{
+    if (self.allowRotation == YES) {
+        //横屏
+        return UIInterfaceOrientationMaskLandscape | UIInterfaceOrientationMaskPortrait;
+    }else{
+        //竖屏
+        return UIInterfaceOrientationMaskPortrait;
+    }
 }
 @end

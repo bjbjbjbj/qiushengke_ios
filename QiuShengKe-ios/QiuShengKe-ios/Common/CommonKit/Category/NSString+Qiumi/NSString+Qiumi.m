@@ -353,4 +353,14 @@
 + (NSString *)stringFormat:(NSString *)format text:(NSString *)texts, ...{
     return [NSString stringWithFormat:format,texts];
 }
+
+
++ (NSString *)removeSpaceAndNewline:(NSString *)str
+{
+    NSString *temp = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    
+    NSString *text = [temp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet ]];
+    return text;
+}
 @end

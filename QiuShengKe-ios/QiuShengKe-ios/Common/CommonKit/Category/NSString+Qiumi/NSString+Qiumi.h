@@ -90,4 +90,8 @@
  @brief 快速返回字符串
  */
 + (NSString *)stringFormat:(NSString*)format text:(NSString*)texts,...;
+
+//去空格
++ (NSString *)removeSpaceAndNewline:(NSString *)str;
+
 @end

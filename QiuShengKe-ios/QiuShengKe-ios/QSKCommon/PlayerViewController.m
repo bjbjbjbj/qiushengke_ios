@@ -6,27 +6,154 @@
 //  Copyright © 2018年 xieweijie. All rights reserved.
 //
 
+#import <CommonCrypto/CommonDigest.h>
+#import "QiuShengKe-ios-Bridging-Header.h"
+#import "AKQDMTableViewCell.h"
+#import "AppDelegate.h"
+@import SocketIO;
+#import "GCDAsyncSocket.h"
 #import "PlayerViewController.h"
 #import <PLPlayerKit/PLPlayerKit.h>
-@interface PlayerViewController ()<PLPlayerDelegate>
-@property(nonatomic, strong) IBOutlet UILabel* tips;
+@interface PlayerViewController ()<PLPlayerDelegate,GCDAsyncSocketDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIAlertViewDelegate>
+{
+    NSTimeInterval _lastPostTime;
+}
+@property(nonatomic, assign) BOOL isFullScreen;
 @property(nonatomic, strong) IBOutlet UIView* toolView;
-@property(nonatomic, strong) IBOutlet UIButton* playBtn;
 @property(nonatomic, strong) IBOutlet UIView* navView;
+@property(nonatomic, strong) IBOutlet UITextField* text;
+
+@property(nonatomic, strong) IBOutlet UIButton* openBtn;
+
+@property(nonatomic, strong) IBOutlet UIView* playView;
+
+@property(nonatomic, strong) IBOutlet UITableView* tableview;
+
 @property(nonatomic, strong) PLPlayer  *player;
 @property(nonatomic, strong) NSArray* channels;
 @property(nonatomic, strong) UIAlertController* alertController;
+
+@property (nonatomic, strong) OCBarrageManager *barrageManager;
+
+@property (strong, nonatomic) SocketIOClient *bj;
+@property (strong, nonatomic) SocketManager *bj2;
+
+@property (strong, nonatomic) NSMutableArray* chats;
 @end
 
 @implementation PlayerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor blackColor]];
+    
+    AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //允许转成横屏
+    appDelegate.allowRotation = YES;
+    
+    [self.playView setFrame:CGRectMake(0, 64, SCREENWIDTH, 210*(SCREENWIDTH/375))];
+    
+    [_tableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    self.chats = [[NSMutableArray alloc]init];
+    _isFullScreen = NO;
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.playView setBackgroundColor:[UIColor blackColor]];
     self.needToHideNavigationBar = YES;
     // Do any additional setup after loading the view.
     [self _loadData];
+//    [self _setupPlayer:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
+    [self setupSocket];
+    [self setupDM];
+    [self setUIRoute];
+    [self addNotification];
+    
+    UILabel* head = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 150)];
+    [head setTextColor:QIUMI_COLOR_G2];
+    [head setTextAlignment:NSTextAlignmentCenter];
+    [head setFont:[UIFont systemFontOfSize:16]];
+    [head setText:@"暂时没有新弹幕"];
+    [_tableview setTableHeaderView:head];
 }
+
+-(void)setupDM{
+    self.barrageManager = [[OCBarrageManager alloc] init];
+    [self.playView addSubview:self.barrageManager.renderView];
+    [self.playView bringSubviewToFront:self.barrageManager.renderView];
+    self.barrageManager.renderView.frame = CGRectMake(0.0, 0, self.playView.frame.size.width, self.playView.frame.size.height);
+    //    self.barrageManager.renderView.center = self.view.center;
+    self.barrageManager.renderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+}
+
+- (void)setupSocket{
+//    NSURL* url = [[NSURL alloc] initWithString:@"http://bj.xijiazhibo.cc"];
+//        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:6001"];
+        NSURL* url = [[NSURL alloc] initWithString:@"http://ws.aikq.cc"];
+    SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES}];
+    self.bj2 = manager;
+    SocketIOClient* socket = manager.defaultSocket;
+    self.bj = socket;
+    
+    QiuMiWeakSelf(self);
+    [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        NSLog(@"socket connected");
+        QiuMiStrongSelf(self);
+        
+        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+        NSTimeInterval time = [dat timeIntervalSince1970];
+        NSString* tmp = [@(time) stringValue];
+        tmp = [tmp componentsSeparatedByString:@"."][0];
+        if ([tmp length] <= 2) {
+            return;
+        }
+        NSString* first = [tmp substringWithRange:NSMakeRange([tmp length] - 1, 1)];
+        NSString* second = [tmp substringWithRange:NSMakeRange([tmp length] - 2, 2)];
+        NSString* midStr = [NSString stringWithFormat:@"%@_%@",@(self.sport),@(self.mid)];
+        NSString* verification =  [PlayerViewController md5:[NSString stringWithFormat:@"%@?%@_%@",midStr,first,second]];
+        
+        NSDictionary* params = @{
+                                 @"mid": midStr,
+                                 @"time":tmp,
+                                 @"verification":verification
+                                 };
+        [socket emit:@"user_mid" with:@[params]];
+    }];
+    
+    [socket on:@"server_send_message" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        QiuMiStrongSelf(self);
+        [self addNormalBarrage:[[data objectAtIndex:0] objectForKey:@"message"]];
+        [self.chats addObject:[NSString stringWithFormat:@"%@:%@",[[data objectAtIndex:0] objectForKey:@"nickname"],[[data objectAtIndex:0] objectForKey:@"message"]]];
+        if ([self.chats count] > 0) {
+            [self.tableview setTableHeaderView:nil];
+        }
+        [self.tableview reloadData];
+    }];
+    
+    [socket connect];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //禁用侧滑手势方法
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    //禁用侧滑手势方法
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+}
+
+- (void)addNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChange:) name:UIKeyboardDidChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+}
+
+- (void)removeNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidChangeFrameNotification object:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -34,6 +161,7 @@
 }
 
 - (void)dealloc{
+    [_bj disconnect];
     self.player.delegate = nil;
     [_player stop];
 }
@@ -79,26 +207,26 @@
 */
 
 - (IBAction)clickBack:(id)sender{
-    UIViewController * controller = [self getCurrentVC];
-    if (controller.interfaceOrientation != UIInterfaceOrientationPortrait) {
-        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-            SEL selector = NSSelectorFromString(@"setOrientation:");
-            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-            [invocation setSelector:selector];
-            [invocation setTarget:[UIDevice currentDevice]];
-            int val = UIInterfaceOrientationPortrait;
-            [invocation setArgument:&val atIndex:2];
-            [invocation invoke];
-        }
-    }
+    //点击导航栏返回按钮的时候调用，所以Push出的控制器最好禁用侧滑手势：
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.allowRotation = NO;//关闭横屏仅允许竖屏
+    //切换到竖屏
+    [UIDevice switchNewOrientation:UIInterfaceOrientationPortrait];
     [[QiuMiCommonViewController navigationController] popViewControllerAnimated:YES];
 }
 
 - (void)_loadData{
     QiuMiWeakSelf(self);
-    [[QiuMiHttpClient instance] GET:[NSString stringWithFormat:QSK_MATCH_CHANNELS,(_sport == 1?@"foot":@"basket"),[@(_mid) stringValue]] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[QiuMiHttpClient instance] GET:[NSString stringWithFormat:QSK_MATCH_CHANNELS,(_sport == 1?@"detailJson":(_sport == 2 ? @"basketDetailJson":@"otherDetailJson")),[@(_mid) stringValue]] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);
-        self.channels = responseObject;
+        NSArray* channels = [[responseObject objectForKey:@"live"] objectForKey:@"channels"];
+        NSMutableArray* result = [[NSMutableArray alloc] init];
+        for (NSDictionary* channel in channels) {
+            if (![[channel objectForKey:@"link"] containsString:@"leqiuba.cc"]) {
+                [result addObject:channel];
+            }
+        }
+        self.channels = result;
         if ([self.channels count] > 0) {
             [self loadChannel:0];
         }
@@ -109,37 +237,13 @@
 
 - (void)loadChannel:(NSInteger)index{
     NSDictionary* dic = [_channels objectAtIndex:index];
-    NSInteger type = 2;
-    if ([dic existForKey:@"anchor_id"]) {
-        type = 2;
-    }
-    else{
-        type = 1;
-    }
     NSString* url = @"";
-    if (type == 1) {
-        NSString* content = [dic objectForKey:@"content"];
-        content = [content lastPathComponent];
-        content = [content stringByReplacingOccurrencesOfString:@".html" withString:@""];
-        if ([[content componentsSeparatedByString:@"-"] count] > 2) {
-            url = [NSString stringWithFormat:@"http://www.aikq.cc/match/live/url/match/pc/%@_%@.json",[content componentsSeparatedByString:@"-"][1],[content componentsSeparatedByString:@"-"][2]];
-        }
-    }
-    else{
-        url = [QIUMI_API_PREFIX stringByAppendingString:[NSString stringWithFormat:@"/json/live/channel/%@.json",[dic objectForKey:@"id"]]];
-    }
+    NSString* content = [dic objectForKey:@"channelId"];
+    url = [NSString stringWithFormat:@"http://www.aikq.cc/match/live/url/channel/%@.json",content];
     [[QiuMiHttpClient instance] GET:url parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (type == 1) {
-            if ([responseObject integerForKey:@"code"] == 0 && [responseObject existForKey:@"playurl"]) {
-                self.urlString = [responseObject objectForKey:@"playurl"];
-                [self _setupPlayer:_urlString];
-            }
-        }
-        else{
-            if ([responseObject integerForKey:@"code"] == 0 && [responseObject existForKey:@"url"]) {
-                self.urlString = [responseObject objectForKey:@"url"];
-                [self _setupPlayer:_urlString];
-            }
+        if ([responseObject integerForKey:@"code"] == 0 && [responseObject existForKey:@"playurl"]) {
+            self.urlString = [responseObject objectForKey:@"playurl"];
+            [self _setupPlayer:_urlString];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -163,41 +267,42 @@
     self.player = [PLPlayer playerLiveWithURL:url option:option];
     self.player.delegate = self;
     self.player.playerView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:self.player.playerView];
-    [self.view sendSubviewToBack:self.player.playerView];
+    [self.player.playerView setBackgroundColor:[UIColor blackColor]];
     
-    self.player.playerView.translatesAutoresizingMaskIntoConstraints = NO;
-    // 添加 left 约束
-    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.player.playerView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-    [self.view addConstraint:leftConstraint];
-    // 添加 top 约束
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.player.playerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-    [self.view addConstraint:topConstraint];
-    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.player.playerView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-    [self.view addConstraint:rightConstraint];
-    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.player.playerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-    [self.view addConstraint:bottomConstraint];
+//    self.player.playerView.translatesAutoresizingMaskIntoConstraints = NO;
+//    // 添加 left 约束
+//    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.player.playerView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.playView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+//    [self.playView addConstraint:leftConstraint];
+//    // 添加 top 约束
+//    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.player.playerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.playView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+//    [self.playView addConstraint:topConstraint];
+//    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.player.playerView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.playView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+//    [self.playView addConstraint:rightConstraint];
+//    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.player.playerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.playView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
+//    [self.playView addConstraint:bottomConstraint];
+    
+    [self.playView addSubview:self.player.playerView];
+    [self.playView sendSubviewToBack:self.player.playerView];
+    
+    [self.playView setFrame:CGRectMake(0, 64, SCREENWIDTH, 210*(SCREENWIDTH/375))];
+    self.player.playerView.frame = CGRectMake(0, 0, SCREENWIDTH, 210*(SCREENWIDTH/375));
+    
     [self.player play];
     
-    [self performSelector:@selector(fail) withObject:nil afterDelay:10];
+//    [self performSelector:@selector(fail) withObject:nil afterDelay:10];
     
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTap:)];
-    [_player.playerView addGestureRecognizer:tap];
+    [_playView addGestureRecognizer:tap];
 }
 
 - (void)clickTap:(UITapGestureRecognizer*)tap{
-    [_navView setHidden:!_navView.isHidden];
-    [_toolView setHidden:!_toolView.isHidden];
-}
-
-- (IBAction)clickPause:(id)sender{
-    if (_player.isPlaying) {
-        [_player pause];
-        [_playBtn setTitle:@"继续" forState:UIControlStateNormal];
+    if (_isFullScreen) {
+        [_text resignFirstResponder];
+        [[_text superview] setHidden:YES];
+        [_toolView setHidden:!_toolView.isHidden];
     }
     else{
-        [_player resume];
-        [_playBtn setTitle:@"暂停" forState:UIControlStateNormal];
+        [UIDevice switchNewOrientation:UIInterfaceOrientationLandscapeRight];
     }
 }
 
@@ -238,7 +343,7 @@
 }
 
 - (void)fail{
-    [_tips setText:@"加载失败"];
+    [QiuMiPromptView showText:@"加载失败"];
 }
 
 - (void)player:(PLPlayer *)player stoppedWithError:(NSError *)error{
@@ -248,9 +353,270 @@
 - (void)player:(nonnull PLPlayer *)player statusDidChange:(PLPlayerStatus)state{
     if (state == PLPlayerStatusError) {
         NSLog(@"真挂了");
+        //重新load一次频道
+        [self _loadData];
     }
     else if(state == PLPlayerStatusPlaying){
-        [_tips setHidden:YES];
+        
     }
+}
+
+- (void)addNormalBarrage:(NSString*)text {
+    OCBarrageTextDescriptor *textDescriptor = [[OCBarrageTextDescriptor alloc] init];
+    textDescriptor.text = text;
+    textDescriptor.textColor = [UIColor whiteColor];
+    textDescriptor.positionPriority = OCBarragePositionLow;
+    textDescriptor.textFont = [UIFont systemFontOfSize:30.0];
+    textDescriptor.strokeColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    textDescriptor.strokeWidth = -1;
+    textDescriptor.animationDuration = arc4random()%5 + 5;
+    textDescriptor.barrageCellClass = [OCBarrageTextCell class];
+    
+    [self.barrageManager renderBarrageDescriptor:textDescriptor];
+}
+
+- (IBAction)clickToolReply:(id)sender{
+    [[_text superview] setHidden:NO];
+    [_text becomeFirstResponder];
+}
+
+- (IBAction)clickSmall:(id)sender{
+    [UIDevice switchNewOrientation:UIInterfaceOrientationPortrait];
+}
+
+//md5
++ (NSString *) md5:(NSString *) input
+{
+    const char *cStr = [input UTF8String];
+    unsigned char digest[16];
+    CC_MD5( cStr, (int)strlen(cStr), digest ); // This is the md5 call
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return  output;
+}
+
+- (IBAction)clickShowDM:(id)sender{
+    [_barrageManager.renderView setHidden:!_barrageManager.renderView.isHidden];
+    if (_barrageManager.renderView.isHidden) {
+        [_openBtn setImage:[UIImage imageNamed:@"player_comment_close"] forState:UIControlStateNormal];
+    }
+    else{
+        [_openBtn setImage:[UIImage imageNamed:@"player_comment_open"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)clickPost:(id)sender{
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval time = [dat timeIntervalSince1970];
+    //3秒内发一次
+    if (time - _lastPostTime <=3) {
+        [QiuMiPromptView showText:@"请不要在3秒内连续发消息"];
+        return;
+    }
+    
+    if ([[_text text] length] == 0) {
+        return;
+    }
+    
+    [self.text resignFirstResponder];
+    if(_isFullScreen){
+        [[_text superview] setHidden:YES];
+    }
+    
+    NSString* tmp = [@(time) stringValue];
+    tmp = [tmp componentsSeparatedByString:@"."][0];
+    if ([tmp length] <= 2) {
+        return;
+    }
+    NSString* first = [tmp substringWithRange:NSMakeRange([tmp length] - 1, 1)];
+    NSString* second = [tmp substringWithRange:NSMakeRange([tmp length] - 2, 2)];
+    
+    NSString* verification =  [PlayerViewController md5:[NSString stringWithFormat:@"%@?%@_%@",_text.text,first,second]];
+    
+    NSDictionary* param = @{
+                            @"nickname": [NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"],
+                            @"message": _text.text,
+                            @"time":tmp,
+                            @"verification":verification
+                            };
+    [_bj emit:@"user_send_message" with:@[param]];
+    _lastPostTime = time;
+    
+//    QiuMiWeakSelf(self);
+//    [[QiuMiHttpClient instance] POST:@"http://xijiazhibo.cc/bj2" parameters:@{@"msg":_text.text} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        QiuMiStrongSelf(self);
+//        [[self.text superview]setHidden:YES];
+//        [self.text resignFirstResponder];
+////        [self addNormalBarrage:_text.text];
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//
+//    }];
+}
+
+//旋转
+- (void)setUIRoute{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(p_initScreenOrientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)p_initScreenOrientationChanged:(id)notification {
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
+//        [UIDevice switchNewOrientation:(UIInterfaceOrientation)orientation];
+        self.playView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+        self.player.playerView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+        self.isFullScreen = YES;
+    }
+    else{
+//        [UIDevice switchNewOrientation:UIInterfaceOrientationPortrait];
+        [self.playView setFrame:CGRectMake(0, 64, SCREENWIDTH, 210*(SCREENWIDTH/375))];
+        self.player.playerView.frame = CGRectMake(0, 0, SCREENWIDTH, 210*(SCREENWIDTH/375));
+        self.isFullScreen = NO;
+    }
+    return;
+//    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+////    [self fullScreen:orientation];
+////    if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
+////        [self.playView setFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+////    }
+////    else{
+////
+////    }
+//    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:orientation] forKey:@"orientation"];
+//    CGAffineTransform tranform = [self getRotateTransform:orientation];
+//    if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
+//        [UIView animateWithDuration:0.3f animations:^{
+//            CGFloat width = MAX(SCREENWIDTH, SCREENHEIGHT);
+//            CGFloat height = MIN(SCREENWIDTH, SCREENHEIGHT);
+//            CGRect frame = CGRectMake((height - width)/2.0,(width - height)/2.0, width, height);
+//            self.playView.frame = frame;
+//            _player.playerView.frame = _playView.bounds;
+//            [self.playView setTransform:tranform];
+//        }completion:^(BOOL finished) {
+//            [_navView setHidden:YES];
+//        }];
+//        self.isFullScreen = YES;
+//        [UIApplication sharedApplication].statusBarOrientation = (UIInterfaceOrientation)orientation;
+//        [UIApplication sharedApplication].statusBarHidden = NO;
+//    }
+//    else{
+//        self.isFullScreen = NO;
+//        [UIApplication sharedApplication].statusBarOrientation = UIInterfaceOrientationPortrait;
+//        [UIApplication sharedApplication].statusBarHidden = NO;
+//        
+//        [UIView animateWithDuration:0.3f animations:^{
+//            [self.playView setTransform:CGAffineTransformIdentity];
+//            [self.playView setFrame:CGRectMake(0, 64, SCREENWIDTH, 210*(SCREENWIDTH/375))];
+//            _player.playerView.frame = CGRectMake(0, 0, SCREENWIDTH, 210*(SCREENWIDTH/375));
+//        }completion:^(BOOL finished) {
+//        
+//            [_navView setHidden:NO];
+//        }];
+//    }
+}
+
+- (void)setIsFullScreen:(BOOL)isFullScreen{
+    [_text resignFirstResponder];
+    _isFullScreen = isFullScreen;
+    if (isFullScreen) {
+        [_navView setHidden:YES];
+        [self.barrageManager start];
+        [_tableview setHidden:YES];
+        [[_text superview] setHidden:YES];
+        QiuMiViewReframe([_text superview], CGRectMake(0, 0, SCREENWIDTH, [_text superview].frame.size.height));
+        [self addNotification];
+    }
+    else{
+        [_toolView setHidden:YES];
+        [_navView setHidden:NO];
+        [self.barrageManager stop];
+        [_tableview setHidden:NO];
+        [[_text superview] setHidden:NO];
+        [self removeNotification];
+        QiuMiViewReframe([_text superview], CGRectMake(0, SCREENHEIGHT - 44, SCREENWIDTH, [_text superview].frame.size.height));
+    }
+}
+
+- (CGAffineTransform)getRotateTransform:(UIDeviceOrientation)orientation {
+    CGAffineTransform tranform = CGAffineTransformIdentity;
+    if (orientation == UIDeviceOrientationLandscapeLeft) {
+        tranform = CGAffineTransformMakeRotation(M_PI_2);
+    } else if (orientation == UIDeviceOrientationLandscapeRight){
+        tranform = CGAffineTransformMakeRotation(-M_PI_2);
+    }
+    return tranform;
+}
+
+#pragma table
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [_chats count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    AKQDMTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"AKQDMTableViewCell"];
+    if (cell == nil) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"AKQDMTableViewCell" owner:nil options:nil][0];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    if ([_chats count] > indexPath.row) {
+        [cell loadData:@{@"text":[_chats objectAtIndex:[_chats count] - 1 - indexPath.row]}];
+    }
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 30;
+}
+
+#pragma mark - alert
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == !alertView.cancelButtonIndex) {
+        UITextField* text = [alertView textFieldAtIndex:0];
+        NSString* name = [NSString removeSpaceAndNewline:[text text]];
+        if (name && [name length] > 0) {
+            [NSUserDefaults setObjectToNSUserDefaultsPC:name withKey:@"user_name"];
+        }
+        else{
+            
+        }
+    }
+}
+
+#pragma mark - text
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if ([[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"] length] > 0) {
+        return YES;
+    }
+    else{
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名" message:@"用户名无法更改，请谨慎输入" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [alert show];
+        return  NO;
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self clickPost:nil];
+    return YES;
+}
+
+-(void)keyboardWillShow:(NSNotification*)notification
+{
+    NSDictionary *info = [notification userInfo];
+    //获取键盘的size值
+    CGRect _keyBoard = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    QiuMiViewReframe([_text superview], CGRectMake(0, SCREENHEIGHT - 44 - _keyBoard.size.height, [_text superview].frame.size.width, [_text superview].frame.size.height));
+}
+
+-(void)keyboardDidChange:(NSNotification*)notification  {
+    
+}
+
+- (void)keyboardDidHide:(NSNotification *)notification
+{
+    QiuMiViewReframe([_text superview], CGRectMake(0, SCREENHEIGHT - 44, [_text superview].frame.size.width, [_text superview].frame.size.height));
 }
 @end

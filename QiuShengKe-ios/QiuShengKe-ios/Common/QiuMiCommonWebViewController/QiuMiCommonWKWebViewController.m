@@ -44,6 +44,10 @@
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc]initWithCustomView:refreshBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
     
+    if ([_url length] == 0) {
+        self.url = @"http://shop.liaogou168.com";
+    }
+    
     if (![_url hasPrefix:@"http"]) {
         _url = [NSString stringWithFormat:@"http://%@", _url];
     }
@@ -58,7 +62,7 @@
     configuration.allowsInlineMediaPlayback = YES;//是否允许内联(YES)或使用本机全屏控制器(NO)，默认是NO。
     configuration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeVideo;
     
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - STATUSHEIGHT - self.navigationController.navigationBar.frame.size.height) configuration:configuration];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - STATUSHEIGHT - self.navigationController.navigationBar.frame.size.height - self.tabBarController.tabBar.frame.size.height) configuration:configuration];
     [self.view addSubview:webView];
     
     self.webview = webView;

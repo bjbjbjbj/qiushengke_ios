@@ -33,6 +33,6 @@
 
 #define QSK_MATCH_BASKET_DETAIL_ANALYSE [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/2/%@/analyse.json"]
 
-#define QSK_MATCH_CHANNELS [@"https://www.qiushengke.com" stringByAppendingString:@"/json/live/%@/%@.json"]
+#define QSK_MATCH_CHANNELS @"http://www.liaogou168.com/aik/lives/%@/%@.json"
 
 #endif /* QSK_api_h */

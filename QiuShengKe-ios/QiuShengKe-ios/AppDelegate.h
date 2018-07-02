@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIDevice+TFDevice.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+/**
+ * 是否允许转向
+ */
+@property(nonatomic,assign)BOOL allowRotation;
 
 @property (strong, nonatomic) UIWindow *window;
 

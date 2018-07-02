@@ -22,80 +22,25 @@
 }
 
 + (NSInteger)heightOfCell{
-    return 95;
+    return 75;
 }
 
 - (void)loadData:(NSDictionary *)dic{
     [_hostName setText:[dic objectForKey:@"hname"]];
     [_awayName setText:[dic objectForKey:@"aname"]];
-    [_hicon qiumi_setImageWithURLString:[dic stringForKey:@"hicon"] withHoldPlace:QIUMI_DEFAULT_IMAGE];
-    [_aicon qiumi_setImageWithURLString:[dic stringForKey:@"aicon"] withHoldPlace:QIUMI_DEFAULT_IMAGE];
+
+    [_league setText:[[dic stringForKey:@"league_name" withDefault:@""] stringByAppendingString:[NSString stringWithFormat:@" %@",[[dic objectForKey:@"time"] substringWithRange:NSMakeRange(10, 6)]]]];
     
-    if([dic objectForKey:@"asiamiddle2"] && ![[dic objectForKey:@"asiamiddle2"] isKindOfClass:[NSNull class]]){
-        NSString* mid  = [QSKCommon oddString:[[dic valueForKey:@"asiamiddle2"] floatValue]];
-        if([[dic valueForKey:@"asiamiddle2"] floatValue] == 0){
-            mid = @"0";
-        }
-        [_asia setText:[NSString stringWithFormat:@"亚:%@ %@ %@",[dic stringForKey:@"asiaup2" withDefault:@"-"],mid,[dic stringForKey:@"asiadown2" withDefault:@"-"]]];
+    if ([[dic objectForKey:@"isMatching"] boolValue]) {
+        [_live setHidden:NO];
+        [_vs setHidden:YES];
     }
     else{
-        [_asia setText:@"亚:- - -"];
+        [_live setHidden:YES];
+        [_vs setHidden:NO];
     }
-    if([dic objectForKey:@"goalmiddle2"] && ![[dic objectForKey:@"goalmiddle2"] isKindOfClass:[NSNull class]]){
-        NSString* mid  = [QSKCommon oddString:[[dic valueForKey:@"goalmiddle2"] floatValue]];
-        [_goal setText:[NSString stringWithFormat:@"大:%@ %@ %@",[dic stringForKey:@"goalup2" withDefault:@"-"],mid,[dic stringForKey:@"goaldown2" withDefault:@"-"]]];
-    }
-    else{
-        [_goal setText:@"大:- - -"];
-    }
-    if([dic objectForKey:@"oumiddle2"] && ![[dic objectForKey:@"oumiddle2"] isKindOfClass:[NSNull class]]){
-        [_ou setText:[NSString stringWithFormat:@"欧:%@ %@ %@",[dic stringForKey:@"ouup2" withDefault:@"-"],[dic stringForKey:@"oumiddle2" withDefault:@"-"],[dic stringForKey:@"oudown2" withDefault:@"-"]]];
-    }
-    else{
-        [_ou setText:@"欧:- - -"];
-    }
-    [_league setText:[dic stringForKey:@"league" withDefault:@"-"]];
-    
-    if([dic integerForKey:@"status"] > 0 || [dic integerForKey:@"status"] == -1){
-        [_hscore setText:[dic stringForKey:@"hscore" withDefault:@"-"]];
-        [_ascore setText:[dic stringForKey:@"ascore" withDefault:@"-"]];
-        [_hhscore setText:[dic stringForKey:@"hscorehalf" withDefault:@"-"]];
-        [_ahscore setText:[dic stringForKey:@"ascorehalf" withDefault:@"-"]];
-        
-        [_hyellow setText:[dic stringForKey:@"h_yellow" withDefault:@"-"]];
-        [_ayellow setText:[dic stringForKey:@"a_yellow" withDefault:@"-"]];
-        [_hred setText:[dic stringForKey:@"h_red" withDefault:@"-"]];
-        [_ared setText:[dic stringForKey:@"a_red" withDefault:@"-"]];
-        
-        if([dic integerForKey:@"status"] <= 0)
-            [_time setText:[FootballMatchTableViewCell getStatusText:[dic integerForKey:@"status"]]];
-        else{
-            [_time setText:[dic stringForKey:@"current_time" withDefault:@"-"]];
-        }
-        [_time setTextColor:COLOR(203, 86, 70, 1)];
-    }
-    else{
-        [_hscore setText:@"-"];
-        [_ascore setText:@"-"];
-        [_hhscore setText:@"-"];
-        [_ahscore setText:@"-"];
-        [_hyellow setHidden:YES];
-        [_ayellow setHidden:YES];
-        [_hred setHidden:YES];
-        [_ared setHidden:YES];
-        [_time setText:[NSDate stringWithFormat:@"HH:mm" withTime:[[dic objectForKey:@"time"] longLongValue]]];
-        [_time setTextColor:QIUMI_COLOR_G1];
-    }
-    
-    if ([dic integerForKey:@"pc_live"] > 0) {
-        [_liveBtn setHidden:NO];
-        if ([dic integerForKey:@"afterInReview"] == 0) {
-            [_liveBtn setHidden:YES];
-        }
-    }
-    else{
-        [_liveBtn setHidden:YES];
-    }
+    [_live setHidden:NO];
+    [_vs setHidden:YES];
 }
 
 + (NSString *)getStatusText:(NSInteger)status{
