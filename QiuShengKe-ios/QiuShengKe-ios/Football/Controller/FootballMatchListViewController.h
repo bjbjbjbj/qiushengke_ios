@@ -8,10 +8,7 @@
 
 #import "QiuMiCommonViewController.h"
 
-@interface FootballMatchListViewController : QiuMiCommonViewController
-@property(nonatomic, strong)IBOutlet UITableView* tableView;
-@property(nonatomic, strong)IBOutlet UICollectionView* collectionView;
-@property(nonatomic, strong)IBOutlet UILabel* tips;
+@interface FootballMatchListViewController : QiuMiCommonTableViewController
 @property(nonatomic, strong)NSString* timeStr;
 @property(nonatomic, assign)NSInteger type;
 - (void)loadData;

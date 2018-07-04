@@ -22,12 +22,14 @@
 @property(nonatomic, strong) IBOutlet UIView* toolView;
 @property(nonatomic, strong) IBOutlet UIView* navView;
 @property(nonatomic, strong) IBOutlet UITextField* text;
-
 @property(nonatomic, strong) IBOutlet UIButton* openBtn;
-
 @property(nonatomic, strong) IBOutlet UIView* playView;
-
 @property(nonatomic, strong) IBOutlet UITableView* tableview;
+
+@property(nonatomic, strong) IBOutlet UIView* tipsView;
+@property(nonatomic, strong) IBOutlet UIImageView* tipsImage;
+@property(nonatomic, strong) IBOutlet UILabel* tipsTime;
+@property(nonatomic, strong) IBOutlet UILabel* tipsDetail;
 
 @property(nonatomic, strong) PLPlayer  *player;
 @property(nonatomic, strong) NSArray* channels;
@@ -39,20 +41,26 @@
 @property (strong, nonatomic) SocketManager *bj2;
 
 @property (strong, nonatomic) NSMutableArray* chats;
+@property (strong, nonatomic) NSTimer* timer;
+@property (assign, nonatomic) long long matchTime;
 @end
 
 @implementation PlayerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupTips];
     
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     //允许转成横屏
     appDelegate.allowRotation = YES;
     
     [self.playView setFrame:CGRectMake(0, 64, SCREENWIDTH, 210*(SCREENWIDTH/375))];
+    [self.tipsView setFrame:CGRectMake(0, 64, SCREENWIDTH, 210*(SCREENWIDTH/375))];
+    [_tipsView setHidden:YES];
     
     [_tableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [_tableview setBackgroundColor:COLOR(242, 242, 242, 1)];
     
     self.chats = [[NSMutableArray alloc]init];
     _isFullScreen = NO;
@@ -62,6 +70,15 @@
     // Do any additional setup after loading the view.
     [self _loadData];
 //    [self _setupPlayer:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
+//    [self _setupPlayer:@"rtmp://hdl0903.plures.net/onlive/8aa58d6efc9b484b9bfa386b213ee6d2?wsSecret=5f18150da571fe858797d1fc8d03fe9e&wsTime=5b3b2b61"];
+    _text.superview.layer.borderWidth = .5;
+    _text.superview.layer.cornerRadius = 2;
+    _text.superview.layer.borderColor = COLOR(207, 207, 207, 1).CGColor;
+    _text.superview.backgroundColor = COLOR(242, 242, 242, 1);
+    NSAttributedString* attStr = [[NSAttributedString alloc] initWithString:@"发个言呗，兄dei" attributes:@{
+                                                                                                      NSForegroundColorAttributeName:COLOR(158, 158, 158, 1)
+                                                                                                      }];
+    _text.attributedPlaceholder = attStr;
     [self setupSocket];
     [self setupDM];
     [self setUIRoute];
@@ -73,6 +90,22 @@
     [head setFont:[UIFont systemFontOfSize:16]];
     [head setText:@"暂时没有新弹幕"];
     [_tableview setTableHeaderView:head];
+    [_tableview setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)]];
+}
+
+- (void)setupTips{
+    NSDictionary* dic = [[NSMutableDictionary alloc] initWithStore:@"config"];
+    if (dic && [[dic objectForKey:@"icon"] length] > 0) {
+        [_tipsImage qiumi_setImageWithURLString:[dic objectForKey:@"icon"]];
+    }
+    if (dic && [[dic objectForKey:@"weixin"] length] > 0) {
+        NSMutableAttributedString* text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"加微信 %@\n与球迷赛事交流，乐享高清精彩赛事！",[dic objectForKey:@"weixin"]]];
+        [text addAttributes:@{
+                              NSForegroundColorAttributeName:COLOR(237, 247, 76, 1)
+                                  } range:NSMakeRange(4, [[dic objectForKey:@"weixin"] length])];
+        [_tipsDetail setAttributedText:text];
+    }
+    [_tipsTime setHidden:YES];
 }
 
 -(void)setupDM{
@@ -121,7 +154,7 @@
     [socket on:@"server_send_message" callback:^(NSArray* data, SocketAckEmitter* ack) {
         QiuMiStrongSelf(self);
         [self addNormalBarrage:[[data objectAtIndex:0] objectForKey:@"message"]];
-        [self.chats addObject:[NSString stringWithFormat:@"%@:%@",[[data objectAtIndex:0] objectForKey:@"nickname"],[[data objectAtIndex:0] objectForKey:@"message"]]];
+        [self.chats addObject:[data objectAtIndex:0]];
         if ([self.chats count] > 0) {
             [self.tableview setTableHeaderView:nil];
         }
@@ -164,6 +197,7 @@
     [_bj disconnect];
     self.player.delegate = nil;
     [_player stop];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 //获取当前屏幕显示的viewcontroller
@@ -230,6 +264,21 @@
         if ([self.channels count] > 0) {
             [self loadChannel:0];
         }
+        
+        if ([responseObject integerForKey:@"show_live"] > 0 || [[responseObject objectForKey:@"match"] integerForKey:@"status"] > 0) {
+            [self.tipsView setHidden:YES];
+        }
+        else{
+            NSString *dateStr = [[responseObject objectForKey:@"match"] objectForKey:@"time"];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            NSDate *date = [dateFormat dateFromString:dateStr];
+            NSString* tmp = [@([date timeIntervalSince1970]) stringValue];
+            tmp = [tmp componentsSeparatedByString:@"."][0];
+            self.matchTime = [tmp longLongValue];
+            [self.tipsView setHidden:NO];
+            [self setupTimer];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -259,6 +308,8 @@
     }
     
 //    urlStr = @"http://flvtx.plu.cn/onlive/7aa459e52bea4a5b902b40cd356be9fd.flv?txSecret=7f0136f1ac4889367efd2b17e4c5e6d2&txTime=5ad476e7";
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     
     NSURL* url = [[NSURL alloc] initWithString:urlStr];
     PLPlayerOption *option = [PLPlayerOption defaultOption];
@@ -298,7 +349,7 @@
 - (void)clickTap:(UITapGestureRecognizer*)tap{
     if (_isFullScreen) {
         [_text resignFirstResponder];
-        [[_text superview] setHidden:YES];
+        [[[_text superview]superview] setHidden:YES];
         [_toolView setHidden:!_toolView.isHidden];
     }
     else{
@@ -376,7 +427,7 @@
 }
 
 - (IBAction)clickToolReply:(id)sender{
-    [[_text superview] setHidden:NO];
+    [[[_text superview]superview] setHidden:NO];
     [_text becomeFirstResponder];
 }
 
@@ -422,9 +473,14 @@
         return;
     }
     
+    if ([[_text text] length] > 20) {
+        [QiuMiPromptView showText:@"请发不多于20个字的弹幕"];
+        return;
+    }
+    
     [self.text resignFirstResponder];
     if(_isFullScreen){
-        [[_text superview] setHidden:YES];
+        [[[_text superview]superview] setHidden:YES];
     }
     
     NSString* tmp = [@(time) stringValue];
@@ -444,6 +500,7 @@
                             @"verification":verification
                             };
     [_bj emit:@"user_send_message" with:@[param]];
+    [_text setText:@""];
     _lastPostTime = time;
     
 //    QiuMiWeakSelf(self);
@@ -525,8 +582,8 @@
         [_navView setHidden:YES];
         [self.barrageManager start];
         [_tableview setHidden:YES];
-        [[_text superview] setHidden:YES];
-        QiuMiViewReframe([_text superview], CGRectMake(0, 0, SCREENWIDTH, [_text superview].frame.size.height));
+        [[[_text superview]superview] setHidden:YES];
+        QiuMiViewReframe([[_text superview]superview], CGRectMake(0, 0, SCREENWIDTH, [[_text superview]superview].frame.size.height));
         [self addNotification];
     }
     else{
@@ -534,9 +591,9 @@
         [_navView setHidden:NO];
         [self.barrageManager stop];
         [_tableview setHidden:NO];
-        [[_text superview] setHidden:NO];
+        [[[_text superview]superview] setHidden:NO];
         [self removeNotification];
-        QiuMiViewReframe([_text superview], CGRectMake(0, SCREENHEIGHT - 44, SCREENWIDTH, [_text superview].frame.size.height));
+        QiuMiViewReframe([[_text superview]superview], CGRectMake(0, SCREENHEIGHT - 44, SCREENWIDTH, [[_text superview]superview].frame.size.height));
     }
 }
 
@@ -562,7 +619,7 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     if ([_chats count] > indexPath.row) {
-        [cell loadData:@{@"text":[_chats objectAtIndex:[_chats count] - 1 - indexPath.row]}];
+        [cell loadData:[_chats objectAtIndex:[_chats count] - 1 - indexPath.row]];
     }
     return cell;
 }
@@ -608,7 +665,7 @@
     NSDictionary *info = [notification userInfo];
     //获取键盘的size值
     CGRect _keyBoard = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    QiuMiViewReframe([_text superview], CGRectMake(0, SCREENHEIGHT - 44 - _keyBoard.size.height, [_text superview].frame.size.width, [_text superview].frame.size.height));
+    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - 44 - _keyBoard.size.height, [[_text superview] superview].frame.size.width, [[_text superview] superview].frame.size.height));
 }
 
 -(void)keyboardDidChange:(NSNotification*)notification  {
@@ -617,6 +674,56 @@
 
 - (void)keyboardDidHide:(NSNotification *)notification
 {
-    QiuMiViewReframe([_text superview], CGRectMake(0, SCREENHEIGHT - 44, [_text superview].frame.size.width, [_text superview].frame.size.height));
+    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - 44, [[_text superview] superview].frame.size.width, [[_text superview] superview].frame.size.height));
+}
+
+#pragma mark - 倒计时
+- (void)setupTimer {
+    if (_timer) {
+        [self.timer invalidate];
+    }
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+}
+
+- (void)updateTime {
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval time = [dat timeIntervalSince1970];
+    NSString* tmp = [@(time) stringValue];
+    tmp = [tmp componentsSeparatedByString:@"."][0];
+    
+    long topCount = _matchTime - [tmp longLongValue];
+    if (topCount >= 0) {
+        NSString* time = @"";
+        NSInteger hour = topCount/3600;
+        NSInteger min = (topCount%3600)/60;
+        NSInteger second = topCount%60;
+        if (hour > 0) {
+            time = [time stringByAppendingString:[NSString stringWithFormat:@"%d:",hour]];
+        }
+        if (min > 0) {
+            if (min > 9) {
+                time = [time stringByAppendingString:[NSString stringWithFormat:@"%d:",min]];
+            }
+            else{
+                time = [time stringByAppendingString:[NSString stringWithFormat:@"0%d:",min]];
+            }
+        }
+        if (second > 9) {
+            time = [time stringByAppendingString:[NSString stringWithFormat:@"%d",second]];
+        }
+        else{
+            time = [time stringByAppendingString:[NSString stringWithFormat:@"0%d",second]];
+        }
+        NSMutableAttributedString* text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"距离比赛还有%@",time]];
+        [text addAttributes:@{
+                              NSForegroundColorAttributeName:COLOR(237, 247, 76, 1)
+                              } range:NSMakeRange(6, [text length] - 6)];
+        [_tipsTime setAttributedText:text];
+        [_tipsTime setHidden:NO];
+    }
+    else{
+        [self.timer invalidate];
+        [_tipsTime setHidden:YES];
+    }
 }
 @end

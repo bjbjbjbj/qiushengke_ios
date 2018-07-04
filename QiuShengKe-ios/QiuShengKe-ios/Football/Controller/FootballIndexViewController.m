@@ -9,7 +9,7 @@
 #import "FootballIndexViewController.h"
 #import "FootballMatchListViewController.h"
 
-@interface FootballIndexViewController ()
+@interface FootballIndexViewController ()<UIScrollViewDelegate>
 @property(nonatomic, strong)IBOutlet UIView* tabBG;
 @property(nonatomic, strong)IBOutlet UIScrollView* contentView;
 
@@ -54,9 +54,8 @@
         [wself loadData:index];
     };
     
-    for(NSInteger i = 0 ; i < 3 ; i++){
+    for(NSInteger i = 0 ; i < 1 ; i++){
         FootballMatchListViewController* controller = (FootballMatchListViewController*)[QiuMiCommonViewController controllerWithStoryBoardName:@"Football" withControllerName:@"FootballMatchListViewController"];
-        [self.controllers addObject:controller];
         switch (i) {
             case 0:
                 [controller setTimeStr:[self getCurrentTime]];
@@ -72,10 +71,10 @@
                 break;
         }
         [controller.view setFrame:CGRectMake(SCREENWIDTH*i, 0, SCREENWIDTH, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
-        [controller.tableView setFrame:CGRectMake(0, controller.tableView.frame.origin.y, SCREENWIDTH, controller.view.frame.size.height - controller.tableView.frame.origin.y)];
-        [[controller.collectionView superview] setFrame:CGRectMake(0, [controller.collectionView superview].frame.origin.y, SCREENWIDTH, [controller.collectionView superview].frame.size.height)];
-        [[controller.tips superview] setFrame:CGRectMake(0, [controller.tips superview].frame.origin.y, SCREENWIDTH, [controller.tips superview].frame.size.height)];
+        [controller updateFrame:CGRectMake(0, 0, SCREENWIDTH, controller.view.frame.size.height)];
         [_contentView addSubview:controller.view];
+        [self.controllers addObject:controller];
+        [self addChildViewController:controller];
     }
 }
 

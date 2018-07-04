@@ -44,6 +44,11 @@
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc]initWithCustomView:refreshBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
     
+    NSDictionary* dic = [[NSMutableDictionary alloc] initWithStore:@"config"];
+    if (dic && [[dic objectForKey:@"more"] length] > 0) {
+        self.url = [dic objectForKey:@"more"];
+    }
+    
     if ([_url length] == 0) {
         self.url = @"http://shop.liaogou168.com";
     }
@@ -139,9 +144,8 @@
 
 - (void)goBack:(id)sender{
     if (self.webview.canGoBack) {
-        [self.webview goBack];
         //用户交互关闭按钮
-        if (self.navigationItem.leftBarButtonItems.count == 1) {
+        if (self.webview.backForwardList.backList.count > 1) {
             UIButton* userCenterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             [userCenterBtn setFrame:CGRectMake(0, 0, 44, 44)];
             [userCenterBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -28, 0, 0)];
@@ -157,10 +161,15 @@
             UIBarButtonItem* stopItem = [[UIBarButtonItem alloc]initWithCustomView:stopBtn];
             self.navigationItem.leftBarButtonItems = @[leftItem];
         }
+        else{
+            self.navigationItem.leftBarButtonItems = @[];
+        }
+        [self.webview goBack];
     }
     else
     {
-        [self.navigationController popViewControllerAnimated:YES];
+        self.navigationItem.leftBarButtonItems = @[];
+//        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

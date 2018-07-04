@@ -366,7 +366,7 @@ static UIWindow *_window;
             return;
         }
         
-        QiuMiCommonWKWebViewController* web = (QiuMiCommonWKWebViewController*)[QiuMiCommonViewController controllerWithStoryBoardName:@"My" withControllerName:@"QiuMiCommonWKWebViewController"];
+        QiuMiCommonWKWebViewController* web = (QiuMiCommonWKWebViewController*)[QiuMiCommonViewController controllerWithStoryBoardName:@"Football" withControllerName:@"QiuMiCommonWKWebViewController"];
         [web setUrl:url];
         //            [web setShareUrl:shareUrl];
         [[QiuMiCommonViewController navigationController]pushViewController:web animated:YES];

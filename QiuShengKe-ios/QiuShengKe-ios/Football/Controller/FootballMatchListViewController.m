@@ -28,7 +28,7 @@
     _isSelf = false;
     // Do any additional setup after loading the view.
     [self _setupUI];
-    [self.tableView setBackgroundColor:QIUMI_COLOR_G5];
+    [self.tableview setBackgroundColor:QIUMI_COLOR_G5];
 }
 
 - (void)_setupUI{
@@ -57,10 +57,24 @@
 }
 
 #pragma mark - load data
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+}
+
 - (void)loadData{
+    [self loadDataWithFresh:YES];
+}
+
+- (void)loadDataWithFresh:(BOOL)isRefresh{
     QiuMiWeakSelf(self);
-    [[QiuMiHttpClient instance]GET:@"http://www.liaogou168.com/aik/livesJson" parameters:nil cachePolicy:QiuMiHttpClientCachePolicyHttpCache prompt:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[QiuMiHttpClient instance]GET:@"http://www.liaogou168.com/aik/livesJson" parameters:nil cachePolicy:isRefresh?QiuMiHttpClientCachePolicyNoCache:QiuMiHttpClientCachePolicyHttpCache prompt:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);
+        [self.tableview.refresh endRefreshing];
         NSDictionary* matches = [responseObject objectForKey:@"matches"];
         NSMutableArray* result = [[NSMutableArray alloc] init];
         //数据做一次处理
@@ -87,9 +101,9 @@
         
         self.date_keys = r_date_keys;
         self.matches = result;
-        [self.tableView reloadData];
+        [self.tableview reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [self.tableview.refresh endRefreshing];
     }];
 }
 
