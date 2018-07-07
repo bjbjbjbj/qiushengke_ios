@@ -611,7 +611,7 @@
         [_tableview setHidden:YES];
         [[[_text superview]superview] setHidden:YES];
         QiuMiViewReframe([[_text superview]superview], CGRectMake(0, 0, SCREENWIDTH, [[_text superview]superview].frame.size.height));
-        [self addNotification];
+//        [self addNotification];
     }
     else{
         [_toolView setHidden:YES];
@@ -619,8 +619,15 @@
         [self.barrageManager stop];
         [_tableview setHidden:NO];
         [[[_text superview]superview] setHidden:NO];
-        [self removeNotification];
-        QiuMiViewReframe([[_text superview]superview], CGRectMake(0, SCREENHEIGHT - 44, SCREENWIDTH, [[_text superview]superview].frame.size.height));
+//        [self removeNotification];
+        float bottom = 0;
+        
+        if (@available(iOS 11.0, *)) {
+            bottom = [[UIApplication sharedApplication] keyWindow].safeAreaInsets.bottom;
+        } else {
+            // Fallback on earlier versions
+        }
+        QiuMiViewReframe([[_text superview]superview], CGRectMake(0, SCREENHEIGHT - 44 - bottom, SCREENWIDTH, [[_text superview]superview].frame.size.height));
     }
 }
 
@@ -696,7 +703,18 @@
     NSDictionary *info = [notification userInfo];
     //获取键盘的size值
     CGRect _keyBoard = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - [[_text superview] superview].frame.size.height - _keyBoard.size.height, [[_text superview] superview].frame.size.width, [[_text superview] superview].frame.size.height));
+    float bottom = 0;
+    float left = 0;
+    float right = 0;
+    
+    if (@available(iOS 11.0, *)) {
+        bottom = [[UIApplication sharedApplication] keyWindow].safeAreaInsets.bottom;
+        left = [[UIApplication sharedApplication] keyWindow].safeAreaInsets.left;
+        right = [[UIApplication sharedApplication] keyWindow].safeAreaInsets.right;
+    } else {
+        // Fallback on earlier versions
+    }
+    QiuMiViewReframe([[_text superview] superview], CGRectMake(0 + left, SCREENHEIGHT - [[_text superview] superview].frame.size.height - _keyBoard.size.height, SCREENWIDTH - left - right, [[_text superview] superview].frame.size.height));
 }
 
 -(void)keyboardDidChange:(NSNotification*)notification  {
@@ -713,7 +731,7 @@
         // Fallback on earlier versions
     }
     
-    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - [[_text superview] superview].frame.size.height - bottom, [[_text superview] superview].frame.size.width, [[_text superview] superview].frame.size.height));
+    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - [[_text superview] superview].frame.size.height - bottom, SCREENWIDTH, [[_text superview] superview].frame.size.height));
 }
 
 #pragma mark - 倒计时
