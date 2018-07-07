@@ -12,4 +12,5 @@
 @property(nonatomic, strong)NSString* urlString;
 @property(nonatomic, assign)NSInteger mid;
 @property(nonatomic, assign)NSInteger sport;
+@property(nonatomic, strong)NSString* navTitle;
 @end

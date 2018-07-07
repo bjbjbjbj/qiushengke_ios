@@ -7,6 +7,7 @@
 //
 
 #import <CommonCrypto/CommonDigest.h>
+#import <MediaPlayer/MPVolumeView.h>
 #import "QiuShengKe-ios-Bridging-Header.h"
 #import "AKQDMTableViewCell.h"
 #import "AppDelegate.h"
@@ -18,6 +19,12 @@
 {
     NSTimeInterval _lastPostTime;
 }
+//音量调节
+@property(nonatomic, assign)BOOL isPaning;
+@property(nonatomic, assign)BOOL isVolume;
+@property (strong, nonatomic) MPVolumeView *volumeView;//控制音量的view
+@property (strong, nonatomic) UISlider* volumeViewSlider;//控制音量
+
 @property(nonatomic, assign) BOOL isFullScreen;
 @property(nonatomic, strong) IBOutlet UIView* toolView;
 @property(nonatomic, strong) IBOutlet UIView* navView;
@@ -49,7 +56,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [(UILabel*)[_navView viewWithTag:99] setText:_navTitle];
+    
     [self setupTips];
+    self.isPaning = NO;
+    self.isVolume = NO;
+    [self volumeView];
     
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     //允许转成横屏
@@ -355,6 +368,9 @@
     
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTap:)];
     [_playView addGestureRecognizer:tap];
+    
+    UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(controlVolumeAndLigint:)];
+    [_playView addGestureRecognizer:pan];
 }
 
 - (void)clickTap:(UITapGestureRecognizer*)tap{
@@ -748,5 +764,98 @@
         [self.timer invalidate];
         [_tipsTime setHidden:YES];
     }
+}
+
+#pragma mark - 音量
+- (void)controlVolumeAndLigint:(UIPanGestureRecognizer *)gesture {
+    // 获取手势位置
+    CGPoint locationPoint = [gesture locationInView:self.playView];
+    // 获取手势速度
+    CGPoint speed = [gesture velocityInView:self.playView];
+    
+    switch (gesture.state) {
+        case UIGestureRecognizerStateBegan:
+        {
+            CGFloat x = fabs(speed.x);
+            CGFloat y = fabs(speed.y);
+            if (x < y) {
+                self.isPaning = YES;
+                // 开始滑动的时候,状态改为正在控制音量
+                if (locationPoint.x > self.playView.bounds.size.width / 2) {
+                    self.isVolume = YES;
+                }else {
+                    // 状态改为显示亮度调节
+                    self.isVolume = NO;
+                }
+            }
+        }
+            break;
+            
+        case UIGestureRecognizerStateChanged:
+        {
+            if (self.isPaning) {
+                [self verticalMoved:speed.y];
+            }
+        }
+            break;
+        case UIGestureRecognizerStateEnded:
+        {
+//            [self hiddenHintView];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)verticalMoved:(CGFloat)value {
+    //该value为手指的滑动速度，一般最快速度值不会超过10000，保证在0-1之间，往下滑为正，往上滑为负 所以用 “-=”
+    value = value / 5000;
+    if (self.isVolume) {
+        [self.volumeViewSlider setValue:(self.volumeViewSlider.value - value) animated:NO];
+        
+        if (self.volumeViewSlider.value > 1.0f) {
+            [self.volumeViewSlider setValue:1 animated:NO];
+            [QiuMiPromptView showText:@"音量:100%"];
+        }
+        else if (self.volumeViewSlider.value < 0.0f) {
+            [self.volumeViewSlider setValue:0 animated:NO];
+            [QiuMiPromptView showText:@"音量:0%"];
+        }
+        else{
+            [QiuMiPromptView showText:[NSString stringWithFormat:@"音量:%.0f%%",self.volumeViewSlider.value*100]];
+        }
+        [self.volumeViewSlider sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
+    else {
+        [UIScreen mainScreen].brightness -= value;
+        if ([UIScreen mainScreen].brightness > 1.0f) {
+            [UIScreen mainScreen].brightness = 1.0f;
+            [QiuMiPromptView showText:@"亮度:100%"];
+        }
+        else if ([UIScreen mainScreen].brightness < 0.0f) {
+            [UIScreen mainScreen].brightness = 0.0f;
+            [QiuMiPromptView showText:@"亮度:0%"];
+        }
+        else{
+            [QiuMiPromptView showText:[NSString stringWithFormat:@"亮度:%.0f%%",[UIScreen mainScreen].brightness*100]];
+        }
+    }
+}
+
+- (MPVolumeView *)volumeView {
+    if (_volumeView == nil) {
+//        _volumeView = [[MPVolumeView alloc] init];
+        _volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(-20, -20, 10, 10)];
+        _volumeView.hidden = NO;
+        [self.view addSubview:_volumeView];
+        for (UIView  *subView in [self.volumeView subviews]) {
+            if ([subView.class.description isEqualToString:@"MPVolumeSlider"]) {
+                _volumeViewSlider = (UISlider*)subView;
+                break;
+            }
+        }
+    }
+    return _volumeView;
 }
 @end

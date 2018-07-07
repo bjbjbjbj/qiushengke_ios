@@ -29,16 +29,15 @@
     [_hostName setText:[dic objectForKey:@"hname"]];
     [_awayName setText:[dic objectForKey:@"aname"]];
 
+    [_hostName setTextColor:QIUMI_COLOR_G1];
+    [_awayName setTextColor:QIUMI_COLOR_G1];
+    
     if ([[dic objectForKey:@"channels"] count] > 0) {
         NSDictionary* channel = [[dic objectForKey:@"channels"] objectAtIndex:0];
         if ([channel integerForKey:@"impt"] == 2) {
             [_hostName setTextColor:COLOR(188, 28, 37, 1)];
             [_awayName setTextColor:COLOR(188, 28, 37, 1)];
         }
-    }
-    else{
-        [_hostName setTextColor:QIUMI_COLOR_G1];
-        [_awayName setTextColor:QIUMI_COLOR_G1];
     }
     
     [_league setText:[[dic stringForKey:@"league_name" withDefault:@""] stringByAppendingString:[NSString stringWithFormat:@" %@",[[dic objectForKey:@"time"] substringWithRange:NSMakeRange(10, 6)]]]];

@@ -12,6 +12,7 @@
 #import "LeagueFilterCollectionViewCell.h"
 #import "PlayerViewController.h"
 #import "QiuMiDatePickerAlertView.h"
+#import "PlayerViewController.h"
 
 @interface FootballMatchListViewController ()<UITableViewDelegate, UITableViewDataSource>{
     BOOL _isSelf;
@@ -142,7 +143,13 @@
         NSArray* matches = [_matches objectAtIndex:indexPath.section];
         if([matches count] > indexPath.row){
             NSDictionary* match = [matches objectAtIndex:indexPath.row];
-            QiuMiCommonViewController* player = [QSKCommon getPlayerControllerWithMid:[match integerForKey:@"mid"] sport:[match integerForKey:@"sport"]];
+            PlayerViewController* player = [QSKCommon getPlayerControllerWithMid:[match integerForKey:@"mid"] sport:[match integerForKey:@"sport"]];
+            if ([match integerForKey:@"sport"] == 3) {
+                [player setNavTitle:[match objectForKey:@"hname"]];
+            }
+            else{
+                [player setNavTitle:[NSString stringWithFormat:@"%@ vs %@",[match objectForKey:@"hname"],[match objectForKey:@"aname"]]];
+            }
             [[QiuMiCommonViewController navigationController] pushViewController:player animated:YES];
         }
     }
