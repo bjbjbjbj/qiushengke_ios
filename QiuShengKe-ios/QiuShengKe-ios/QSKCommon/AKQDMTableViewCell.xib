@@ -19,10 +19,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="29.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvG-2j-HNF" customClass="QiuMiLabel">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvG-2j-HNF" customClass="QiuMiLabel">
                         <rect key="frame" x="12" y="10" width="294" height="20"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="yCq-t6-45H"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -31,6 +33,12 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="hvG-2j-HNF" secondAttribute="trailing" constant="14" id="E8V-5k-9ZE"/>
+                    <constraint firstAttribute="bottom" secondItem="hvG-2j-HNF" secondAttribute="bottom" constant="-0.5" id="IHS-uo-NO9"/>
+                    <constraint firstItem="hvG-2j-HNF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gcX-y8-ndb"/>
+                    <constraint firstItem="hvG-2j-HNF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="m6d-xg-AjP"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>

@@ -57,6 +57,14 @@
     
     [self.playView setFrame:CGRectMake(0, 64, SCREENWIDTH, 210*(SCREENWIDTH/375))];
     [self.tipsView setFrame:CGRectMake(0, 64, SCREENWIDTH, 210*(SCREENWIDTH/375))];
+    
+    float bottom = 0;
+    if (@available(iOS 11.0, *)) {
+        bottom = [[UIApplication sharedApplication] keyWindow].safeAreaInsets.bottom;
+    } else {
+        // Fallback on earlier versions
+    }
+    [_tableview setFrame:CGRectMake(0, CGRectGetMaxY(_playView.frame), SCREENWIDTH, SCREENHEIGHT - CGRectGetMaxY(_playView.frame) - bottom - [[_text superview] superview].frame.size.height)];
     [_tipsView setHidden:YES];
     
     [_tableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -195,8 +203,11 @@
 
 - (void)dealloc{
     [_bj disconnect];
+    self.bj = nil;
     self.player.delegate = nil;
     [_player stop];
+    [self.timer invalidate];
+    self.timer = nil;
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
@@ -624,8 +635,12 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     return 30;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewAutomaticDimension;
 }
 
 #pragma mark - alert
@@ -665,7 +680,7 @@
     NSDictionary *info = [notification userInfo];
     //获取键盘的size值
     CGRect _keyBoard = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - 44 - _keyBoard.size.height, [[_text superview] superview].frame.size.width, [[_text superview] superview].frame.size.height));
+    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - [[_text superview] superview].frame.size.height - _keyBoard.size.height, [[_text superview] superview].frame.size.width, [[_text superview] superview].frame.size.height));
 }
 
 -(void)keyboardDidChange:(NSNotification*)notification  {
@@ -674,7 +689,15 @@
 
 - (void)keyboardDidHide:(NSNotification *)notification
 {
-    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - 44, [[_text superview] superview].frame.size.width, [[_text superview] superview].frame.size.height));
+    float bottom = 0;
+    
+    if (@available(iOS 11.0, *)) {
+        bottom = [[UIApplication sharedApplication] keyWindow].safeAreaInsets.bottom;
+    } else {
+        // Fallback on earlier versions
+    }
+    
+    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - [[_text superview] superview].frame.size.height - bottom, [[_text superview] superview].frame.size.width, [[_text superview] superview].frame.size.height));
 }
 
 #pragma mark - 倒计时

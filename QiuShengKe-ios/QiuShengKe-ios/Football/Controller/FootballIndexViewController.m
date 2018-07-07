@@ -40,10 +40,10 @@
 //    [_tabBG addSubview:_tabView];
     
     if ([self respondsToSelector:@selector(additionalSafeAreaInsets)]) {
-        [_contentView setContentSize:CGSizeMake(SCREENWIDTH*3, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
+        [_contentView setContentSize:CGSizeMake(SCREENWIDTH*1, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
     }
     else{
-        [_contentView setContentSize:CGSizeMake(SCREENWIDTH*3, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
+        [_contentView setContentSize:CGSizeMake(SCREENWIDTH*1, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
     }
     
     __weak typeof(self) wself = self;
