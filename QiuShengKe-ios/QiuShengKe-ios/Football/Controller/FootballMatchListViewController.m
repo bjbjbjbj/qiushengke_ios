@@ -73,7 +73,7 @@
 
 - (void)loadDataWithFresh:(BOOL)isRefresh{
     QiuMiWeakSelf(self);
-    [[QiuMiHttpClient instance]GET:@"http://www.liaogou168.com/aik/livesJson" parameters:nil cachePolicy:isRefresh?QiuMiHttpClientCachePolicyNoCache:QiuMiHttpClientCachePolicyHttpCache prompt:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[QiuMiHttpClient instance]GET:@"http://www.aikq.cc/json/lives.json" parameters:nil cachePolicy:isRefresh?QiuMiHttpClientCachePolicyNoCache:QiuMiHttpClientCachePolicyHttpCache prompt:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);
         [self.tableview.refresh endRefreshing];
         NSDictionary* matches = [responseObject objectForKey:@"matches"];

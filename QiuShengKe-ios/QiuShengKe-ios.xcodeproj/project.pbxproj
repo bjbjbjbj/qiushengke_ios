@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2010CDD3207E24F60031291C /* FootballDetailBaseTechTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2010CDD1207E24F60031291C /* FootballDetailBaseTechTableViewCell.m */; };
 		2010CDD4207E24F60031291C /* FootballDetailBaseTechTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2010CDD2207E24F60031291C /* FootballDetailBaseTechTableViewCell.xib */; };
+		20237E4C20F0A87A0058C134 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20237E4B20F0A87A0058C134 /* Security.framework */; };
 		202AFB7D20E225A60080F74C /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 202AFB7920E225A60080F74C /* GCDAsyncSocket.m */; };
 		202AFB7E20E225A60080F74C /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 202AFB7B20E225A60080F74C /* GCDAsyncUdpSocket.m */; };
 		202AFBBA20E257C40080F74C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202AFBB920E257C40080F74C /* File.swift */; };
@@ -218,6 +219,7 @@
 		2010CDD0207E24F60031291C /* FootballDetailBaseTechTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootballDetailBaseTechTableViewCell.h; sourceTree = "<group>"; };
 		2010CDD1207E24F60031291C /* FootballDetailBaseTechTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootballDetailBaseTechTableViewCell.m; sourceTree = "<group>"; };
 		2010CDD2207E24F60031291C /* FootballDetailBaseTechTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FootballDetailBaseTechTableViewCell.xib; sourceTree = "<group>"; };
+		20237E4B20F0A87A0058C134 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		202AFB7820E225A60080F74C /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		202AFB7920E225A60080F74C /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		202AFB7A20E225A60080F74C /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20237E4C20F0A87A0058C134 /* Security.framework in Frameworks */,
 				B33AEC462A37E69604F9ED6B /* libPods-QiuShengKe-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1304,6 +1307,7 @@
 		743E069ACB7934A37F6FCC1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20237E4B20F0A87A0058C134 /* Security.framework */,
 				2CAAC94A2B78E2A80B9B3D99 /* libPods-QiuShengKe-ios.a */,
 			);
 			name = Frameworks;

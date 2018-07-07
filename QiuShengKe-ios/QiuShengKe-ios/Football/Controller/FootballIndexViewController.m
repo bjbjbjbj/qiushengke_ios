@@ -126,7 +126,7 @@
 #pragma mark - scrollview
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == _contentView) {
-        [_tabView contentScrollPositionX:scrollView.contentOffset.x withContentWidth:scrollView.contentSize.width];
+//        [_tabView contentScrollPositionX:scrollView.contentOffset.x withContentWidth:scrollView.contentSize.width];
     }
 }
 

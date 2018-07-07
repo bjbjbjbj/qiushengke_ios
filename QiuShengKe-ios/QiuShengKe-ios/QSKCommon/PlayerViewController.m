@@ -56,7 +56,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [(UILabel*)[_navView viewWithTag:99] setText:_navTitle];
     
     [self setupTips];
@@ -215,6 +214,8 @@
 }
 
 - (void)dealloc{
+    [_barrageManager stop];
+    self.barrageManager = nil;
     [_bj disconnect];
     self.bj = nil;
     self.player.delegate = nil;
