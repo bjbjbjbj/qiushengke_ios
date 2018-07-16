@@ -33,6 +33,17 @@
 
 #define QSK_MATCH_BASKET_DETAIL_ANALYSE [QIUMI_API_PREFIX stringByAppendingString:@"/terminal/2/%@/analyse.json"]
 
-#define QSK_MATCH_CHANNELS @"http://www.liaogou168.com/aik/lives/%@/%@.json"
+#define QSK_MATCH_CHANNELS @"http://aikq.cc/app/v101/lives/%@/%@.json"
+
+#define QSK_ANCHOR_URL @"http://localhost:8000/anchor/room/url/%@.json"
+
+//直播
+#define AKQ_LIVES_URL  @"http://www.aikq.cc/app/v101/lives.json"
+
+//录像
+#define VIDEO_LIST @"http://aikq.cc/app/v101/subject/videos/%@/%@.json"
+#define VIDEO_TITLES_LIST @"http://aikq.cc/app/v101/subject/videos/leagues.json"
+
+#define ANCHOR_INDEX @"http://localhost:8000/app/v110/anchor/index.json"
 
 #endif /* QSK_api_h */

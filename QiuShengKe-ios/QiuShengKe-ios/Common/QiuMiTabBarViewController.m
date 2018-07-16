@@ -32,24 +32,34 @@
     NSMutableArray* controllers = [[NSMutableArray alloc]init];
     
     UIStoryboard* recommend = [ UIStoryboard storyboardWithName:@"Football" bundle:nil];
-    UIStoryboard* basket = [ UIStoryboard storyboardWithName:@"Basketball" bundle:nil];
+    UIStoryboard* anchor = [ UIStoryboard storyboardWithName:@"Anchor" bundle:nil];
+    UIStoryboard* video = [ UIStoryboard storyboardWithName:@"Video" bundle:nil];
     UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"My" bundle:nil];
     [controllers addObject:[recommend instantiateInitialViewController]];
-//    [controllers addObject:[basket instantiateInitialViewController]];
+    [controllers addObject:[anchor instantiateInitialViewController]];
+    [controllers addObject:[video instantiateInitialViewController]];
     [controllers addObject:[matchList instantiateInitialViewController]];
     
     [self setViewControllers:controllers];
     
     //初始化item
-    NSArray* title = @[@"直播",@"更多"];
+    NSArray* title = @[@"直播",@"主播",@"录像",@"更多"];
     NSArray* images = @[
                         @[
-                            @"tab_icon_live_n",
-                            @"tab_icon_live_s",
+                            @"commom_icon_live_n",
+                            @"commom_icon_live_s",
                             ],
                         @[
-                            @"tab_icon_more_n",
-                            @"tab_icon_more_s",
+                            @"commom_icon_anchor_n",
+                            @"commom_icon_anchor_s",
+                        ],
+                        @[
+                            @"commom_icon_vedio_n",
+                            @"commom_icon_vedio_s",
+                            ],
+                        @[
+                            @"commom_icon_recommend_n",
+                            @"commom_icon_recommend_s",
                             ],
                         ];
     

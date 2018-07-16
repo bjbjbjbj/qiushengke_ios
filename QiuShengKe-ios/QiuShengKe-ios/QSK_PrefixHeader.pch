@@ -82,7 +82,7 @@
 #define QIUMI_COLOR_C5_D COLOR(172, 194, 218,1)
 
 #define QIUMI_COLOR_D1 COLOR(0,92,149,1)//全局顶栏颜色
-#define QIUMI_COLOR_G1 COLOR(102,102,102,1)//主文字颜色
+#define QIUMI_COLOR_G1 COLOR(68,63,63,1)//主文字颜色
 #define QIUMI_COLOR_G2 COLOR(153,153,153,1)//副文字颜色
 #define QIUMI_COLOR_G4 COLOR(230,230,230,1)//"卡片边框、输入框边框、分割线色
 #define QIUMI_COLOR_G5 COLOR(242,242,242,1)//全局底色（特殊页面除外）
@@ -94,5 +94,7 @@
 #define QIUMI_COLOR_G10 COLOR(245,246,247,1)
 //推荐终端用
 #define QIUMI_COLOR_G11 COLOR(204,204,204,1)
+
+#define VIDEO_TITLES @"video_titles"
 
 #endif /* QSK_PrefixHeader_h */

@@ -11,6 +11,6 @@
 @interface PlayerViewController : QiuMiCommonViewController
 @property(nonatomic, strong)NSString* urlString;
 @property(nonatomic, assign)NSInteger mid;
-@property(nonatomic, assign)NSInteger sport;
+@property(nonatomic, assign)NSInteger sport;//1足球 2篮球 3其他 99主播
 @property(nonatomic, strong)NSString* navTitle;
 @end

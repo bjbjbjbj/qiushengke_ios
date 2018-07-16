@@ -15,6 +15,10 @@
 #import "GCDAsyncSocket.h"
 #import "PlayerViewController.h"
 #import <PLPlayerKit/PLPlayerKit.h>
+#import "RSA.h"
+#import <CommonCrypto/CommonCryptor.h>
+#import "Base64.h"
+
 @interface PlayerViewController ()<PLPlayerDelegate,GCDAsyncSocketDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIAlertViewDelegate>
 {
     NSTimeInterval _lastPostTime;
@@ -27,6 +31,7 @@
 
 @property(nonatomic, assign) BOOL isFullScreen;
 @property(nonatomic, strong) IBOutlet UIView* toolView;
+@property(nonatomic, strong) IBOutlet UIButton* rightBtn;
 @property(nonatomic, strong) IBOutlet UIView* navView;
 @property(nonatomic, strong) IBOutlet UITextField* text;
 @property(nonatomic, strong) IBOutlet UIButton* openBtn;
@@ -56,6 +61,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [(UILabel*)[_navView viewWithTag:99] setText:_navTitle];
     
     [self setupTips];
@@ -88,9 +94,16 @@
     [self.playView setBackgroundColor:[UIColor blackColor]];
     self.needToHideNavigationBar = YES;
     // Do any additional setup after loading the view.
-    [self _loadData];
+    if (_sport == 99) {
+        [self _loadAnchorData];
+        [_rightBtn removeFromSuperview];
+    }
+    else{
+        [self _loadData];
+    }
 //    [self _setupPlayer:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
-//    [self _setupPlayer:@"rtmp://hdl0903.plures.net/onlive/8aa58d6efc9b484b9bfa386b213ee6d2?wsSecret=5f18150da571fe858797d1fc8d03fe9e&wsTime=5b3b2b61"];
+//    [self _setupPlayer:@"http://hdl1201.plures.net/onlive/26cb8333d0494d0f80a1667df469b81f.flv?txSecret=87de0f0c3166bb249898ebff62658468&txTime=5b46d375"];
+    
     _text.superview.layer.borderWidth = .5;
     _text.superview.layer.cornerRadius = 2;
     _text.superview.layer.borderColor = COLOR(207, 207, 207, 1).CGColor;
@@ -111,6 +124,56 @@
     [head setText:@"暂时没有新弹幕"];
     [_tableview setTableHeaderView:head];
     [_tableview setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)]];
+}
+
+#pragma mark - 有iv
+const NSString *key = @"Cheer402";
+const NSString *iv = @"20180710";
++(NSString *) encryptUseDES:(NSString *)plainText
+{
+    NSData* ivData = [iv dataUsingEncoding: NSUTF8StringEncoding];
+    Byte *ivBytes = (Byte *)[ivData bytes];
+    NSString *ciphertext = nil;
+    NSData *textData = [plainText dataUsingEncoding:NSUTF8StringEncoding];
+    NSUInteger dataLength = [textData length];
+    unsigned char buffer[1024];
+    memset(buffer, 0, sizeof(char));
+    size_t numBytesEncrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt, kCCAlgorithmDES,
+                                          kCCOptionPKCS7Padding,
+                                          [key UTF8String], kCCKeySizeDES,
+                                          ivBytes,
+                                          [textData bytes], dataLength,
+                                          buffer, 1024,
+                                          &numBytesEncrypted);
+    if (cryptStatus == kCCSuccess) {
+        NSData *data = [NSData dataWithBytes:buffer length:(NSUInteger)numBytesEncrypted];
+        ciphertext = [data base64EncodedString];
+    }
+    return ciphertext;
+}
+
++(NSString *)decryptUseDES:(NSString *)cipherText
+{
+    NSData* ivData = [iv dataUsingEncoding: NSUTF8StringEncoding];
+    Byte *ivBytes = (Byte *)[ivData bytes];
+    NSString *plaintext = nil;
+    NSData *cipherdata = [cipherText base64DecodedData];
+    unsigned char buffer[1024];
+    memset(buffer, 0, sizeof(char));
+    size_t numBytesDecrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCDecrypt, kCCAlgorithmDES,
+                                          kCCOptionPKCS7Padding,
+                                          [key UTF8String], kCCKeySizeDES,
+                                          ivBytes,
+                                          [cipherdata bytes], [cipherdata length],
+                                          buffer, 1024,
+                                          &numBytesDecrypted);
+    if(cryptStatus == kCCSuccess) {
+        NSData *plaindata = [NSData dataWithBytes:buffer length:(NSUInteger)numBytesDecrypted];
+        plaintext = [[NSString alloc]initWithData:plaindata encoding:NSUTF8StringEncoding];
+    }
+    return plaintext;
 }
 
 - (void)setupTips{
@@ -274,9 +337,34 @@
     [[QiuMiCommonViewController navigationController] popViewControllerAnimated:YES];
 }
 
+- (void)_loadAnchorData{
+    QiuMiWeakSelf(self);
+    [[QiuMiHttpClient instance] GET:[NSString stringWithFormat:QSK_ANCHOR_URL,[@(_mid) stringValue]] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        QiuMiStrongSelf(self);
+        if ([responseObject integerForKey:@"code"] == 0) {
+            if ([responseObject integerForKey:@"status"] == 1) {
+                [self.tipsView setHidden:YES];
+                [self _setupPlayer:[responseObject objectForKey:@"live_url"]];
+                [(UILabel*)[_navView viewWithTag:99] setText:[responseObject objectForKey:@"title"]];
+            }
+            else{
+                [QiuMiPromptView showText:@"主播还没开播"];
+                [self.tipsView setHidden:NO];
+            }
+        }
+        else{
+            [QiuMiPromptView showText:@"加载直播地址失败"];
+            [self.tipsView setHidden:NO];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        QiuMiStrongSelf(self);
+        [self.tipsView setHidden:NO];
+    }];
+}
+
 - (void)_loadData{
     QiuMiWeakSelf(self);
-    [[QiuMiHttpClient instance] GET:[NSString stringWithFormat:QSK_MATCH_CHANNELS,(_sport == 1?@"detailJson":(_sport == 2 ? @"basketDetailJson":@"otherDetailJson")),[@(_mid) stringValue]] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[QiuMiHttpClient instance] GET:[NSString stringWithFormat:QSK_MATCH_CHANNELS,(_sport == 1?@"1":(_sport == 2 ? @"2":@"3")),[@(_mid) stringValue]] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);
         NSArray* channels = [[responseObject objectForKey:@"live"] objectForKey:@"channels"];
         NSMutableArray* result = [[NSMutableArray alloc] init];
@@ -313,11 +401,11 @@
     NSDictionary* dic = [_channels objectAtIndex:index];
     NSString* url = @"";
     NSString* content = [dic objectForKey:@"channelId"];
-    url = [NSString stringWithFormat:@"http://www.aikq.cc/match/live/url/channel/%@.json",content];
+    url = [NSString stringWithFormat:@"http://www.aikq.cc/app/v101/channels/%@.json",content];
     [[QiuMiHttpClient instance] GET:url parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject integerForKey:@"code"] == 0 && [responseObject existForKey:@"playurl"]) {
-            self.urlString = [responseObject objectForKey:@"playurl"];
-            [self _setupPlayer:_urlString];
+            self.urlString = [PlayerViewController decryptUseDES:[responseObject objectForKey:@"playurl"]];
+            [self _setupPlayer:self.urlString];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -433,7 +521,12 @@
     if (state == PLPlayerStatusError) {
         NSLog(@"真挂了");
         //重新load一次频道
-        [self _loadData];
+        if (_sport <= 3) {
+            [self _loadData];
+        }
+        else{
+            [self _loadAnchorData];
+        }
     }
     else if(state == PLPlayerStatusPlaying){
         
