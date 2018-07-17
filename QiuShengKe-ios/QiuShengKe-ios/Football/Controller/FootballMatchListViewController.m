@@ -7,7 +7,6 @@
 //
 
 #import "FootballMatchListViewController.h"
-#import "FootballDetailViewController.h"
 #import "FootballMatchTableViewCell.h"
 #import "LeagueFilterCollectionViewCell.h"
 #import "PlayerViewController.h"

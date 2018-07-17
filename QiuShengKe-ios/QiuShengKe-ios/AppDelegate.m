@@ -88,7 +88,7 @@
 }
 
 - (void)_loadData{
-    [[QiuMiHttpClient instance] GET:@"http://www.aikq.cc/app/config.json" cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[QiuMiHttpClient instance] GET:APP_CONFIG_URL cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject integerForKey:@"code"] == 0) {
             NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithDictionary:[responseObject objectForKey:@"data"]];
             [dic writeToStore:@"config"];

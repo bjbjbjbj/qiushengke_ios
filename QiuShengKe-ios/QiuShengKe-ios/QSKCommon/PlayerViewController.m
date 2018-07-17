@@ -124,6 +124,14 @@
     [head setText:@"暂时没有新弹幕"];
     [_tableview setTableHeaderView:head];
     [_tableview setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)]];
+    
+    if ([[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"] length] > 0) {
+    }
+    else{
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名" message:@"用户名无法更改，请谨慎输入" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [alert show];
+    }
 }
 
 #pragma mark - 有iv
@@ -202,8 +210,8 @@ const NSString *iv = @"20180710";
 
 - (void)setupSocket{
 //    NSURL* url = [[NSURL alloc] initWithString:@"http://bj.xijiazhibo.cc"];
-//        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:6001"];
-        NSURL* url = [[NSURL alloc] initWithString:@"http://ws.aikq.cc"];
+        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:6001"];
+//        NSURL* url = [[NSURL alloc] initWithString:@"http://ws.aikq.cc"];
     SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES}];
     self.bj2 = manager;
     SocketIOClient* socket = manager.defaultSocket;
@@ -231,6 +239,14 @@ const NSString *iv = @"20180710";
                                  @"time":tmp,
                                  @"verification":verification
                                  };
+        if ([[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"] length] > 0) {
+            params = @{
+                       @"mid": midStr,
+                       @"time":tmp,
+                       @"verification":verification,
+                       @"nickname":[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"]
+                       };
+        }
         [socket emit:@"user_mid" with:@[params]];
     }];
     
@@ -344,7 +360,7 @@ const NSString *iv = @"20180710";
         if ([responseObject integerForKey:@"code"] == 0) {
             if ([responseObject integerForKey:@"status"] == 1) {
                 [self.tipsView setHidden:YES];
-                [self _setupPlayer:[responseObject objectForKey:@"live_url"]];
+                [self _setupPlayer:[PlayerViewController decryptUseDES:[responseObject objectForKey:@"live_url"]]];
                 [(UILabel*)[_navView viewWithTag:99] setText:[responseObject objectForKey:@"title"]];
             }
             else{
@@ -401,7 +417,7 @@ const NSString *iv = @"20180710";
     NSDictionary* dic = [_channels objectAtIndex:index];
     NSString* url = @"";
     NSString* content = [dic objectForKey:@"channelId"];
-    url = [NSString stringWithFormat:@"http://www.aikq.cc/app/v101/channels/%@.json",content];
+    url = [NSString stringWithFormat:AKQ_CHANNEL_URL,content];
     [[QiuMiHttpClient instance] GET:url parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject integerForKey:@"code"] == 0 && [responseObject existForKey:@"playurl"]) {
             self.urlString = [PlayerViewController decryptUseDES:[responseObject objectForKey:@"playurl"]];
@@ -776,15 +792,7 @@ const NSString *iv = @"20180710";
 
 #pragma mark - text
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    if ([[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"] length] > 0) {
-        return YES;
-    }
-    else{
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名" message:@"用户名无法更改，请谨慎输入" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
-        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-        [alert show];
-        return  NO;
-    }
+    return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
