@@ -8,7 +8,6 @@
 
 #import "PlayerMatchView.h"
 @interface PlayerMatchView()
-@property(nonatomic, strong) IBOutlet UIView* navScore;
 @property(nonatomic, strong) IBOutlet UIView* nsHostC;
 @property(nonatomic, strong) IBOutlet UIView* nsAwayC;
 @property(nonatomic, strong) IBOutlet UIImageView* nsHostIcon;
@@ -44,19 +43,32 @@
     [self.nsAwayIcon qiumi_setImageWithURLString:[self.matchData objectForKey:@"aicon"] withHoldPlace:@"icon_default_team"];
     [self.nsScore setText:[NSString stringWithFormat:@"%d - %d",[self.matchData integerForKey:@"hscore"],[self.matchData integerForKey:@"ascore"]]];
     [self.nsTime setText:[self.matchData objectForKey:@"current_time"]];
-    if ([[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"]) {
-        NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"];
-        [self.nsHostC setBackgroundColor:[PlayerMatchView colorWithHexString:color]];
+    if ([self.matchData objectForKey:@"tag"]) {
+        if ([[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"]) {
+            NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"];
+            [self.nsHostC setBackgroundColor:[PlayerMatchView colorWithHexString:color]];
+        }
+        else{
+            [self.nsHostC setBackgroundColor:[UIColor clearColor]];
+        }
+        if ([[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"]) {
+            NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"];
+            [self.nsAwayC setBackgroundColor:[PlayerMatchView colorWithHexString:color]];
+        }
+        else{
+            [self.nsAwayC setBackgroundColor:[UIColor clearColor]];
+        }
     }
-    else{
-        [self.nsHostC setBackgroundColor:[UIColor clearColor]];
+}
+
+- (void)loadSocketData:(NSDictionary *)dic{
+    self.matchData = dic;
+    [self.nsScore setText:[NSString stringWithFormat:@"%d - %d",[self.matchData integerForKey:@"hscore"],[self.matchData integerForKey:@"ascore"]]];
+    if ([self.matchData objectForKey:@"time"]) {
+        [self.nsTime setText:[self.matchData objectForKey:@"time"]];
     }
-    if ([[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"]) {
-        NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"];
-        [self.nsAwayC setBackgroundColor:[PlayerMatchView colorWithHexString:color]];
-    }
-    else{
-        [self.nsAwayC setBackgroundColor:[UIColor clearColor]];
+    if ([self.matchData objectForKey:@"time2"]) {
+        [self.nsTime setText:[self.matchData objectForKey:@"time2"]];
     }
 }
 

@@ -70,6 +70,8 @@
 @property(nonatomic, strong) IBOutlet UILabel* nsAwayN;
 @property(nonatomic, strong) IBOutlet UILabel* nsTime;
 @property(nonatomic, strong) IBOutlet UILabel* nsScore;
+
+@property(nonatomic, strong) PlayerMatchView* playerMatchView;
 @end
 
 @implementation PlayerViewController
@@ -266,8 +268,46 @@ const NSString *iv = @"20180710";
     
     [socket on:@"server_send_message" callback:^(NSArray* data, SocketAckEmitter* ack) {
         QiuMiStrongSelf(self);
-        [self addNormalBarrage:[[data objectAtIndex:0] objectForKey:@"message"]];
-        [self.chats addObject:[data objectAtIndex:0]];
+        NSDictionary* dic = [data objectAtIndex:0];
+        if ([dic integerForKey:@"type"] == 99) {
+            [self.chats addObject:dic];
+        }
+        else{
+            [self addNormalBarrage:[dic objectForKey:@"message"]];
+            [self.chats addObject:dic];
+            [self.tableview reloadData];
+            
+            [_tableview beginUpdates];
+            CGPoint offset = CGPointMake(0, self.tableview.contentSize.height - self.tableview.frame.size.height);
+            [self.tableview setContentOffset:offset animated:NO];
+            [_tableview endUpdates];
+        }
+    }];
+    
+    [socket on:@"server_match_change" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        QiuMiStrongSelf(self);
+        NSDictionary* tmp = [data objectAtIndex:0];
+        NSMutableDictionary* tmp2 = [[NSMutableDictionary alloc] initWithDictionary:self.matchData];
+        [tmp2 setObject:@([tmp integerForKey:@"hscore"]) forKey:@"hscore"];
+        [tmp2 setObject:@([tmp integerForKey:@"ascore"]) forKey:@"ascore"];
+        if ([tmp objectForKey:@"time"]) {
+            [tmp2 setObject:[tmp objectForKey:@"time"] forKey:@"time"];
+        }
+        if ([tmp objectForKey:@"time2"]) {
+            [tmp2 setObject:[tmp objectForKey:@"time2"] forKey:@"time2"];
+        }
+        self.matchData = tmp2;
+        [_playerMatchView loadSocketData:_matchData];
+        
+        [self.nsScore setText:[NSString stringWithFormat:@"%d - %d",[self.matchData integerForKey:@"hscore"],[self.matchData integerForKey:@"ascore"]]];
+//        if ([self.matchData objectForKey:@"time2"]) {
+//            [self.nsTime setText:[self.matchData objectForKey:@"time2"]];
+//        }
+        
+        if ([self.matchData objectForKey:@"time"]) {
+            [self.nsTime setText:[self.matchData objectForKey:@"time"]];
+        }
+        
         [self.tableview reloadData];
     }];
     
@@ -371,31 +411,12 @@ const NSString *iv = @"20180710";
         QiuMiStrongSelf(self);
         if ([responseObject integerForKey:@"code"] == 0) {
             self.showMatch = [responseObject integerForKey:@"show_score"] == 1;
-            if (self.showMatch && [responseObject objectForKey:@"match"]) {
+            
+            if ((self.showMatch && [responseObject objectForKey:@"match"])) {
                 self.matchData = [responseObject objectForKey:@"match"];
-                [self.nsTime setText:[self.matchData objectForKey:@"current_time"]];
-                [self.nsHostN setText:[self.matchData objectForKey:@"hname"]];
-                [self.nsAwayN setText:[self.matchData objectForKey:@"aname"]];
-                [self.nsHostIcon qiumi_setImageWithURLString:[self.matchData objectForKey:@"hicon"] withHoldPlace:@"icon_default_team"];
-                [self.nsAwayIcon qiumi_setImageWithURLString:[self.matchData objectForKey:@"aicon"] withHoldPlace:@"icon_default_team"];
-                [self.nsScore setText:[NSString stringWithFormat:@"%d - %d",[self.matchData integerForKey:@"hscore"],[self.matchData integerForKey:@"ascore"]]];
-                [self.nsTime setText:[self.matchData objectForKey:@"current_time"]];
-                if ([[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"]) {
-                    NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"];
-                    [self.nsHostC setBackgroundColor:[PlayerViewController colorWithHexString:color]];
-                }
-                else{
-                    [self.nsHostC setBackgroundColor:[UIColor clearColor]];
-                }
-                if ([[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"]) {
-                    NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"];
-                    [self.nsAwayC setBackgroundColor:[PlayerViewController colorWithHexString:color]];
-                }
-                else{
-                    [self.nsAwayC setBackgroundColor:[UIColor clearColor]];
-                }
+                [self reloadMatchData];
             }
-            if ([responseObject integerForKey:@"status"] == 1 || 1) {
+            if ([responseObject integerForKey:@"status"] == 1) {
                 [self.tipsView setHidden:YES];
                 [self _setupPlayer:[PlayerViewController decryptUseDES:[responseObject objectForKey:@"live_url"]]];
                 [(UILabel*)[_navView viewWithTag:99] setText:[responseObject objectForKey:@"title"]];
@@ -455,6 +476,30 @@ const NSString *iv = @"20180710";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [QiuMiCommonPromptView showText:@"加载直播失败" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
     }];
+}
+
+- (void)reloadMatchData{
+    [self.nsTime setText:[self.matchData objectForKey:@"current_time"]];
+    [self.nsHostN setText:[self.matchData objectForKey:@"hname"]];
+    [self.nsAwayN setText:[self.matchData objectForKey:@"aname"]];
+    [self.nsHostIcon qiumi_setImageWithURLString:[self.matchData objectForKey:@"hicon"] withHoldPlace:@"icon_default_team"];
+    [self.nsAwayIcon qiumi_setImageWithURLString:[self.matchData objectForKey:@"aicon"] withHoldPlace:@"icon_default_team"];
+    [self.nsScore setText:[NSString stringWithFormat:@"%d - %d",[self.matchData integerForKey:@"hscore"],[self.matchData integerForKey:@"ascore"]]];
+    [self.nsTime setText:[self.matchData objectForKey:@"current_time"]];
+    if ([[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"]) {
+        NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"];
+        [self.nsHostC setBackgroundColor:[PlayerViewController colorWithHexString:color]];
+    }
+    else{
+        [self.nsHostC setBackgroundColor:[UIColor clearColor]];
+    }
+    if ([[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"]) {
+        NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"];
+        [self.nsAwayC setBackgroundColor:[PlayerViewController colorWithHexString:color]];
+    }
+    else{
+        [self.nsAwayC setBackgroundColor:[UIColor clearColor]];
+    }
 }
 
 - (void)loadChannel:(NSInteger)index{
@@ -729,45 +774,6 @@ const NSString *iv = @"20180710";
         self.isFullScreen = NO;
     }
     return;
-//    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-////    [self fullScreen:orientation];
-////    if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
-////        [self.playView setFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-////    }
-////    else{
-////
-////    }
-//    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:orientation] forKey:@"orientation"];
-//    CGAffineTransform tranform = [self getRotateTransform:orientation];
-//    if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
-//        [UIView animateWithDuration:0.3f animations:^{
-//            CGFloat width = MAX(SCREENWIDTH, SCREENHEIGHT);
-//            CGFloat height = MIN(SCREENWIDTH, SCREENHEIGHT);
-//            CGRect frame = CGRectMake((height - width)/2.0,(width - height)/2.0, width, height);
-//            self.playView.frame = frame;
-//            _player.playerView.frame = _playView.bounds;
-//            [self.playView setTransform:tranform];
-//        }completion:^(BOOL finished) {
-//            [_navView setHidden:YES];
-//        }];
-//        self.isFullScreen = YES;
-//        [UIApplication sharedApplication].statusBarOrientation = (UIInterfaceOrientation)orientation;
-//        [UIApplication sharedApplication].statusBarHidden = NO;
-//    }
-//    else{
-//        self.isFullScreen = NO;
-//        [UIApplication sharedApplication].statusBarOrientation = UIInterfaceOrientationPortrait;
-//        [UIApplication sharedApplication].statusBarHidden = NO;
-//        
-//        [UIView animateWithDuration:0.3f animations:^{
-//            [self.playView setTransform:CGAffineTransformIdentity];
-//            [self.playView setFrame:CGRectMake(0, 64, SCREENWIDTH, 210*(SCREENWIDTH/375))];
-//            _player.playerView.frame = CGRectMake(0, 0, SCREENWIDTH, 210*(SCREENWIDTH/375));
-//        }completion:^(BOOL finished) {
-//        
-//            [_navView setHidden:NO];
-//        }];
-//    }
 }
 
 - (void)setIsFullScreen:(BOOL)isFullScreen{
@@ -829,7 +835,7 @@ const NSString *iv = @"20180710";
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     if ([_chats count] > indexPath.row) {
-        [cell loadData:[_chats objectAtIndex:[_chats count] - 1 - indexPath.row]];
+        [cell loadData:[_chats objectAtIndex:indexPath.row]];
     }
     return cell;
 }
@@ -851,9 +857,11 @@ const NSString *iv = @"20180710";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (_showMatch) {
-        PlayerMatchView* view = [[NSBundle mainBundle] loadNibNamed:@"PlayerMatchView" owner:nil options:nil][0];
-        [view loadData:_matchData];
-        return view;
+        if (_playerMatchView == nil && _matchData) {
+            self.playerMatchView = [[NSBundle mainBundle] loadNibNamed:@"PlayerMatchView" owner:nil options:nil][0];
+            [_playerMatchView loadData:_matchData];
+        }
+        return _playerMatchView;
     }
     return [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, FLT_MIN)];
 }

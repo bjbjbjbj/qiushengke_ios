@@ -10,4 +10,5 @@
 
 @interface PlayerMatchView : UIView
 - (void)loadData:(NSDictionary*)dic;
+- (void)loadSocketData:(NSDictionary*)dic;
 @end
