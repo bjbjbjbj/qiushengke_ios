@@ -18,11 +18,13 @@
 #import "RSA.h"
 #import <CommonCrypto/CommonCryptor.h>
 #import "Base64.h"
+#import "PlayerMatchView.h"
 
 @interface PlayerViewController ()<PLPlayerDelegate,GCDAsyncSocketDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIAlertViewDelegate>
 {
     NSTimeInterval _lastPostTime;
 }
+@property(nonatomic, assign)BOOL showMatch;
 //音量调节
 @property(nonatomic, assign)BOOL isPaning;
 @property(nonatomic, assign)BOOL isVolume;
@@ -34,6 +36,7 @@
 @property(nonatomic, strong) IBOutlet UIButton* rightBtn;
 @property(nonatomic, strong) IBOutlet UIView* navView;
 @property(nonatomic, strong) IBOutlet UITextField* text;
+@property(nonatomic, strong) IBOutlet UITextField* fullScreenText;
 @property(nonatomic, strong) IBOutlet UIButton* openBtn;
 @property(nonatomic, strong) IBOutlet UIView* playView;
 @property(nonatomic, strong) IBOutlet UITableView* tableview;
@@ -55,6 +58,18 @@
 @property (strong, nonatomic) NSMutableArray* chats;
 @property (strong, nonatomic) NSTimer* timer;
 @property (assign, nonatomic) long long matchTime;
+
+//比分栏
+@property(nonatomic, strong) NSDictionary* matchData;
+@property(nonatomic, strong) IBOutlet UIView* navScore;
+@property(nonatomic, strong) IBOutlet UIView* nsHostC;
+@property(nonatomic, strong) IBOutlet UIView* nsAwayC;
+@property(nonatomic, strong) IBOutlet UIImageView* nsHostIcon;
+@property(nonatomic, strong) IBOutlet UIImageView* nsAwayIcon;
+@property(nonatomic, strong) IBOutlet UILabel* nsHostN;
+@property(nonatomic, strong) IBOutlet UILabel* nsAwayN;
+@property(nonatomic, strong) IBOutlet UILabel* nsTime;
+@property(nonatomic, strong) IBOutlet UILabel* nsScore;
 @end
 
 @implementation PlayerViewController
@@ -63,6 +78,11 @@
     [super viewDidLoad];
     
     [(UILabel*)[_navView viewWithTag:99] setText:_navTitle];
+    self.showMatch = false;
+    [_navScore setHidden:YES];
+    
+    QiuMiViewBorder(_nsHostIcon, 17, 0, [UIColor whiteColor]);
+    QiuMiViewBorder(_nsAwayIcon, 17, 0, [UIColor whiteColor]);
     
     [self setupTips];
     self.isPaning = NO;
@@ -97,6 +117,7 @@
     if (_sport == 99) {
         [self _loadAnchorData];
         [_rightBtn removeFromSuperview];
+        [_navScore setHidden:YES];
     }
     else{
         [self _loadData];
@@ -112,26 +133,19 @@
                                                                                                       NSForegroundColorAttributeName:COLOR(158, 158, 158, 1)
                                                                                                       }];
     _text.attributedPlaceholder = attStr;
+    
+    _fullScreenText.superview.layer.borderWidth = .5;
+    _fullScreenText.superview.layer.cornerRadius = 2;
+    _fullScreenText.superview.layer.borderColor = COLOR(207, 207, 207, 1).CGColor;
+    _fullScreenText.superview.backgroundColor = COLOR(242, 242, 242, 1);
+    _fullScreenText.attributedPlaceholder = attStr;
+    
+    
     [self setupSocket];
     [self setupDM];
     [self setUIRoute];
     [self addNotification];
-    
-    UILabel* head = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 150)];
-    [head setTextColor:QIUMI_COLOR_G2];
-    [head setTextAlignment:NSTextAlignmentCenter];
-    [head setFont:[UIFont systemFontOfSize:16]];
-    [head setText:@"暂时没有新弹幕"];
-    [_tableview setTableHeaderView:head];
     [_tableview setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)]];
-    
-    if ([[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"] length] > 0) {
-    }
-    else{
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名" message:@"用户名无法更改，请谨慎输入" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
-        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-        [alert show];
-    }
 }
 
 #pragma mark - 有iv
@@ -210,8 +224,8 @@ const NSString *iv = @"20180710";
 
 - (void)setupSocket{
 //    NSURL* url = [[NSURL alloc] initWithString:@"http://bj.xijiazhibo.cc"];
-        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:6001"];
-//        NSURL* url = [[NSURL alloc] initWithString:@"http://ws.aikq.cc"];
+//        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:6001"];
+    NSURL* url = [[NSURL alloc] initWithString:@"http://ws.aikq.cc"];
     SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES}];
     self.bj2 = manager;
     SocketIOClient* socket = manager.defaultSocket;
@@ -254,9 +268,6 @@ const NSString *iv = @"20180710";
         QiuMiStrongSelf(self);
         [self addNormalBarrage:[[data objectAtIndex:0] objectForKey:@"message"]];
         [self.chats addObject:[data objectAtIndex:0]];
-        if ([self.chats count] > 0) {
-            [self.tableview setTableHeaderView:nil];
-        }
         [self.tableview reloadData];
     }];
     
@@ -354,31 +365,61 @@ const NSString *iv = @"20180710";
 }
 
 - (void)_loadAnchorData{
+    [QiuMiCommonPromptView showText:@"加载中" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptDefualt];
     QiuMiWeakSelf(self);
     [[QiuMiHttpClient instance] GET:[NSString stringWithFormat:QSK_ANCHOR_URL,[@(_mid) stringValue]] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);
         if ([responseObject integerForKey:@"code"] == 0) {
-            if ([responseObject integerForKey:@"status"] == 1) {
+            self.showMatch = [responseObject integerForKey:@"show_score"] == 1;
+            if (self.showMatch && [responseObject objectForKey:@"match"]) {
+                self.matchData = [responseObject objectForKey:@"match"];
+                [self.nsTime setText:[self.matchData objectForKey:@"current_time"]];
+                [self.nsHostN setText:[self.matchData objectForKey:@"hname"]];
+                [self.nsAwayN setText:[self.matchData objectForKey:@"aname"]];
+                [self.nsHostIcon qiumi_setImageWithURLString:[self.matchData objectForKey:@"hicon"] withHoldPlace:@"icon_default_team"];
+                [self.nsAwayIcon qiumi_setImageWithURLString:[self.matchData objectForKey:@"aicon"] withHoldPlace:@"icon_default_team"];
+                [self.nsScore setText:[NSString stringWithFormat:@"%d - %d",[self.matchData integerForKey:@"hscore"],[self.matchData integerForKey:@"ascore"]]];
+                [self.nsTime setText:[self.matchData objectForKey:@"current_time"]];
+                if ([[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"]) {
+                    NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"];
+                    [self.nsHostC setBackgroundColor:[PlayerViewController colorWithHexString:color]];
+                }
+                else{
+                    [self.nsHostC setBackgroundColor:[UIColor clearColor]];
+                }
+                if ([[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"]) {
+                    NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"a_color"];
+                    [self.nsAwayC setBackgroundColor:[PlayerViewController colorWithHexString:color]];
+                }
+                else{
+                    [self.nsAwayC setBackgroundColor:[UIColor clearColor]];
+                }
+            }
+            if ([responseObject integerForKey:@"status"] == 1 || 1) {
                 [self.tipsView setHidden:YES];
                 [self _setupPlayer:[PlayerViewController decryptUseDES:[responseObject objectForKey:@"live_url"]]];
                 [(UILabel*)[_navView viewWithTag:99] setText:[responseObject objectForKey:@"title"]];
+                [QiuMiCommonPromptView hide];
             }
             else{
-                [QiuMiPromptView showText:@"主播还没开播"];
+                [QiuMiCommonPromptView showText:@"主播还没开播" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
                 [self.tipsView setHidden:NO];
             }
         }
         else{
-            [QiuMiPromptView showText:@"加载直播地址失败"];
+            [QiuMiCommonPromptView showText:@"暂无直播源" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
             [self.tipsView setHidden:NO];
         }
+        [self.tableview reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [QiuMiCommonPromptView showText:@"加载直播失败" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
         QiuMiStrongSelf(self);
         [self.tipsView setHidden:NO];
     }];
 }
 
 - (void)_loadData{
+    [QiuMiCommonPromptView showText:@"加载中" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptDefualt];
     QiuMiWeakSelf(self);
     [[QiuMiHttpClient instance] GET:[NSString stringWithFormat:QSK_MATCH_CHANNELS,(_sport == 1?@"1":(_sport == 2 ? @"2":@"3")),[@(_mid) stringValue]] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);
@@ -392,6 +433,9 @@ const NSString *iv = @"20180710";
         self.channels = result;
         if ([self.channels count] > 0) {
             [self loadChannel:0];
+        }
+        else{
+            [QiuMiCommonPromptView showText:@"暂无直播信号" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
         }
         
         if ([responseObject integerForKey:@"show_live"] > 0 || [[responseObject objectForKey:@"match"] integerForKey:@"status"] > 0) {
@@ -409,7 +453,7 @@ const NSString *iv = @"20180710";
             [self setupTimer];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [QiuMiCommonPromptView showText:@"加载直播失败" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
     }];
 }
 
@@ -420,11 +464,15 @@ const NSString *iv = @"20180710";
     url = [NSString stringWithFormat:AKQ_CHANNEL_URL,content];
     [[QiuMiHttpClient instance] GET:url parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject integerForKey:@"code"] == 0 && [responseObject existForKey:@"playurl"]) {
+            [QiuMiCommonPromptView hide];
             self.urlString = [PlayerViewController decryptUseDES:[responseObject objectForKey:@"playurl"]];
             [self _setupPlayer:self.urlString];
         }
+        else{
+            [QiuMiCommonPromptView showText:@"暂无直播源" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        [QiuMiCommonPromptView showText:@"加载直播失败" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
     }];
 }
 
@@ -482,7 +530,15 @@ const NSString *iv = @"20180710";
     if (_isFullScreen) {
         [_text resignFirstResponder];
         [[[_text superview]superview] setHidden:YES];
+        
+//        [_fullScreenText resignFirstResponder];
+//        [[[_fullScreenText superview]superview] setHidden:YES];
+        
         [_toolView setHidden:!_toolView.isHidden];
+        [[_openBtn superview] setHidden:_toolView.isHidden];
+        if (_showMatch) {
+            [_navScore setHidden:_toolView.isHidden];
+        }
     }
     else{
         [UIDevice switchNewOrientation:UIInterfaceOrientationLandscapeRight];
@@ -525,12 +581,8 @@ const NSString *iv = @"20180710";
     
 }
 
-- (void)fail{
-    [QiuMiPromptView showText:@"加载失败"];
-}
-
 - (void)player:(PLPlayer *)player stoppedWithError:(NSError *)error{
-    NSLog(@"挂了");
+    [QiuMiCommonPromptView showText:@"加载失败" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
 }
 
 - (void)player:(nonnull PLPlayer *)player statusDidChange:(PLPlayerStatus)state{
@@ -564,8 +616,8 @@ const NSString *iv = @"20180710";
 }
 
 - (IBAction)clickToolReply:(id)sender{
-    [[[_text superview]superview] setHidden:NO];
-    [_text becomeFirstResponder];
+//    [[[_text superview]superview] setHidden:NO];
+//    [_text becomeFirstResponder];
 }
 
 - (IBAction)clickSmall:(id)sender{
@@ -590,10 +642,10 @@ const NSString *iv = @"20180710";
 - (IBAction)clickShowDM:(id)sender{
     [_barrageManager.renderView setHidden:!_barrageManager.renderView.isHidden];
     if (_barrageManager.renderView.isHidden) {
-        [_openBtn setImage:[UIImage imageNamed:@"player_comment_close"] forState:UIControlStateNormal];
+        [_openBtn setImage:[UIImage imageNamed:@"fullscreen_icon_tan_n"] forState:UIControlStateNormal];
     }
     else{
-        [_openBtn setImage:[UIImage imageNamed:@"player_comment_open"] forState:UIControlStateNormal];
+        [_openBtn setImage:[UIImage imageNamed:@"fullscreen_icon_tan_s"] forState:UIControlStateNormal];
     }
 }
 
@@ -606,18 +658,24 @@ const NSString *iv = @"20180710";
         return;
     }
     
-    if ([[_text text] length] == 0) {
+    UITextField* text = _isFullScreen ? _fullScreenText : _text;
+    
+    if ([[text text] length] == 0) {
         return;
     }
     
-    if ([[_text text] length] > 20) {
+    if ([[text text] length] > 20) {
         [QiuMiPromptView showText:@"请发不多于20个字的弹幕"];
         return;
     }
     
-    [self.text resignFirstResponder];
+    [text resignFirstResponder];
     if(_isFullScreen){
-        [[[_text superview]superview] setHidden:YES];
+        [[[_fullScreenText superview]superview] setHidden:YES];
+        [[_openBtn superview] setHidden:YES];
+        if (_showMatch) {
+            [_navScore setHidden:_toolView.isHidden];
+        }
     }
     
     NSString* tmp = [@(time) stringValue];
@@ -628,16 +686,16 @@ const NSString *iv = @"20180710";
     NSString* first = [tmp substringWithRange:NSMakeRange([tmp length] - 1, 1)];
     NSString* second = [tmp substringWithRange:NSMakeRange([tmp length] - 2, 2)];
     
-    NSString* verification =  [PlayerViewController md5:[NSString stringWithFormat:@"%@?%@_%@",_text.text,first,second]];
+    NSString* verification =  [PlayerViewController md5:[NSString stringWithFormat:@"%@?%@_%@",text.text,first,second]];
     
     NSDictionary* param = @{
-                            @"nickname": [NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"],
-                            @"message": _text.text,
+                            @"nickname": [NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"]?[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"]:@"匿名",
+                            @"message": text.text,
                             @"time":tmp,
                             @"verification":verification
                             };
     [_bj emit:@"user_send_message" with:@[param]];
-    [_text setText:@""];
+    [text setText:@""];
     _lastPostTime = time;
     
 //    QiuMiWeakSelf(self);
@@ -714,18 +772,26 @@ const NSString *iv = @"20180710";
 
 - (void)setIsFullScreen:(BOOL)isFullScreen{
     [_text resignFirstResponder];
+    [_fullScreenText resignFirstResponder];
     _isFullScreen = isFullScreen;
     if (isFullScreen) {
         [_navView setHidden:YES];
+        if (_showMatch) {
+            [_navScore setHidden:YES];
+        }
         [self.barrageManager start];
         [_tableview setHidden:YES];
         [[[_text superview]superview] setHidden:YES];
-        QiuMiViewReframe([[_text superview]superview], CGRectMake(0, 0, SCREENWIDTH, [[_text superview]superview].frame.size.height));
+//        QiuMiViewReframe([[_text superview]superview], CGRectMake(0, 0, SCREENWIDTH, [[_text superview]superview].frame.size.height));
 //        [self addNotification];
     }
     else{
         [_toolView setHidden:YES];
+        [[_openBtn superview] setHidden:_toolView.isHidden];
         [_navView setHidden:NO];
+        if (_showMatch) {
+            [_navScore setHidden:YES];
+        }
         [self.barrageManager stop];
         [_tableview setHidden:NO];
         [[[_text superview]superview] setHidden:NO];
@@ -737,7 +803,7 @@ const NSString *iv = @"20180710";
         } else {
             // Fallback on earlier versions
         }
-        QiuMiViewReframe([[_text superview]superview], CGRectMake(0, SCREENHEIGHT - 44 - bottom, SCREENWIDTH, [[_text superview]superview].frame.size.height));
+//        QiuMiViewReframe([[_text superview]superview], CGRectMake(0, SCREENHEIGHT - 44 - bottom, SCREENWIDTH, [[_text superview]superview].frame.size.height));
     }
 }
 
@@ -776,6 +842,43 @@ const NSString *iv = @"20180710";
     return UITableViewAutomaticDimension;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (_showMatch) {
+        return 60;
+    }
+    return FLT_MIN;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (_showMatch) {
+        PlayerMatchView* view = [[NSBundle mainBundle] loadNibNamed:@"PlayerMatchView" owner:nil options:nil][0];
+        [view loadData:_matchData];
+        return view;
+    }
+    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, FLT_MIN)];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    if ([_chats count] == 0) {
+        UILabel* head = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 150)];
+        [head setTextColor:QIUMI_COLOR_G2];
+        [head setTextAlignment:NSTextAlignmentCenter];
+        [head setFont:[UIFont systemFontOfSize:16]];
+        [head setText:@"暂时没有新弹幕"];
+        return head;
+    }
+    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, FLT_MIN)];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if ([_chats count] == 0) {
+        return 150;
+    }
+    else{
+        return FLT_MIN;
+    }
+}
+
 #pragma mark - alert
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == !alertView.cancelButtonIndex) {
@@ -792,7 +895,15 @@ const NSString *iv = @"20180710";
 
 #pragma mark - text
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    return YES;
+    if ([[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"] length] > 0) {
+        return YES;
+    }
+    else{
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请输入用户名" message:@"用户名无法更改，请谨慎输入" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [alert show];
+        return NO;
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -816,7 +927,8 @@ const NSString *iv = @"20180710";
     } else {
         // Fallback on earlier versions
     }
-    QiuMiViewReframe([[_text superview] superview], CGRectMake(0 + left, SCREENHEIGHT - [[_text superview] superview].frame.size.height - _keyBoard.size.height, SCREENWIDTH - left - right, [[_text superview] superview].frame.size.height));
+    UITextField* text = _isFullScreen ? _fullScreenText : _text;
+    QiuMiViewReframe([[text superview] superview], CGRectMake(0 + left, SCREENHEIGHT - [[text superview] superview].frame.size.height - _keyBoard.size.height, SCREENWIDTH - left - right, [[text superview] superview].frame.size.height));
 }
 
 -(void)keyboardDidChange:(NSNotification*)notification  {
@@ -833,7 +945,8 @@ const NSString *iv = @"20180710";
         // Fallback on earlier versions
     }
     
-    QiuMiViewReframe([[_text superview] superview], CGRectMake(0, SCREENHEIGHT - [[_text superview] superview].frame.size.height - bottom, SCREENWIDTH, [[_text superview] superview].frame.size.height));
+    UITextField* text = _isFullScreen ? _fullScreenText : _text;
+    QiuMiViewReframe([[text superview] superview], CGRectMake(0, SCREENHEIGHT - [[text superview] superview].frame.size.height - bottom, SCREENWIDTH, [[text superview] superview].frame.size.height));
 }
 
 #pragma mark - 倒计时
@@ -977,5 +1090,21 @@ const NSString *iv = @"20180710";
         }
     }
     return _volumeView;
+}
+
++ (UIColor *) colorWithHexString: (NSString *)color
+{
+    color = [color stringByReplacingOccurrencesOfString:@"rgb(" withString:@""];
+    color = [color stringByReplacingOccurrencesOfString:@")" withString:@""];
+    color = [color stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSArray* colors = [color componentsSeparatedByString:@","];
+    if ([colors count] < 3) {
+        return [UIColor clearColor];
+    }
+    float r = [colors[0] floatValue];
+    float g = [colors[1] floatValue];
+    float b = [colors[2] floatValue];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1.0f];
 }
 @end
