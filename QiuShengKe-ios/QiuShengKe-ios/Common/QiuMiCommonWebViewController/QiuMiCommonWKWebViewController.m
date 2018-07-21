@@ -87,6 +87,11 @@
     [self.webview removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+}
+
 - (void)setupPro{
     //进度条
     [_webview addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
@@ -138,6 +143,9 @@
 */
 
 - (void)goBack:(id)sender{
+    if (_isVideo) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     if (self.webview.canGoBack) {
         [self.webview goBack];
         //用户交互关闭按钮

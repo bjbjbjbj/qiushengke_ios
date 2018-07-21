@@ -46,6 +46,9 @@
 @property(nonatomic, strong) IBOutlet UILabel* tipsTime;
 @property(nonatomic, strong) IBOutlet UILabel* tipsDetail;
 
+@property(nonatomic, strong) IBOutlet UILabel* nav1;
+@property(nonatomic, strong) IBOutlet UILabel* nav2;
+
 @property(nonatomic, strong) PLPlayer  *player;
 @property(nonatomic, strong) NSArray* channels;
 @property(nonatomic, strong) UIAlertController* alertController;
@@ -79,7 +82,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [(UILabel*)[_navView viewWithTag:99] setText:_navTitle];
+    [_nav1 setText:_navTitle];
+    [_nav2 setText:_navTitle];
     self.showMatch = false;
     [_navScore setHidden:YES];
     
@@ -355,6 +359,27 @@ const NSString *iv = @"20180710";
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if (_player) {
+        if ([_player isPlaying]) {
+            [_player stop];
+        }
+    }
+    else{
+        
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if (_player) {
+        if (![_player isPlaying]) {
+            [_player play];
+        }
+    }
+}
+
 //获取当前屏幕显示的viewcontroller
 - (UIViewController *)getCurrentVC
 {
@@ -412,14 +437,15 @@ const NSString *iv = @"20180710";
         if ([responseObject integerForKey:@"code"] == 0) {
             self.showMatch = [responseObject integerForKey:@"show_score"] == 1;
             
-            if ((self.showMatch && [responseObject objectForKey:@"match"])) {
+            if ((self.showMatch && [responseObject objectForKey:@"match"] && [[responseObject objectForKey:@"match"] integerForKey:@"status"] > 0)) {
                 self.matchData = [responseObject objectForKey:@"match"];
                 [self reloadMatchData];
             }
             if ([responseObject integerForKey:@"status"] == 1) {
                 [self.tipsView setHidden:YES];
                 [self _setupPlayer:[PlayerViewController decryptUseDES:[responseObject objectForKey:@"live_url"]]];
-                [(UILabel*)[_navView viewWithTag:99] setText:[responseObject objectForKey:@"title"]];
+                [self.nav1 setText:[responseObject objectForKey:@"title"]];
+                [self.nav2 setText:[responseObject objectForKey:@"title"]];
                 [QiuMiCommonPromptView hide];
             }
             else{
@@ -444,6 +470,14 @@ const NSString *iv = @"20180710";
     QiuMiWeakSelf(self);
     [[QiuMiHttpClient instance] GET:[NSString stringWithFormat:QSK_MATCH_CHANNELS,(_sport == 1?@"1":(_sport == 2 ? @"2":@"3")),[@(_mid) stringValue]] parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         QiuMiStrongSelf(self);
+        if ([responseObject objectForKey:@"match"]) {
+            [self.nav1 setText:[NSString stringWithFormat:@"%@ vs %@",[[responseObject objectForKey:@"match"] objectForKey:@"hname"],[[responseObject objectForKey:@"match"] objectForKey:@"aname"]]];
+            [self.nav2 setText:[NSString stringWithFormat:@"%@ vs %@",[[responseObject objectForKey:@"match"] objectForKey:@"hname"],[[responseObject objectForKey:@"match"] objectForKey:@"aname"]]];
+        }
+        else{
+            [self.nav1 setText:[responseObject objectForKey:@"title"]];
+            [self.nav2 setText:[responseObject objectForKey:@"title"]];
+        }
         NSArray* channels = [[responseObject objectForKey:@"live"] objectForKey:@"channels"];
         NSMutableArray* result = [[NSMutableArray alloc] init];
         for (NSDictionary* channel in channels) {
@@ -485,7 +519,11 @@ const NSString *iv = @"20180710";
     [self.nsHostIcon qiumi_setImageWithURLString:[self.matchData objectForKey:@"hicon"] withHoldPlace:@"icon_default_team"];
     [self.nsAwayIcon qiumi_setImageWithURLString:[self.matchData objectForKey:@"aicon"] withHoldPlace:@"icon_default_team"];
     [self.nsScore setText:[NSString stringWithFormat:@"%d - %d",[self.matchData integerForKey:@"hscore"],[self.matchData integerForKey:@"ascore"]]];
-    [self.nsTime setText:[self.matchData objectForKey:@"current_time"]];
+    if ([self.matchData objectForKey:@"live_time_str"])
+        [self.nsTime setText:[self.matchData objectForKey:@"live_time_str"]];
+    else if ([self.matchData objectForKey:@"current_time"])
+        [self.nsTime setText:[self.matchData objectForKey:@"current_time"]];
+    
     if ([[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"]) {
         NSString* color = [[self.matchData objectForKey:@"tag"] objectForKey:@"h_color"];
         [self.nsHostC setBackgroundColor:[PlayerViewController colorWithHexString:color]];
@@ -554,6 +592,8 @@ const NSString *iv = @"20180710";
 //    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.player.playerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.playView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
 //    [self.playView addConstraint:bottomConstraint];
     
+    [self.player.playerView setUserInteractionEnabled:NO];
+    
     [self.playView addSubview:self.player.playerView];
     [self.playView sendSubviewToBack:self.player.playerView];
     
@@ -574,6 +614,7 @@ const NSString *iv = @"20180710";
 - (void)clickTap:(UITapGestureRecognizer*)tap{
     if (_isFullScreen) {
         [_text resignFirstResponder];
+        [_fullScreenText resignFirstResponder];
         [[[_text superview]superview] setHidden:YES];
         
 //        [_fullScreenText resignFirstResponder];
@@ -651,7 +692,7 @@ const NSString *iv = @"20180710";
     textDescriptor.text = text;
     textDescriptor.textColor = [UIColor whiteColor];
     textDescriptor.positionPriority = OCBarragePositionLow;
-    textDescriptor.textFont = [UIFont systemFontOfSize:30.0];
+    textDescriptor.textFont = [UIFont systemFontOfSize:20.0];
     textDescriptor.strokeColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
     textDescriptor.strokeWidth = -1;
     textDescriptor.animationDuration = arc4random()%5 + 5;
@@ -761,6 +802,9 @@ const NSString *iv = @"20180710";
 
 - (void)p_initScreenOrientationChanged:(id)notification {
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    if (orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown) {
+        return;
+    }
     if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
 //        [UIDevice switchNewOrientation:(UIInterfaceOrientation)orientation];
         self.playView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);

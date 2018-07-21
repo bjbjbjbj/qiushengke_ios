@@ -32,20 +32,6 @@
 - (void)_setupUI{
     [_contentView setDelegate:self];
     
-    self.tabView = [[QiuMiTabView alloc]initWithFrame:CGRectMake(0, 20, SCREENWIDTH, 44) withCanScroll:NO];
-    [_tabView setSelectedColor:QIUMI_COLOR_G7];
-    [_tabView setNormalColor:COLOR(234, 234, 234, 1)];
-    [_tabView setLineColor:QIUMI_COLOR_G7];
-    [_tabView setColumnTitles:@[@"即时比分",@"完场赛果",@"未来赛程"]];
-//    [_tabBG addSubview:_tabView];
-    
-    if ([self respondsToSelector:@selector(additionalSafeAreaInsets)]) {
-        [_contentView setContentSize:CGSizeMake(SCREENWIDTH*1, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
-    }
-    else{
-        [_contentView setContentSize:CGSizeMake(SCREENWIDTH*1, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
-    }
-    
     __weak typeof(self) wself = self;
     _tabView.doSelectBlock = ^(NSInteger index){
         CGRect rect = wself.contentView.frame;
@@ -70,6 +56,7 @@
             default:
                 break;
         }
+        QiuMiViewResize(_contentView, CGSizeMake(SCREENWIDTH, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height));
         [controller.view setFrame:CGRectMake(SCREENWIDTH*i, 0, SCREENWIDTH, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
         [controller updateFrame:CGRectMake(0, 0, SCREENWIDTH, controller.view.frame.size.height)];
         [_contentView addSubview:controller.view];

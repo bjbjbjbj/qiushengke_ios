@@ -30,7 +30,7 @@
 + (NSString *) getCurrentDateWithFormatYYYYMMDD{
     NSDateFormatter *customDateFormatter = [[NSDateFormatter alloc] init];
     [customDateFormatter setLocale:[NSLocale currentLocale]];
-    [customDateFormatter setDateFormat:@"yyyyMMdd"];
+    [customDateFormatter setDateFormat:@"HHmm"];
     return  [customDateFormatter stringFromDate:[NSDate date]];
 }
 

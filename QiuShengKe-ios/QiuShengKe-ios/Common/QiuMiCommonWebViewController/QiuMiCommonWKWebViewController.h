@@ -11,4 +11,5 @@
 @interface QiuMiCommonWKWebViewController : QiuMiCommonViewController
 @property(nonatomic, strong)NSString* url;
 @property(nonatomic, strong)NSString* navText;
+@property(nonatomic, assign)BOOL isVideo;
 @end

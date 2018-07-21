@@ -17,7 +17,7 @@
 
 #define AKQ_CHANNEL_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/channels/%@.json"]
 
-#define APP_CONFIG_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v110/app/config.json"]
+#define APP_CONFIG_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v110/config.json"]
 
 //直播
 #define AKQ_LIVES_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/lives.json"]
