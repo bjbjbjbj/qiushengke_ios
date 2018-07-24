@@ -348,12 +348,20 @@ static UIWindow *_window;
     if ([url hasPrefix:@"liaogou://"]) {
        return YES;
     }
+    if ([url hasPrefix:@"#browser"]) {
+        return YES;
+    }
     return NO;
 }
 
 + (void)navTo:(NSString *)url
 {
     if (url == nil || [url length] == 0 || [url rangeOfString:@"liaogou168.com/appopen"].location != NSNotFound) {
+        return;
+    }
+    
+    if ([url rangeOfString:@"#browser"].location != NSNotFound) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
         return;
     }
     

@@ -8,7 +8,7 @@
 
 #ifndef QSK_api_h
 #define QSK_api_h
-#define HOST @"http://www.leisuzhibo.cc"
+#define HOST @"http://www.aikq.cc"
 #define QIUMI_API_PREFIX [NSString stringWithFormat:@"%@",HOST]
 
 #define QSK_MATCH_CHANNELS [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/lives/%@/%@.json"]

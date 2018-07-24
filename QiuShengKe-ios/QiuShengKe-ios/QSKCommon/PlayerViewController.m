@@ -281,10 +281,12 @@ const NSString *iv = @"20180710";
             [self.chats addObject:dic];
             [self.tableview reloadData];
             
-            [_tableview beginUpdates];
-            CGPoint offset = CGPointMake(0, self.tableview.contentSize.height - self.tableview.frame.size.height);
-            [self.tableview setContentOffset:offset animated:NO];
-            [_tableview endUpdates];
+            if (self.tableview.contentSize.height > self.tableview.frame.size.height) {
+                [_tableview beginUpdates];
+                CGPoint offset = CGPointMake(0, self.tableview.contentSize.height - self.tableview.frame.size.height);
+                [self.tableview setContentOffset:offset animated:NO];
+                [_tableview endUpdates];
+            }
         }
     }];
     
@@ -354,6 +356,7 @@ const NSString *iv = @"20180710";
     self.bj = nil;
     self.player.delegate = nil;
     [_player stop];
+    self.player = nil;
     [self.timer invalidate];
     self.timer = nil;
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
@@ -361,10 +364,9 @@ const NSString *iv = @"20180710";
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+    [_bj disconnect];
     if (_player) {
-        if ([_player isPlaying]) {
-            [_player stop];
-        }
+        [_player stop];
     }
     else{
         
@@ -374,9 +376,8 @@ const NSString *iv = @"20180710";
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidDisappear:animated];
     if (_player) {
-        if (![_player isPlaying]) {
-            [_player play];
-        }
+        [_bj connect];
+        [_player play];
     }
 }
 
@@ -619,15 +620,16 @@ const NSString *iv = @"20180710";
         
 //        [_fullScreenText resignFirstResponder];
 //        [[[_fullScreenText superview]superview] setHidden:YES];
-        
         [_toolView setHidden:!_toolView.isHidden];
         [[_openBtn superview] setHidden:_toolView.isHidden];
         if (_showMatch) {
             [_navScore setHidden:_toolView.isHidden];
         }
+        [UIApplication sharedApplication].statusBarHidden = _toolView.isHidden;
     }
     else{
         [UIDevice switchNewOrientation:UIInterfaceOrientationLandscapeRight];
+        [UIApplication sharedApplication].statusBarHidden = YES;
     }
 }
 
@@ -708,6 +710,7 @@ const NSString *iv = @"20180710";
 
 - (IBAction)clickSmall:(id)sender{
     [UIDevice switchNewOrientation:UIInterfaceOrientationPortrait];
+    [UIApplication sharedApplication].statusBarHidden = NO;
 }
 
 //md5
@@ -802,7 +805,7 @@ const NSString *iv = @"20180710";
 
 - (void)p_initScreenOrientationChanged:(id)notification {
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    if (orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown) {
+    if (orientation == UIDeviceOrientationPortraitUpsideDown || orientation == UIDeviceOrientationFaceUp || orientation == UIDeviceOrientationFaceDown) {
         return;
     }
     if (orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight) {
@@ -893,7 +896,7 @@ const NSString *iv = @"20180710";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (_showMatch) {
+    if (_showMatch && [_matchData integerForKey:@"status"] > 0) {
         return 60;
     }
     return FLT_MIN;
@@ -901,7 +904,7 @@ const NSString *iv = @"20180710";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (_showMatch) {
-        if (_playerMatchView == nil && _matchData) {
+        if (_playerMatchView == nil && _matchData && _showMatch && [_matchData integerForKey:@"status"] > 0) {
             self.playerMatchView = [[NSBundle mainBundle] loadNibNamed:@"PlayerMatchView" owner:nil options:nil][0];
             [_playerMatchView loadData:_matchData];
         }

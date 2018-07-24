@@ -140,6 +140,9 @@
 		206DCBCF20FDEA4D009BEA7C /* image_default_match@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 206DCBC920FDEA4C009BEA7C /* image_default_match@3x.png */; };
 		206DCBD020FDEA4D009BEA7C /* icon_default_team@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 206DCBCA20FDEA4C009BEA7C /* icon_default_team@3x.png */; };
 		206DCBD120FDEA4D009BEA7C /* image_default_match@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 206DCBCB20FDEA4C009BEA7C /* image_default_match@2x.png */; };
+		2093C8932105C15900F666A6 /* image_blank_noneanchor_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2093C8912105C15700F666A6 /* image_blank_noneanchor_n@2x.png */; };
+		2093C8942105C15900F666A6 /* image_blank_noneanchor_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2093C8922105C15800F666A6 /* image_blank_noneanchor_n@3x.png */; };
+		2093C8982106D40100F666A6 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2093C8972106D40100F666A6 /* MyViewController.m */; };
 		209ADE10207B52F900FC8AD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE0F207B52F900FC8AD8 /* AppDelegate.m */; };
 		209ADE13207B52F900FC8AD8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE12207B52F900FC8AD8 /* ViewController.m */; };
 		209ADE16207B52F900FC8AD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209ADE14207B52F900FC8AD8 /* Main.storyboard */; };
@@ -426,6 +429,10 @@
 		206DCBC920FDEA4C009BEA7C /* image_default_match@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_default_match@3x.png"; sourceTree = "<group>"; };
 		206DCBCA20FDEA4C009BEA7C /* icon_default_team@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_default_team@3x.png"; sourceTree = "<group>"; };
 		206DCBCB20FDEA4C009BEA7C /* image_default_match@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_default_match@2x.png"; sourceTree = "<group>"; };
+		2093C8912105C15700F666A6 /* image_blank_noneanchor_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_blank_noneanchor_n@2x.png"; sourceTree = "<group>"; };
+		2093C8922105C15800F666A6 /* image_blank_noneanchor_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_blank_noneanchor_n@3x.png"; sourceTree = "<group>"; };
+		2093C8962106D40100F666A6 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		2093C8972106D40100F666A6 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		209ADE0B207B52F900FC8AD8 /* QiuShengKe-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QiuShengKe-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		209ADE0E207B52F900FC8AD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		209ADE0F207B52F900FC8AD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -761,6 +768,15 @@
 			path = FootballDetail;
 			sourceTree = "<group>";
 		};
+		2093C8952106D3AD00F666A6 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				2093C8962106D40100F666A6 /* MyViewController.h */,
+				2093C8972106D40100F666A6 /* MyViewController.m */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
 		209ADE02207B52F900FC8AD8 = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +798,7 @@
 		209ADE0D207B52F900FC8AD8 /* QiuShengKe-ios */ = {
 			isa = PBXGroup;
 			children = (
+				2093C8952106D3AD00F666A6 /* My */,
 				206DCB7320FDE783009BEA7C /* Football */,
 				206DCAD120F8B5A3009BEA7C /* Anchor */,
 				20F361D120F5B9D7003E56C0 /* Video */,
@@ -1225,6 +1242,8 @@
 		20D307F5207C6A5C001BD67E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				2093C8912105C15700F666A6 /* image_blank_noneanchor_n@2x.png */,
+				2093C8922105C15800F666A6 /* image_blank_noneanchor_n@3x.png */,
 				204A4B4721004DAF00241A69 /* icon_cloth_n@2x.png */,
 				204A4B4621004DAF00241A69 /* icon_cloth_n@3x.png */,
 				204A4B3E20FF218E00241A69 /* failed@2x.png */,
@@ -1615,6 +1634,7 @@
 				205FC4FD20884AF00030807E /* event_icon_start_n@3x.png in Resources */,
 				206DCB0A20FC5118009BEA7C /* AnchorHotMatchView.xib in Resources */,
 				20D30822207C6D79001BD67E /* data_icon_close_n@2x.png in Resources */,
+				2093C8942105C15900F666A6 /* image_blank_noneanchor_n@3x.png in Resources */,
 				20D30829207C6D79001BD67E /* handicap_icon_up_n@3x.png in Resources */,
 				205FC4A0208095910030807E /* live_icon_back_white@2x.png in Resources */,
 				206DCBC520FDE783009BEA7C /* LeagueFilterCollectionViewCell.xib in Resources */,
@@ -1641,6 +1661,7 @@
 				20E6256020F76585005EEA56 /* commom_icon_live_n@3x.png in Resources */,
 				20D30818207C6D78001BD67E /* commond_icon_basket_s@2x.png in Resources */,
 				20E6256520F76585005EEA56 /* commom_icon_live_n@2x.png in Resources */,
+				2093C8932105C15900F666A6 /* image_blank_noneanchor_n@2x.png in Resources */,
 				204A4B4020FF218E00241A69 /* failed@2x.png in Resources */,
 				205FC4E120883AA90030807E /* match_icon_choose_s@3x.png in Resources */,
 				205DDE7920E6149000ACC134 /* AKQDMTableViewCell.xib in Resources */,
@@ -1822,6 +1843,7 @@
 				206DCBA920FDE783009BEA7C /* FootballMatchListViewController.m in Sources */,
 				20D307C5207B7E4B001BD67E /* QiuMiAlertView.m in Sources */,
 				20D307B1207B7E4B001BD67E /* ALAssetsLibrary+defaultAssetsLibrary.m in Sources */,
+				2093C8982106D40100F666A6 /* MyViewController.m in Sources */,
 				206DCBB620FDE783009BEA7C /* FootballDetailBaseTechTableViewCell.m in Sources */,
 				20D307C7207B7E4B001BD67E /* QiuMiActivityWebViewController.m in Sources */,
 				20D307C8207B7E4B001BD67E /* QiuMiButton.m in Sources */,

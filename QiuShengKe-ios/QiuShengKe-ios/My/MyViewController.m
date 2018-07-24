@@ -6,10 +6,10 @@
 //  Copyright © 2017年 xieweijie. All rights reserved.
 //
 
-#import "QiuMiCommonWKWebViewController.h"
+#import "MyViewController.h"
 #import <WebKit/WebKit.h>
 #import "WKCookieSyncManager.h"
-@interface QiuMiCommonWKWebViewController ()<WKNavigationDelegate>{
+@interface MyViewController ()<WKNavigationDelegate>{
     UIImage* _image;
     BOOL _first;
 }
@@ -17,15 +17,15 @@
 @property(nonatomic, strong) CALayer* progresslayer;
 @end
 
-@implementation QiuMiCommonWKWebViewController
+@implementation MyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.needToHideNavigationBar = NO;
-//    [self.navigationController.navigationBar setBackgroundColor:QIUMI_COLOR_C1];
+    //    [self.navigationController.navigationBar setBackgroundColor:QIUMI_COLOR_C1];
     _first = YES;
     // Do any additional setup after loading the view.
-    [self useDefaultBack];
+    //    [self useDefaultBack];
     
     self.title = _navText;
     // Do any additional setup after loading the view.
@@ -43,6 +43,11 @@
     [refreshBtn addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc]initWithCustomView:refreshBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
+    
+    NSDictionary* dic = [[NSMutableDictionary alloc] initWithStore:@"config"];
+    if (dic && [[dic objectForKey:@"more"] length] > 0) {
+        self.url = [dic objectForKey:@"more"];
+    }
     
     if ([_url length] == 0) {
         self.url = @"http://shop.liaogou168.com";
@@ -70,28 +75,23 @@
     self.webview = webView;
     [_webview setNavigationDelegate:self];
     
-//    self.url = @"http://192.168.30.104/newsell2/video.html";
-//    self.url = @"http://www.lg310.com/live/player.html?cid=4270";
+    //    self.url = @"http://192.168.30.104/newsell2/video.html";
+    //    self.url = @"http://www.lg310.com/live/player.html?cid=4270";
     
     NSURL *url = [NSURL URLWithString:_url];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [_webview loadRequest:request];
     
-//    UIWebView* bj = [[UIWebView alloc]initWithFrame:webView.frame];
-//    [bj loadRequest:request];
-//    [self.view addSubview:bj];
+    //    UIWebView* bj = [[UIWebView alloc]initWithFrame:webView.frame];
+    //    [bj loadRequest:request];
+    //    [self.view addSubview:bj];
     
     [self setupPro];
 }
 
 - (void)dealloc{
     [self.webview removeObserver:self forKeyPath:@"estimatedProgress"];
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
 }
 
 - (void)setupPro{
@@ -135,27 +135,23 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (void)goBack:(id)sender{
-    if (_isVideo) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
     if (self.webview.canGoBack) {
-        [self.webview goBack];
         //用户交互关闭按钮
-        if (self.navigationItem.leftBarButtonItems.count == 1) {
+        if (self.webview.backForwardList.backList.count > 1) {
             UIButton* userCenterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             [userCenterBtn setFrame:CGRectMake(0, 0, 44, 44)];
             [userCenterBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -28, 0, 0)];
-            [userCenterBtn setImage:[UIImage imageNamed:@"match_icon_back_n"] forState:UIControlStateNormal];
+            [userCenterBtn setImage:[UIImage imageNamed:@"live_icon_back_white"] forState:UIControlStateNormal];
             [userCenterBtn addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
             UIBarButtonItem* leftItem = [[UIBarButtonItem alloc]initWithCustomView:userCenterBtn];
             UIButton* stopBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -165,12 +161,17 @@
             [stopBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
             [stopBtn addTarget:self action:@selector(stopWebView:) forControlEvents:UIControlEventTouchUpInside];
             UIBarButtonItem* stopItem = [[UIBarButtonItem alloc]initWithCustomView:stopBtn];
-            self.navigationItem.leftBarButtonItems = @[leftItem,stopItem];
+            self.navigationItem.leftBarButtonItems = @[leftItem];
         }
+        else{
+            self.navigationItem.leftBarButtonItems = @[];
+        }
+        [self.webview goBack];
     }
     else
     {
-        [self.navigationController popViewControllerAnimated:YES];
+        self.navigationItem.leftBarButtonItems = @[];
+        //        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -180,23 +181,23 @@
 
 #pragma mark - webview
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
-//    NSHTTPURLResponse *response = (NSHTTPURLResponse *)navigationResponse.response;
-//    NSArray *cookies =[NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];
-//    //读取wkwebview中的cookie 方法1
-//    for (NSHTTPCookie *cookie in cookies) {
-//        //        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-//        NSLog(@"wkwebview中的cookie:%@", cookie);
-//        
-//    }
-//    //读取wkwebview中的cookie 方法2 读取Set-Cookie字段
-//    NSString *cookieString = [[response allHeaderFields] valueForKey:@"Set-Cookie"];
-//    NSLog(@"wkwebview中的cookie:%@", cookieString);
-//    
-//    //看看存入到了NSHTTPCookieStorage了没有
-//    NSHTTPCookieStorage *cookieJar2 = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-//    for (NSHTTPCookie *cookie in cookieJar2.cookies) {
-//        NSLog(@"NSHTTPCookieStorage中的cookie%@", cookie);
-//    }
+    //    NSHTTPURLResponse *response = (NSHTTPURLResponse *)navigationResponse.response;
+    //    NSArray *cookies =[NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];
+    //    //读取wkwebview中的cookie 方法1
+    //    for (NSHTTPCookie *cookie in cookies) {
+    //        //        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+    //        NSLog(@"wkwebview中的cookie:%@", cookie);
+    //
+    //    }
+    //    //读取wkwebview中的cookie 方法2 读取Set-Cookie字段
+    //    NSString *cookieString = [[response allHeaderFields] valueForKey:@"Set-Cookie"];
+    //    NSLog(@"wkwebview中的cookie:%@", cookieString);
+    //
+    //    //看看存入到了NSHTTPCookieStorage了没有
+    //    NSHTTPCookieStorage *cookieJar2 = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    //    for (NSHTTPCookie *cookie in cookieJar2.cookies) {
+    //        NSLog(@"NSHTTPCookieStorage中的cookie%@", cookie);
+    //    }
     decisionHandler(WKNavigationResponsePolicyAllow);
 }
 
@@ -218,13 +219,13 @@
     
     if ([reqUrl isEqualToString:@"liaogou://share"]){
         [self share:nil];
-         decisionHandler(WKNavigationActionPolicyCancel);
+        decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }
     
     if ([QiuMiCommonViewController checkNav:reqUrl]) {
         [QiuMiCommonViewController navTo:reqUrl];
-         decisionHandler(WKNavigationActionPolicyCancel);
+        decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }
     decisionHandler(WKNavigationActionPolicyAllow);
@@ -242,6 +243,20 @@
         [self.webview evaluateJavaScript:@"appNavName()" completionHandler:^(id _Nullable title, NSError * _Nullable error) {
             self.title = title;
         }];
+    }
+    
+    if (self.webview.canGoBack) {
+        UIButton* userCenterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [userCenterBtn setFrame:CGRectMake(0, 0, 44, 44)];
+        [userCenterBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -28, 0, 0)];
+        [userCenterBtn setImage:[UIImage imageNamed:@"live_icon_back_white"] forState:UIControlStateNormal];
+        [userCenterBtn addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem* leftItem = [[UIBarButtonItem alloc]initWithCustomView:userCenterBtn];
+        self.navigationItem.leftBarButtonItems = @[leftItem];
+    }
+    else
+    {
+        
     }
 }
 
@@ -272,7 +287,7 @@
         __block NSString * icon = [dic objectForKey:@"icon"];
         __block NSString * title = [dic objectForKey:@"title"];
         if ([content length] == 0) {
-             [_webview evaluateJavaScript:@"document.getElementsByName('share_content')[0].content" completionHandler:^(id _Nullable text, NSError * _Nullable error) {
+            [_webview evaluateJavaScript:@"document.getElementsByName('share_content')[0].content" completionHandler:^(id _Nullable text, NSError * _Nullable error) {
                 content = text;
             }];
             if ([content length] == 0) {
@@ -307,19 +322,19 @@
         
         NSString* weixinContent = content;
         
-//        QiuMiShareData* shareData = [[QiuMiShareData alloc]init];
-//        shareData.publishContent = weixinContent;
-//        shareData.hasImage = icon.length > 0;
-//        shareData.contentWithUrl = [NSString stringWithFormat:@"%@ %@",content, url];
-//        shareData.desContent = weixinContent;
-//        shareData.weixinContent = content;
-//        shareData.shareTitle = title;
-//        shareData.url = url;
-//        if (icon.length > 0) {
-//            shareData.thumbUrl = icon;
-//            shareData.weixinThumbUrl = icon;
-//        }
-//        [[QiuMiShareView instants]showWithDictory:shareData withSuccess:nil];
+        //        QiuMiShareData* shareData = [[QiuMiShareData alloc]init];
+        //        shareData.publishContent = weixinContent;
+        //        shareData.hasImage = icon.length > 0;
+        //        shareData.contentWithUrl = [NSString stringWithFormat:@"%@ %@",content, url];
+        //        shareData.desContent = weixinContent;
+        //        shareData.weixinContent = content;
+        //        shareData.shareTitle = title;
+        //        shareData.url = url;
+        //        if (icon.length > 0) {
+        //            shareData.thumbUrl = icon;
+        //            shareData.weixinThumbUrl = icon;
+        //        }
+        //        [[QiuMiShareView instants]showWithDictory:shareData withSuccess:nil];
     }];
 }
 
