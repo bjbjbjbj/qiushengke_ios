@@ -670,6 +670,7 @@ const NSString *iv = @"20180710";
 }
 
 - (void)player:(PLPlayer *)player stoppedWithError:(NSError *)error{
+    [self.tipsView setHidden:NO];
     [QiuMiCommonPromptView showText:@"加载失败" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
 }
 
