@@ -205,7 +205,7 @@ const NSString *iv = @"20180710";
 }
 
 - (void)setupTips{
-    NSDictionary* dic = [[NSMutableDictionary alloc] initWithStore:@"config"];
+    NSDictionary* dic = [[NSMutableDictionary alloc] initWithStore:QKS_CONFIG];
     if (dic && [[dic objectForKey:@"icon"] length] > 0) {
         [_tipsImage qiumi_setImageWithURLString:[dic objectForKey:@"icon"]];
     }
@@ -231,7 +231,7 @@ const NSString *iv = @"20180710";
 - (void)setupSocket{
 //    NSURL* url = [[NSURL alloc] initWithString:@"http://bj.xijiazhibo.cc"];
 //        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:6001"];
-    NSURL* url = [[NSURL alloc] initWithString:@"http://ws.aikq.cc"];
+    NSURL* url = [[NSURL alloc] initWithString:API_SOCKET];
     SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES}];
     self.bj2 = manager;
     SocketIOClient* socket = manager.defaultSocket;

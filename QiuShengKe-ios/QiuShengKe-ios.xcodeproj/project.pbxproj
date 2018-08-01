@@ -140,6 +140,10 @@
 		206DCBCF20FDEA4D009BEA7C /* image_default_match@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 206DCBC920FDEA4C009BEA7C /* image_default_match@3x.png */; };
 		206DCBD020FDEA4D009BEA7C /* icon_default_team@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 206DCBCA20FDEA4C009BEA7C /* icon_default_team@3x.png */; };
 		206DCBD120FDEA4D009BEA7C /* image_default_match@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 206DCBCB20FDEA4C009BEA7C /* image_default_match@2x.png */; };
+		206E55F2211192D5007D7362 /* image_bg_live_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 206E55F0211192C7007D7362 /* image_bg_live_n@2x.png */; };
+		206E55F3211192D5007D7362 /* image_bg_live_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 206E55F1211192C8007D7362 /* image_bg_live_n@3x.png */; };
+		206E55F6211195D3007D7362 /* AKQLivingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 206E55F5211195D3007D7362 /* AKQLivingView.m */; };
+		206E55F8211195E1007D7362 /* AKQLivingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 206E55F7211195E1007D7362 /* AKQLivingView.xib */; };
 		2093C8932105C15900F666A6 /* image_blank_noneanchor_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2093C8912105C15700F666A6 /* image_blank_noneanchor_n@2x.png */; };
 		2093C8942105C15900F666A6 /* image_blank_noneanchor_n@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2093C8922105C15800F666A6 /* image_blank_noneanchor_n@3x.png */; };
 		2093C8982106D40100F666A6 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2093C8972106D40100F666A6 /* MyViewController.m */; };
@@ -429,6 +433,11 @@
 		206DCBC920FDEA4C009BEA7C /* image_default_match@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_default_match@3x.png"; sourceTree = "<group>"; };
 		206DCBCA20FDEA4C009BEA7C /* icon_default_team@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_default_team@3x.png"; sourceTree = "<group>"; };
 		206DCBCB20FDEA4C009BEA7C /* image_default_match@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_default_match@2x.png"; sourceTree = "<group>"; };
+		206E55F0211192C7007D7362 /* image_bg_live_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_bg_live_n@2x.png"; sourceTree = "<group>"; };
+		206E55F1211192C8007D7362 /* image_bg_live_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_bg_live_n@3x.png"; sourceTree = "<group>"; };
+		206E55F4211195D3007D7362 /* AKQLivingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKQLivingView.h; sourceTree = "<group>"; };
+		206E55F5211195D3007D7362 /* AKQLivingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AKQLivingView.m; sourceTree = "<group>"; };
+		206E55F7211195E1007D7362 /* AKQLivingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AKQLivingView.xib; sourceTree = "<group>"; };
 		2093C8912105C15700F666A6 /* image_blank_noneanchor_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_blank_noneanchor_n@2x.png"; sourceTree = "<group>"; };
 		2093C8922105C15800F666A6 /* image_blank_noneanchor_n@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_blank_noneanchor_n@3x.png"; sourceTree = "<group>"; };
 		2093C8962106D40100F666A6 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
@@ -726,6 +735,9 @@
 		206DCB7B20FDE783009BEA7C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				206E55F4211195D3007D7362 /* AKQLivingView.h */,
+				206E55F5211195D3007D7362 /* AKQLivingView.m */,
+				206E55F7211195E1007D7362 /* AKQLivingView.xib */,
 				206DCB7C20FDE783009BEA7C /* FootballDetail */,
 				206DCB9520FDE783009BEA7C /* FootballMatchTableViewCell.h */,
 				206DCB9620FDE783009BEA7C /* FootballMatchTableViewCell.m */,
@@ -1242,6 +1254,8 @@
 		20D307F5207C6A5C001BD67E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				206E55F0211192C7007D7362 /* image_bg_live_n@2x.png */,
+				206E55F1211192C8007D7362 /* image_bg_live_n@3x.png */,
 				2093C8912105C15700F666A6 /* image_blank_noneanchor_n@2x.png */,
 				2093C8922105C15800F666A6 /* image_blank_noneanchor_n@3x.png */,
 				204A4B4721004DAF00241A69 /* icon_cloth_n@2x.png */,
@@ -1547,6 +1561,7 @@
 				206DCAD020F8B3E4009BEA7C /* Anchor.storyboard in Resources */,
 				205FC50520884AF00030807E /* event_icon_down_n@2x.png in Resources */,
 				20D3082A207C6D79001BD67E /* index_icon_down_n@2x.png in Resources */,
+				206E55F3211192D5007D7362 /* image_bg_live_n@3x.png in Resources */,
 				205FC4DC208837CA0030807E /* icon_live_n@3x.png in Resources */,
 				20D307D8207B7E4B001BD67E /* QiuMiImageView.xib in Resources */,
 				206DCBAD20FDE783009BEA7C /* FDARankTableViewCell.xib in Resources */,
@@ -1557,6 +1572,7 @@
 				205FC4E420883AA90030807E /* match_icon_choose_s@2x.png in Resources */,
 				206DCAFE20F8B678009BEA7C /* play_icon_full_n@2x.png in Resources */,
 				20E6256620F76585005EEA56 /* commom_icon_vedio_s@2x.png in Resources */,
+				206E55F8211195E1007D7362 /* AKQLivingView.xib in Resources */,
 				20CE5DBB208DEB3B005AB89C /* My.storyboard in Resources */,
 				205FC4AC20809CAB0030807E /* Images.xcassets in Resources */,
 				20D30702207B70FA001BD67E /* Football.storyboard in Resources */,
@@ -1659,6 +1675,7 @@
 				205DDEB120E6339B00ACC134 /* player_comment@2x.png in Resources */,
 				204A4B3320FF203D00241A69 /* icon_loading_ring@2x.png in Resources */,
 				20E6256020F76585005EEA56 /* commom_icon_live_n@3x.png in Resources */,
+				206E55F2211192D5007D7362 /* image_bg_live_n@2x.png in Resources */,
 				20D30818207C6D78001BD67E /* commond_icon_basket_s@2x.png in Resources */,
 				20E6256520F76585005EEA56 /* commom_icon_live_n@2x.png in Resources */,
 				2093C8932105C15900F666A6 /* image_blank_noneanchor_n@2x.png in Resources */,
@@ -1833,6 +1850,7 @@
 				20D30842207CA1DA001BD67E /* QSKCommon.m in Sources */,
 				20D307D2207B7E4B001BD67E /* QiuMiCommonWKWebViewController.m in Sources */,
 				20D307E3207B7E4B001BD67E /* QiuMiView.m in Sources */,
+				206E55F6211195D3007D7362 /* AKQLivingView.m in Sources */,
 				20D307D6207B7E4B001BD67E /* OLImageView.m in Sources */,
 				206DCB1820FC7B8D009BEA7C /* AnchorLivingRoomTableViewCell.m in Sources */,
 				20D307C9207B7E4B001BD67E /* QiuMiCommon.m in Sources */,

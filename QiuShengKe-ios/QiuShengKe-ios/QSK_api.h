@@ -8,7 +8,12 @@
 
 #ifndef QSK_api_h
 #define QSK_api_h
-#define HOST @"http://www.aikq.cc"
+#define QKS_CONFIG @"config"
+
+//特殊配置
+#define APP_CONFIG_URL @"http://mp.dlfyb.com/app/v110/config.json"
+
+#define HOST [[QSKCommon instance] baseUrl]
 #define QIUMI_API_PREFIX [NSString stringWithFormat:@"%@",HOST]
 
 #define QSK_MATCH_CHANNELS [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/lives/%@/%@.json"]
@@ -16,8 +21,6 @@
 #define QSK_ANCHOR_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v110/anchor/room/url/%@.json"]
 
 #define AKQ_CHANNEL_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/channels/%@.json"]
-
-#define APP_CONFIG_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v110/config.json"]
 
 //直播
 #define AKQ_LIVES_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/lives.json"]
@@ -27,5 +30,11 @@
 #define VIDEO_TITLES_LIST [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/subject/videos/leagues.json"]
 
 #define ANCHOR_INDEX [QIUMI_API_PREFIX stringByAppendingString:@"/app/v110/anchor/index.json"]
+
+//正在直播主播
+#define ANCHOR_LIVING_INDEX [QIUMI_API_PREFIX stringByAppendingString:@"/app/v110/anchor/living.json"]
+
+//socket
+#define API_SOCKET @"http://ws.aikq.cc"
 
 #endif /* QSK_api_h */

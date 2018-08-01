@@ -25,6 +25,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    if ([NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"first"] == nil) {
+        [[[NSMutableDictionary alloc] init] writeToStore:QKS_CONFIG];
+    }
+    [NSUserDefaults setObjectToNSUserDefaultsPC:@"1" withKey:@"first"];
+    
     [QiuMiCommonViewController startupWithNavigateDelegate:self window:self.window];
 //    IQKeyboardManager.sharedManager.enable = YES;
     [self _loadData];
@@ -91,7 +97,7 @@
     [[QiuMiHttpClient instance] GET:APP_CONFIG_URL cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject integerForKey:@"code"] == 0) {
             NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithDictionary:[responseObject objectForKey:@"data"]];
-            [dic writeToStore:@"config"];
+            [dic writeToStore:QKS_CONFIG];
             if ([dic objectForKey:@"ios_version"] && ![[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"update"] isEqualToString:@"1"]) {
                 NSString* ver = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
                 NSString* lastVer = [dic objectForKey:@"ios_version"];

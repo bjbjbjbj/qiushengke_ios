@@ -26,9 +26,9 @@
     [self.view setBackgroundColor:QIUMI_COLOR_C1];
     self.controllers = [[NSMutableArray alloc] init];
     [self _setupUI];
-    [self loadData:0];
-    
     [self _loadTitles];
+    
+    [self loadData:0];
 }
 
 - (void)_loadTitles{
@@ -40,6 +40,7 @@
             [titles writeToStore:VIDEO_TITLES];
             if ([self.tabView.columnTitles count] == 0) {
                 [self _setupUI];
+                [self loadData:0];
             }
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

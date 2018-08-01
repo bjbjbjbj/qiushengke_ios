@@ -44,7 +44,7 @@
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc]initWithCustomView:refreshBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    NSDictionary* dic = [[NSMutableDictionary alloc] initWithStore:@"config"];
+    NSDictionary* dic = [[NSMutableDictionary alloc] initWithStore:QKS_CONFIG];
     if (dic && [[dic objectForKey:@"more"] length] > 0) {
         self.url = [dic objectForKey:@"more"];
     }
