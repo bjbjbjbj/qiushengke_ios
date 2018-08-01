@@ -59,6 +59,10 @@
         QiuMiViewResize(_contentView, CGSizeMake(SCREENWIDTH, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height));
         [controller.view setFrame:CGRectMake(SCREENWIDTH*i, 0, SCREENWIDTH, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
         [controller updateFrame:CGRectMake(0, 0, SCREENWIDTH, controller.view.frame.size.height)];
+        if (IS_IPHONEX) {
+            controller.tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            
+        }
         [_contentView addSubview:controller.view];
         [self.controllers addObject:controller];
         [self addChildViewController:controller];
