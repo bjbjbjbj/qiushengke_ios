@@ -60,7 +60,11 @@
         [controller.view setFrame:CGRectMake(SCREENWIDTH*i, 0, SCREENWIDTH, SCREENHEIGHT - _tabBG.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
         [controller updateFrame:CGRectMake(0, 0, SCREENWIDTH, controller.view.frame.size.height)];
         if (IS_IPHONEX) {
-            controller.tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            if (@available(iOS 11.0, *)) {
+                controller.tableview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;//UIScrollView也适用
+            }else {
+                controller.automaticallyAdjustsScrollViewInsets = NO;
+            }
             
         }
         [_contentView addSubview:controller.view];
