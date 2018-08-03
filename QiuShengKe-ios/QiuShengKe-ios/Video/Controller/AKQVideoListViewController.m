@@ -101,7 +101,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([_datas count] > indexPath.row) {
         NSString* vid = [[[_datas objectAtIndex:indexPath.row] objectForKey:@"id"] stringValue];
-        NSString* url = [NSString stringWithFormat:@"http://www.aikq.cc/m/live/subject/video/%@/%@/%@.html",[vid substringWithRange:NSMakeRange(0, 2)],[vid substringWithRange:NSMakeRange(2, 2)],vid];
+        NSString* url = [NSString stringWithFormat:@"%@/m/live/subject/video/%@/%@/%@.html",[[QSKCommon instance] baseUrl],[vid substringWithRange:NSMakeRange(0, 2)],[vid substringWithRange:NSMakeRange(2, 2)],vid];
         QiuMiCommonWKWebViewController* web = (QiuMiCommonWKWebViewController*)[QiuMiCommonViewController controllerWithStoryBoardName:@"Football" withControllerName:@"QiuMiCommonWKWebViewController"];
         [web setUrl:url];
         [web setIsVideo:YES];
