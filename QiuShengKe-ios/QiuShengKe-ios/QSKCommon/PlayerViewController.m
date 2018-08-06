@@ -23,6 +23,7 @@
 @interface PlayerViewController ()<PLPlayerDelegate,GCDAsyncSocketDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIAlertViewDelegate>
 {
     NSTimeInterval _lastPostTime;
+    BOOL _startPlay;
 }
 @property(nonatomic, assign)BOOL showMatch;
 //音量调节
@@ -75,12 +76,15 @@
 @property(nonatomic, strong) IBOutlet UILabel* nsScore;
 
 @property(nonatomic, strong) PlayerMatchView* playerMatchView;
+@property(nonatomic, strong) UIActivityIndicatorView* indicator;
 @end
 
 @implementation PlayerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _startPlay = false;
     
     [_nav1 setText:_navTitle];
     [_nav2 setText:_navTitle];
@@ -152,6 +156,11 @@
     [self setUIRoute];
     [self addNotification];
     [_tableview setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 10)]];
+    
+    self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self.indicator setCenter:CGPointMake(_playView.frame.size.width/2, _playView.frame.size.height/2)];
+    //    [_indicator startAnimating];
+    [_playView insertSubview:_indicator atIndex:0];
 }
 
 #pragma mark - 有iv
@@ -686,7 +695,15 @@ const NSString *iv = @"20180710";
         }
     }
     else if(state == PLPlayerStatusPlaying){
-        
+        if (_startPlay) {
+            [_indicator stopAnimating];
+        }
+        _startPlay = true;
+    }
+    else if(state == PLPlayerStatusCaching){
+        if (_startPlay) {
+            [_indicator startAnimating];
+        }
     }
 }
 
@@ -821,6 +838,7 @@ const NSString *iv = @"20180710";
         self.player.playerView.frame = CGRectMake(0, 0, SCREENWIDTH, 210*(SCREENWIDTH/375));
         self.isFullScreen = NO;
     }
+    [self.indicator setCenter:CGPointMake(_playView.frame.size.width/2, _playView.frame.size.height/2)];
     return;
 }
 
