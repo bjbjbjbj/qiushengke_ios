@@ -50,6 +50,7 @@ typedef enum
 
 + (void)hideWithText:(NSString *)text withSecText:(NSString *)secText withDic:(NSDictionary *)dic withType:(QiuMiCommonPromptType)type;
 + (void)hide;
++ (void)hideNoAnimation;
 
 - (void)showText:(NSString *)text withSecText:(NSString *)secText withDic:(NSDictionary *)dic withPrompt:(QiuMiCommonPromptType)type inContentView:(UIView *)view;
 - (void)hideWithText:(NSString *)text withSecText:(NSString *)secText withType:(QiuMiCommonPromptType)type;

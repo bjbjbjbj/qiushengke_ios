@@ -11,7 +11,7 @@
 #define QKS_CONFIG @"config"
 
 //特殊配置
-#define APP_CONFIG_URL @"http://mp.dlfyb.com/app/v110/config.json"
+#define APP_CONFIG_URL @"http://mp.dlfyb.com/app/v120/config.json"
 
 #define HOST [[QSKCommon instance] baseUrl]
 #define QIUMI_API_PREFIX [NSString stringWithFormat:@"%@",HOST]
@@ -33,6 +33,8 @@
 
 //正在直播主播
 #define ANCHOR_LIVING_INDEX [QIUMI_API_PREFIX stringByAppendingString:@"/app/v110/anchor/living.json"]
+#define ARITCLE_LIST_INDEX [QIUMI_API_PREFIX stringByAppendingString:@"/app/v120/news/list/sports"]
+#define ANCHOR_POST_DM [QIUMI_API_PREFIX stringByAppendingString:@"/app/v120/anchor/chat/post"]
 
 //socket
 #define API_SOCKET @"http://ws.aikq.cc"

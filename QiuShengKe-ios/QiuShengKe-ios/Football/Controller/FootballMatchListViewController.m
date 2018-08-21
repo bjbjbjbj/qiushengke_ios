@@ -36,7 +36,7 @@
     [super viewDidAppear:animated];
     [self.timer invalidate];
     self.timer = nil;
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(loadLivingData) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
     self.timer = timer;
     [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
 }

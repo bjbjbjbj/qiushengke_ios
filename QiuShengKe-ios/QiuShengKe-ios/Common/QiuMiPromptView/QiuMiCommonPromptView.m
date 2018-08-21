@@ -325,8 +325,70 @@ static QiuMiCommonPromptView* promptView = nil;
     }
 }
 
++ (void)hideNoAnimation{
+    if (promptView && promptView.promptType != QiuMiCommonPromptNone) {
+        [promptView hideNoAnimation];
+    }
+}
+
 - (void)hide{
     [self hide:nil];
+}
+
+- (void)hideNoAnimation
+{
+    [self stopActivity];
+    if (self.isHiden || self == nil || ![self superview]) {
+        
+        return;
+    }
+    self.isHiden = YES;
+    
+    switch (self.promptType) {
+        case QiuMiCommonPromptDefualt:
+        {
+            self.finishLoading = YES;
+            //            [self.gif setImage:[UIImage imageNamed:@"loading.png"]];
+        }
+            break;
+        case QiuMiCommonPromptFail:
+        {
+            [self.gif setImage:[UIImage imageNamed:@"failed.png"]];
+        }
+            break;
+        case QiuMiCommonPromptNetFail:
+        {
+            [self.gif setImage:[UIImage imageNamed:@"icon_loading_network"]];
+        }
+            break;
+        case QiuMiCommonPromptSuccess:
+        {
+            [self.gif setImage:[UIImage imageNamed:@"icon_loading_draw"]];
+        }
+            break;
+        default:
+        {
+            self.finishLoading = YES;
+            //            [self.gif setImage:[UIImage imageNamed:@"loading.png"]];
+        }
+            break;
+    }
+    __weak typeof(self) wself = self;
+    _shadowView.alpha = 0;
+    CGRect frame = wself.frame;
+    if (wself.parentView) {
+        frame.origin.y = (CGRectGetHeight(wself.parentView.frame) - CGRectGetHeight(wself.frame)) * 0.5 - 50;
+    }else{
+        frame.origin.y = (SCREENHEIGHT - CGRectGetHeight(wself.frame)) * 0.5 - 50;
+    }
+    [wself setAlpha:0];
+    [wself setFrame:frame];
+    [_shadowView removeFromSuperview];
+    if ([wself superview]) {
+        [wself removeFromSuperview];
+        wself.isHiden = NO;
+        self.promptType = QiuMiCommonPromptNone;
+    }
 }
 
 - (void)hide:(NSString*)errorString

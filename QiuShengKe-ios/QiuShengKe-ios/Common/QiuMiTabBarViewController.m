@@ -37,7 +37,7 @@
     UIStoryboard* matchList = [ UIStoryboard storyboardWithName:@"My" bundle:nil];
     
     //初始化item
-    NSArray* title = @[@"直播",@"主播",@"录像"];
+    NSArray* title = @[@"直播",@"主播",@"资讯"];
     NSArray* images = @[
                         @[
                             @"commom_icon_live_n",
@@ -48,14 +48,14 @@
                             @"commom_icon_anchor_s",
                             ],
                         @[
-                            @"commom_icon_vedio_n",
-                            @"commom_icon_vedio_s",
+                            @"icon_news_n",
+                            @"icon_news_s",
                             ],
                         ];
     
     NSDictionary* config = [[NSMutableDictionary alloc] initWithStore:QKS_CONFIG];
-    if (0) {
-        title = @[@"直播",@"主播",@"录像",@"更多"];
+    if ([config integerForKey:@"showMore"] == 1) {
+        title = @[@"直播",@"主播",@"资讯",@"更多"];
         images = @[
                             @[
                                 @"commom_icon_live_n",
@@ -66,8 +66,8 @@
                                 @"commom_icon_anchor_s",
                                 ],
                             @[
-                                @"commom_icon_vedio_n",
-                                @"commom_icon_vedio_s",
+                                @"icon_news_n",
+                                @"icon_news_s",
                                 ],
                             @[
                                 @"commom_icon_recommend_n",

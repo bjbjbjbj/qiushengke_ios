@@ -64,7 +64,7 @@
     configuration.allowsInlineMediaPlayback = YES;//是否允许内联(YES)或使用本机全屏控制器(NO)，默认是NO。
     configuration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeVideo;
     
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - STATUSHEIGHT - self.navigationController.navigationBar.frame.size.height - self.tabBarController.tabBar.frame.size.height) configuration:configuration];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - STATUSHEIGHT - self.navigationController.navigationBar.frame.size.height - ([[self.navigationController viewControllers] count] == 1 ? self.tabBarController.tabBar.frame.size.height : 0)) configuration:configuration];
     [self.view addSubview:webView];
     
     self.webview = webView;

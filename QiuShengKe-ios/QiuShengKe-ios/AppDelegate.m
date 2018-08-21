@@ -98,12 +98,12 @@
         if ([responseObject integerForKey:@"code"] == 0) {
             NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithDictionary:[responseObject objectForKey:@"data"]];
             [dic writeToStore:QKS_CONFIG];
-            if ([dic objectForKey:@"ios_version"] && ![[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"update"] isEqualToString:@"1"]) {
+            if ([dic objectForKey:@"ios_version"]) {
                 NSString* ver = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
                 NSString* lastVer = [dic objectForKey:@"ios_version"];
                 if ([ver compare:lastVer] == NSOrderedAscending) {
                     NSString* message = @"检测到新版本";
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新",@"暂不更新",nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新",nil];
                     [alert setTag:[@"update" hash]];
                     [alert show];
                 }

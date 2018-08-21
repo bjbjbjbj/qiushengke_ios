@@ -24,6 +24,8 @@
 {
     NSTimeInterval _lastPostTime;
     BOOL _startPlay;
+    BOOL _isFirst;
+    BOOL _hasShowError;
 }
 @property(nonatomic, assign)BOOL showMatch;
 //音量调节
@@ -284,6 +286,14 @@ const NSString *iv = @"20180710";
         NSDictionary* dic = [data objectAtIndex:0];
         if ([dic integerForKey:@"type"] == 99) {
             [self.chats addObject:dic];
+            [self.tableview reloadData];
+            
+            if (self.tableview.contentSize.height > self.tableview.frame.size.height) {
+                [_tableview beginUpdates];
+                CGPoint offset = CGPointMake(0, self.tableview.contentSize.height - self.tableview.frame.size.height);
+                [self.tableview setContentOffset:offset animated:NO];
+                [_tableview endUpdates];
+            }
         }
         else{
             [self addNormalBarrage:[dic objectForKey:@"message"]];
@@ -297,6 +307,27 @@ const NSString *iv = @"20180710";
                 [_tableview endUpdates];
             }
         }
+    }];
+    
+    _isFirst = true;
+    
+    [socket on:@"server_history_message" callback:^(NSArray* data, SocketAckEmitter* ack) {
+        QiuMiStrongSelf(self);
+        if (_isFirst) {
+            if ([data count] > 0) {
+                NSArray* dic = data[0];
+                [self.chats addObjectsFromArray:dic];
+                [self.tableview reloadData];
+                
+                if (self.tableview.contentSize.height > self.tableview.frame.size.height) {
+                    [_tableview beginUpdates];
+                    CGPoint offset = CGPointMake(0, self.tableview.contentSize.height - self.tableview.frame.size.height);
+                    [self.tableview setContentOffset:offset animated:NO];
+                    [_tableview endUpdates];
+                }
+            }
+        }
+        _isFirst = false;
     }];
     
     [socket on:@"server_match_change" callback:^(NSArray* data, SocketAckEmitter* ack) {
@@ -456,7 +487,7 @@ const NSString *iv = @"20180710";
                 [self _setupPlayer:[PlayerViewController decryptUseDES:[responseObject objectForKey:@"live_url"]]];
                 [self.nav1 setText:[responseObject objectForKey:@"title"]];
                 [self.nav2 setText:[responseObject objectForKey:@"title"]];
-                [QiuMiCommonPromptView hide];
+                [QiuMiCommonPromptView hideNoAnimation];
             }
             else{
                 [QiuMiCommonPromptView showText:@"主播还没开播" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
@@ -557,7 +588,7 @@ const NSString *iv = @"20180710";
     url = [NSString stringWithFormat:AKQ_CHANNEL_URL,content];
     [[QiuMiHttpClient instance] GET:url parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject integerForKey:@"code"] == 0 && [responseObject existForKey:@"playurl"]) {
-            [QiuMiCommonPromptView hide];
+            [QiuMiCommonPromptView hideNoAnimation];
             self.urlString = [PlayerViewController decryptUseDES:[responseObject objectForKey:@"playurl"]];
             [self _setupPlayer:self.urlString];
         }
@@ -680,7 +711,11 @@ const NSString *iv = @"20180710";
 
 - (void)player:(PLPlayer *)player stoppedWithError:(NSError *)error{
     [self.tipsView setHidden:NO];
+    if (_hasShowError) {
+        return;
+    }
     [QiuMiCommonPromptView showText:@"加载失败" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
+    _hasShowError = true;
 }
 
 - (void)player:(nonnull PLPlayer *)player statusDidChange:(PLPlayerStatus)state{
@@ -799,9 +834,16 @@ const NSString *iv = @"20180710";
                             @"nickname": [NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"]?[NSUserDefaults getObjectFromNSUserDefaultsWithKeyPC:@"user_name"]:@"匿名",
                             @"message": text.text,
                             @"time":tmp,
-                            @"verification":verification
+                            @"verification":verification,
+                            @"mid":[NSString stringWithFormat:@"%@_%@",@(self.sport),@(self.mid)]
                             };
-    [_bj emit:@"user_send_message" with:@[param]];
+    [[QiuMiHttpClient instance] POST:ANCHOR_POST_DM parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+//    [_bj emit:@"user_send_message" with:@[param]];
     [text setText:@""];
     _lastPostTime = time;
     
