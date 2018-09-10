@@ -9,7 +9,7 @@ target 'QiuShengKe-ios' do
 	pod 'MBProgressHUD', '~> 0.9'
 	pod 'RegexKitLite'
     pod 'Socket.IO-Client-Swift'
-    pod 'PLPlayerKit', :podspec => 'https://raw.githubusercontent.com/pili-engineering/PLPlayerKit/master/PLPlayerKit-Universal.podspec'
+    pod 'PLPlayerKit'
     pod 'UMCCommon'
     pod 'UMCAnalytics'
     pod 'UMCSecurityPlugins'

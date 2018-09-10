@@ -16,4 +16,5 @@
 + (NSInteger)getMatchAsiaOddResult:(NSInteger)hscore ascore:(NSInteger)ascore handicap:(float)middle isHost:(BOOL)isHomeTeam;
 + (PlayerViewController*)getPlayerControllerWithMid:(NSInteger)mid sport:(NSInteger)sport;
 - (NSString*)baseUrl;
+- (NSString*)socketUrl;
 @end

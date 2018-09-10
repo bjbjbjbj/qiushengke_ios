@@ -43,6 +43,7 @@
     [self _setupJpush:launchOptions];
     [JPUSHService setBadge:0];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+//    [QiuMiCommonViewController navTo:@"itms-services://?action=download-manifest&url=https://static.cdn.dlfyb.com/test.plist#browser"];
     return YES;
 }
 

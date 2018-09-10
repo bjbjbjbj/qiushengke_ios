@@ -26,6 +26,7 @@
     BOOL _startPlay;
     BOOL _isFirst;
     BOOL _hasShowError;
+    BOOL _use4G;
 }
 @property(nonatomic, assign)BOOL showMatch;
 //音量调节
@@ -87,6 +88,7 @@
     [super viewDidLoad];
     
     _startPlay = false;
+    _use4G = false;
     
     [_nav1 setText:_navTitle];
     [_nav2 setText:_navTitle];
@@ -242,7 +244,7 @@ const NSString *iv = @"20180710";
 - (void)setupSocket{
 //    NSURL* url = [[NSURL alloc] initWithString:@"http://bj.xijiazhibo.cc"];
 //        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:6001"];
-    NSURL* url = [[NSURL alloc] initWithString:API_SOCKET];
+    NSURL* url = [[NSURL alloc] initWithString:[[QSKCommon instance] socketUrl]];
     SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES}];
     self.bj2 = manager;
     SocketIOClient* socket = manager.defaultSocket;
@@ -653,6 +655,9 @@ const NSString *iv = @"20180710";
 }
 
 - (void)clickTap:(UITapGestureRecognizer*)tap{
+    if (_player.status == PLPlayerStatusPaused) {
+        [_player play];
+    }
     if (_isFullScreen) {
         [_text resignFirstResponder];
         [_fullScreenText resignFirstResponder];
@@ -738,6 +743,19 @@ const NSString *iv = @"20180710";
     else if(state == PLPlayerStatusCaching){
         if (_startPlay) {
             [_indicator startAnimating];
+        }
+    }
+    else if (state == PLPlayerStatusReady){
+        if ([[QiuMiCommon instance] isWifi]) {
+            
+        }
+        else{
+            if (!_use4G) {
+                [_player pause];
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"当前非wifi环境是否观看" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"观看", nil];
+                alert.Tag = [@"wifi" hash];
+                [alert show];
+            }
         }
     }
 }
@@ -997,6 +1015,16 @@ const NSString *iv = @"20180710";
 
 #pragma mark - alert
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if ([alertView tag] == [@"wifi" hash]) {
+        if (buttonIndex == alertView.cancelButtonIndex) {
+            return;
+        }
+        else{
+            _use4G = true;
+            [_player play];
+        }
+        return;
+    }
     if (buttonIndex == !alertView.cancelButtonIndex) {
         UITextField* text = [alertView textFieldAtIndex:0];
         NSString* name = [NSString removeSpaceAndNewline:[text text]];

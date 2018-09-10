@@ -178,14 +178,26 @@
         NSArray* matches = [_matches objectAtIndex:indexPath.section];
         if([matches count] > indexPath.row){
             NSDictionary* match = [matches objectAtIndex:indexPath.row];
-            PlayerViewController* player = [QSKCommon getPlayerControllerWithMid:[match integerForKey:@"mid"] sport:[match integerForKey:@"sport"]];
-            if ([match integerForKey:@"sport"] == 3) {
-                [player setNavTitle:[match objectForKey:@"hname"]];
+            if ([[match objectForKey:@"channels"] count] > 0 && [[[match objectForKey:@"channels"] objectAtIndex:0] integerForKey:@"room_id"] > 0) {
+                PlayerViewController* player = [QSKCommon getPlayerControllerWithMid:[[[match objectForKey:@"channels"] objectAtIndex:0] integerForKey:@"room_id"] sport:99];
+                if ([match integerForKey:@"sport"] == 3) {
+                    [player setNavTitle:[match objectForKey:@"hname"]];
+                }
+                else{
+                    [player setNavTitle:[NSString stringWithFormat:@"%@ vs %@",[match objectForKey:@"hname"],[match objectForKey:@"aname"]]];
+                }
+                [[QiuMiCommonViewController navigationController] pushViewController:player animated:YES];
             }
             else{
-                [player setNavTitle:[NSString stringWithFormat:@"%@ vs %@",[match objectForKey:@"hname"],[match objectForKey:@"aname"]]];
+                PlayerViewController* player = [QSKCommon getPlayerControllerWithMid:[match integerForKey:@"mid"] sport:[match integerForKey:@"sport"]];
+                if ([match integerForKey:@"sport"] == 3) {
+                    [player setNavTitle:[match objectForKey:@"hname"]];
+                }
+                else{
+                    [player setNavTitle:[NSString stringWithFormat:@"%@ vs %@",[match objectForKey:@"hname"],[match objectForKey:@"aname"]]];
+                }
+                [[QiuMiCommonViewController navigationController] pushViewController:player animated:YES];
             }
-            [[QiuMiCommonViewController navigationController] pushViewController:player animated:YES];
         }
     }
 }

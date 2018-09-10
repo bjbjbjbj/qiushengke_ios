@@ -1820,7 +1820,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-QiuShengKe-ios/Pods-QiuShengKe-ios-frameworks.sh",
-				"${PODS_ROOT}/PLPlayerKit/Pod/Library-Universal/PLPlayerKit.framework",
+				"${PODS_ROOT}/PLPlayerKit/Pod/Library/PLPlayerKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

@@ -28,6 +28,14 @@
     return @"http://www.aikq.cc";
 }
 
+- (NSString *)socketUrl{
+    NSDictionary* config = [[NSMutableDictionary alloc] initWithStore:QKS_CONFIG];
+    if ([[config objectForKey:@"ws_host"] length] > 0) {
+        return [config objectForKey:@"ws_host"];
+    }
+    return API_SOCKET;
+}
+
 + (PlayerViewController*)getPlayerControllerWithMid:(NSInteger)mid sport:(NSInteger)sport{
     PlayerViewController* player = (PlayerViewController*)[QiuMiCommonViewController controllerWithStoryBoardName:@"Football" withControllerName:@"PlayerViewController"];
     [player setMid:mid];
