@@ -11,7 +11,7 @@
 #define QKS_CONFIG @"config"
 
 //特殊配置
-#define APP_CONFIG_URL @"http://mp.dlfyb.com/app/v120/config.json"
+#define APP_CONFIG_URL @"https://www.aikanqiu.com/app/v120/config.json"
 
 #define HOST [[QSKCommon instance] baseUrl]
 #define QIUMI_API_PREFIX [NSString stringWithFormat:@"%@",HOST]

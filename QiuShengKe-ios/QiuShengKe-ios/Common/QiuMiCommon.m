@@ -22,6 +22,7 @@
 @property(nonatomic, strong)Reachability* reach;
 @end
 
+static QiuMiCommon* _current;
 static NSString* _token;
 static NSString* _domain;
 @implementation QiuMiCommon
@@ -139,15 +140,28 @@ static NSString* _domain;
 }
 
 #pragma mark - 单例
++(instancetype)allocWithZone:(struct _NSZone *)zone
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (_current == nil) {
+            _current = [super allocWithZone:zone];
+        }
+    });
+    return _current;
+}
+
 + (QiuMiCommon*)instance
 {
-    static QiuMiCommon* _current;
-    static dispatch_once_t oncePredicate;
-    
-    dispatch_once(&oncePredicate, ^{
-        _current = [[QiuMiCommon alloc] init];
-        _current.hadLoadControllers = [[NSMutableDictionary alloc]init];
-    });
+    return [[self alloc]init];
+}
+
+-(id)copyWithZone:(NSZone *)zone
+{
+    return _current;
+}
+-(id)mutableCopyWithZone:(NSZone *)zone
+{
     return _current;
 }
 
