@@ -19,8 +19,10 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import "Base64.h"
 #import "PlayerMatchView.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+#import <WebKit/WebKit.h>
 
-@interface PlayerViewController ()<PLPlayerDelegate,GCDAsyncSocketDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIAlertViewDelegate>
+@interface PlayerViewController ()<PLPlayerDelegate,GCDAsyncSocketDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIAlertViewDelegate,WKScriptMessageHandler>
 {
     NSTimeInterval _lastPostTime;
     BOOL _startPlay;
@@ -80,6 +82,8 @@
 
 @property(nonatomic, strong) PlayerMatchView* playerMatchView;
 @property(nonatomic, strong) UIActivityIndicatorView* indicator;
+//抓饭
+@property(nonatomic, strong) WKWebView* webview;
 @end
 
 @implementation PlayerViewController
@@ -244,6 +248,7 @@ const NSString *iv = @"20180710";
 - (void)setupSocket{
 //    NSURL* url = [[NSURL alloc] initWithString:@"http://bj.xijiazhibo.cc"];
 //        NSURL* url = [[NSURL alloc] initWithString:@"http://localhost:6001"];
+//    NSURL* url = [[NSURL alloc] initWithString:@"ws://47.91.216.50:8090/sub"];
     NSURL* url = [[NSURL alloc] initWithString:[[QSKCommon instance] socketUrl]];
     SocketManager* manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"compress": @YES}];
     self.bj2 = manager;
@@ -392,6 +397,9 @@ const NSString *iv = @"20180710";
 }
 
 - (void)dealloc{
+    if (self.webview) {
+        [self.webview.configuration.userContentController removeScriptMessageHandlerForName:@"test"];
+    }
     [_barrageManager stop];
     self.barrageManager = nil;
     [_bj disconnect];
@@ -584,6 +592,9 @@ const NSString *iv = @"20180710";
 }
 
 - (void)loadChannel:(NSInteger)index{
+    if(_player){
+        [_player stop];
+    }
     NSDictionary* dic = [_channels objectAtIndex:index];
     NSString* url = @"";
     NSString* content = [dic objectForKey:@"channelId"];
@@ -591,8 +602,24 @@ const NSString *iv = @"20180710";
     [[QiuMiHttpClient instance] GET:url parameters:nil cachePolicy:QiuMiHttpClientCachePolicyNoCache success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([responseObject integerForKey:@"code"] == 0 && [responseObject existForKey:@"playurl"]) {
             [QiuMiCommonPromptView hideNoAnimation];
-            self.urlString = [PlayerViewController decryptUseDES:[responseObject objectForKey:@"playurl"]];
-            [self _setupPlayer:self.urlString];
+            if ([[responseObject objectForKey:@"type"] isEqualToString:@"98"]) {
+                NSString* jfId = [responseObject objectForKey:@"playurl"];
+                jfId = [PlayerViewController decryptUseDES:jfId];
+                if (_webview == nil) {
+                    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+                    [configuration.userContentController addScriptMessageHandler:self name:@"test"];
+                    
+                    self.webview = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0,0,0) configuration:configuration];
+                    [self.view addSubview:_webview];
+                }
+                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.aikanqiu.com/jf_ios.html?id=%@",jfId]];
+                NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                [_webview loadRequest:request];
+            }
+            else{
+                self.urlString = [PlayerViewController decryptUseDES:[responseObject objectForKey:@"playurl"]];
+                [self _setupPlayer:self.urlString];
+            }
         }
         else{
             [QiuMiCommonPromptView showText:@"暂无直播源" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
@@ -613,6 +640,8 @@ const NSString *iv = @"20180710";
 //    urlStr = @"http://flvtx.plu.cn/onlive/7aa459e52bea4a5b902b40cd356be9fd.flv?txSecret=7f0136f1ac4889367efd2b17e4c5e6d2&txTime=5ad476e7";
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    AVAudioSession *session =[AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     
     NSURL* url = [[NSURL alloc] initWithString:urlStr];
     PLPlayerOption *option = [PLPlayerOption defaultOption];
@@ -1250,5 +1279,20 @@ const NSString *iv = @"20180710";
     float b = [colors[2] floatValue];
     
     return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1.0f];
+}
+
+#pragma -mark WKWebview的配置项
+//js交互方法
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
+{
+    NSDictionary *msgBody = [[NSDictionary alloc] initWithDictionary:message.body];
+    if ([[msgBody objectForKey:@"body"] length] > 0) {
+        [QiuMiCommonPromptView hideNoAnimation];
+        [self _setupPlayer:[msgBody objectForKey:@"body"]];
+    }
+    else{
+        [QiuMiCommonPromptView showText:@"暂无直播源" withSecText:nil withDic:nil withPrompt:QiuMiCommonPromptFail];
+    }
+    [self.webview.configuration.userContentController removeScriptMessageHandlerForName:@"test"];
 }
 @end

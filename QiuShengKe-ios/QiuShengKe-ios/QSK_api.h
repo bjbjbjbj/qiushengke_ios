@@ -16,14 +16,14 @@
 #define HOST [[QSKCommon instance] baseUrl]
 #define QIUMI_API_PREFIX [NSString stringWithFormat:@"%@",HOST]
 
-#define QSK_MATCH_CHANNELS [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/lives/%@/%@.json"]
+#define QSK_MATCH_CHANNELS [QIUMI_API_PREFIX stringByAppendingString:@"/app/v130/lives/%@/%@.json"]
 
 #define QSK_ANCHOR_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v110/anchor/room/url/%@.json"]
 
-#define AKQ_CHANNEL_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/channels/%@.json"]
+#define AKQ_CHANNEL_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v130/channels/%@.json"]
 
 //直播
-#define AKQ_LIVES_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/lives.json"]
+#define AKQ_LIVES_URL [QIUMI_API_PREFIX stringByAppendingString:@"/app/v130/lives.json"]
 
 //录像
 #define VIDEO_LIST [QIUMI_API_PREFIX stringByAppendingString:@"/app/v101/subject/videos/%@/%@.json"]

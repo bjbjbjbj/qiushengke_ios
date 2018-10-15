@@ -159,6 +159,7 @@
 		209ADE16207B52F900FC8AD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 209ADE14207B52F900FC8AD8 /* Main.storyboard */; };
 		209ADE18207B52F900FC8AD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209ADE17207B52F900FC8AD8 /* Assets.xcassets */; };
 		209ADE1E207B52F900FC8AD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 209ADE1D207B52F900FC8AD8 /* main.m */; };
+		20A3FD3B217489C100E89220 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A3FD3A217489C100E89220 /* JavaScriptCore.framework */; };
 		20CE5DBB208DEB3B005AB89C /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20CE5DBA208DEB3B005AB89C /* My.storyboard */; };
 		20D30702207B70FA001BD67E /* Football.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D30701207B70FA001BD67E /* Football.storyboard */; };
 		20D307AD207B7E4B001BD67E /* UIButton+Qiumi.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3070A207B7E4B001BD67E /* UIButton+Qiumi.m */; };
@@ -467,6 +468,7 @@
 		209ADE17207B52F900FC8AD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		209ADE1C207B52F900FC8AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		209ADE1D207B52F900FC8AD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		20A3FD3A217489C100E89220 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		20CE5DBA208DEB3B005AB89C /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
 		20CE5DBF208ED254005AB89C /* QiuShengKe-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "QiuShengKe-ios.entitlements"; sourceTree = "<group>"; };
 		20D306FC207B5A35001BD67E /* QSK_PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSK_PrefixHeader.pch; sourceTree = "<group>"; };
@@ -669,6 +671,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A3FD3B217489C100E89220 /* JavaScriptCore.framework in Frameworks */,
 				20237E4C20F0A87A0058C134 /* Security.framework in Frameworks */,
 				B33AEC462A37E69604F9ED6B /* libPods-QiuShengKe-ios.a in Frameworks */,
 			);
@@ -1530,6 +1533,7 @@
 		743E069ACB7934A37F6FCC1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20A3FD3A217489C100E89220 /* JavaScriptCore.framework */,
 				20237E4B20F0A87A0058C134 /* Security.framework */,
 				2CAAC94A2B78E2A80B9B3D99 /* libPods-QiuShengKe-ios.a */,
 			);
