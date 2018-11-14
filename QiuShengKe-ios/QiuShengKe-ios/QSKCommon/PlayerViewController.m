@@ -618,7 +618,14 @@ const NSString *iv = @"20180710";
             }
             else{
                 self.urlString = [PlayerViewController decryptUseDES:[responseObject objectForKey:@"playurl"]];
-                [self _setupPlayer:self.urlString];
+                if ([self.urlString rangeOfString:@".flv"].location == NSNotFound ||
+                    [self.urlString rangeOfString:@".m3u8"].location == NSNotFound ||
+                    [self.urlString rangeOfString:@"rtmp"].location == NSNotFound) {
+                    [QiuMiCommonViewController navTo:self.urlString];
+                }
+                else{
+                    [self _setupPlayer:self.urlString];
+                }
             }
         }
         else{
